@@ -1,0 +1,24 @@
+{
+    "name": "root",
+    "private": true,
+    "scripts": {        
+        "build": "rollup -c rollup.config.js",
+        "docs": "node ./docs/generate.js",
+        "version": "npm run build && npm run docs"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",        
+        "lerna": "^3.16.4",
+        "lodash": "^4.17.15",
+        "node-fetch": "^2.5.0",
+        "nunjucks": "^3.2.0",
+        "regenerator-runtime": "^0.12.1",
+        "rollup": "^1.20.3",
+        "rollup-plugin-babel": "^4.3.3",
+        "rollup-plugin-commonjs": "^9.3.4",
+        "rollup-plugin-node-resolve": "^4.2.3",
+        "rollup-plugin-uglify": "^6.0.3"
+    }
+}

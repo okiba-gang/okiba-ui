@@ -1,0 +1,19 @@
+{
+  "name": "@okiba/scroll-container",
+  "version": "0.0.1",
+  "description": "Container for scroll helpers",
+  "main": "./index.js",
+  "module": "./dist/index.esm.js",
+  "dependencies": {
+    "@okiba/component": "^1.0.8",
+    "@okiba/event-manager": "^0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-components.git"
+  },
+  "contributors": [
+    "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
+  ],
+  "license": "MIT"
+}
