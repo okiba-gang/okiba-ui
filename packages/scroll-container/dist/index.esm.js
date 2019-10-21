@@ -1,71 +1,161 @@
-/**
- * @module arrays
- * @description Array utils for okiba js
- */
+import Component from '@okiba/component';
+import EventManager from '@okiba/event-manager';
 
-/**
- * Return the first element if it only contains one
- * @example
- * const els = arrayOrOne([🍏, 🍌])
- * console.log(els) // [🍏, 🍌]
- *
- * const els = arrayOrOne([🍏])
- * console.log(els) // 🍏
- *
- * @param {Array-like} arrayLike The options object.
- * @returns {any} The first element or the argument, undefined if empty array
- */
-function arrayOrOne(arrayLike) {
-  if (arrayLike === void 0 || arrayLike.length === 0) {
-    return void 0;
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-
-  if (arrayLike.length === 1) {
-    return arrayLike[0];
-  }
-
-  return arrayLike;
-}
-/**
- * Cast an array-like object or single element to Array
- * @example
- * const elements = castArray(document.querySelectorAll('p')) // [p, p]
- * const fruits = castArray(🍒) // [🍒]
- *
- * @param {any} castable Array to cast
- * @returns {Array} The array-like converted to Array, or an Array containing the element
- */
-
-function castArray(castable) {
-  if (castable === void 0) return castable;
-
-  if (castable instanceof Array) {
-    return castable;
-  }
-
-  if (castable.callee || castable instanceof NodeList || castable instanceof DOMTokenList) {
-    return Array.prototype.slice.call(castable);
-  }
-
-  return [castable];
-}
-/**
- * Removes an element from an array in-place without causing Garbage Collection
- * @example
- * const array = [🍎, 🍐, 🍌]
- * spliceOne(array, 1)
- * console.log(array) // Logs: [🍎, 🍌]
- * @param {Array} array Array you want to remove an element from
- * @param {Number} index The index of the element to remove
- */
-
-function spliceOne(array, index) {
-  for (var i = index, k = i + 1, n = array.length; k < n; i += 1, k += 1) {
-    array[i] = array[k];
-  }
-
-  --array.length;
 }
 
-export { arrayOrOne, castArray, spliceOne };
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+var ui = {
+  content: '.js-scroll-content'
+};
+
+var ScrollContainer =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ScrollContainer, _Component);
+
+  function ScrollContainer(_ref) {
+    var _this;
+
+    var el = _ref.el;
+
+    _classCallCheck(this, ScrollContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ScrollContainer).call(this, {
+      el: el,
+      ui: ui
+    }));
+
+    _defineProperty(_assertThisInitialized(_this), "onResize", function () {
+      _this.height = _this.ui.content.offsetHeight;
+
+      if (_this.isEnabled) {
+        document.body.style.height = "".concat(_this.height, "px");
+      }
+    });
+
+    _this.listen();
+
+    _this.onResize();
+
+    return _this;
+  }
+
+  _createClass(ScrollContainer, [{
+    key: "disable",
+    value: function disable() {
+      if (!this.isEnabled) return;
+      this.isEnabled = false;
+      document.body.style.height = '';
+      Object.assign(this.el.style, {
+        position: '',
+        top: '',
+        left: '',
+        width: ''
+      });
+    }
+  }, {
+    key: "enable",
+    value: function enable() {
+      if (this.isEnabled) return;
+      this.isEnabled = true;
+      document.body.style.height = "".concat(this.height, "px");
+      Object.assign(this.el.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%'
+      });
+    }
+  }, {
+    key: "listen",
+    value: function listen() {
+      EventManager.on('resize', this.onResize);
+    }
+  }]);
+
+  return ScrollContainer;
+}(Component);
+
+export default ScrollContainer;
 //# sourceMappingURL=index.esm.js.map

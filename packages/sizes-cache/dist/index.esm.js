@@ -1,71 +1,129 @@
-/**
- * @module arrays
- * @description Array utils for okiba js
- */
+import EventManager from '@okiba/event-manager';
+import { offset } from '@okiba/dom';
 
-/**
- * Return the first element if it only contains one
- * @example
- * const els = arrayOrOne([🍏, 🍌])
- * console.log(els) // [🍏, 🍌]
- *
- * const els = arrayOrOne([🍏])
- * console.log(els) // 🍏
- *
- * @param {Array-like} arrayLike The options object.
- * @returns {any} The first element or the argument, undefined if empty array
- */
-function arrayOrOne(arrayLike) {
-  if (arrayLike === void 0 || arrayLike.length === 0) {
-    return void 0;
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-
-  if (arrayLike.length === 1) {
-    return arrayLike[0];
-  }
-
-  return arrayLike;
-}
-/**
- * Cast an array-like object or single element to Array
- * @example
- * const elements = castArray(document.querySelectorAll('p')) // [p, p]
- * const fruits = castArray(🍒) // [🍒]
- *
- * @param {any} castable Array to cast
- * @returns {Array} The array-like converted to Array, or an Array containing the element
- */
-
-function castArray(castable) {
-  if (castable === void 0) return castable;
-
-  if (castable instanceof Array) {
-    return castable;
-  }
-
-  if (castable.callee || castable instanceof NodeList || castable instanceof DOMTokenList) {
-    return Array.prototype.slice.call(castable);
-  }
-
-  return [castable];
-}
-/**
- * Removes an element from an array in-place without causing Garbage Collection
- * @example
- * const array = [🍎, 🍐, 🍌]
- * spliceOne(array, 1)
- * console.log(array) // Logs: [🍎, 🍌]
- * @param {Array} array Array you want to remove an element from
- * @param {Number} index The index of the element to remove
- */
-
-function spliceOne(array, index) {
-  for (var i = index, k = i + 1, n = array.length; k < n; i += 1, k += 1) {
-    array[i] = array[k];
-  }
-
-  --array.length;
 }
 
-export { arrayOrOne, castArray, spliceOne };
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+var _temp;
+var index = new (_temp =
+/*#__PURE__*/
+function () {
+  function SizesCache() {
+    var _this = this;
+
+    _classCallCheck(this, SizesCache);
+
+    _defineProperty(this, "onResize", function () {
+      _this.window = {
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+      _this.body = {
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight
+      };
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = _this.map.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var el = _step.value;
+
+          _this.compute(el);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    });
+
+    this.map = new Map();
+    this.listen();
+    this.onResize();
+  }
+
+  _createClass(SizesCache, [{
+    key: "get",
+    value: function get(el) {
+      if (!this.map.has(el)) {
+        this.map.set(el, {});
+        this.compute(el);
+      }
+
+      return this.map.get(el);
+    }
+  }, {
+    key: "compute",
+    value: function compute(el) {
+      var sizes = this.map.get(el);
+
+      var _offset = offset(el),
+          top = _offset.top,
+          left = _offset.left;
+
+      var width = el.clientWidth;
+      var height = el.clientHeight;
+      sizes.top = top;
+      sizes.right = left + width;
+      sizes.bottom = top + height;
+      sizes.left = left;
+      sizes.width = width;
+      sizes.height = height;
+    }
+  }, {
+    key: "listen",
+    value: function listen() {
+      EventManager.on('resize', this.onResize);
+    }
+  }]);
+
+  return SizesCache;
+}(), _temp)();
+
+export default index;
 //# sourceMappingURL=index.esm.js.map

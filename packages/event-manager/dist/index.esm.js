@@ -1,71 +1,143 @@
-/**
- * @module arrays
- * @description Array utils for okiba js
- */
+import EventEmitter from '@okiba/event-emitter';
+import { hasPassiveEvents } from '@okiba/detect';
+import { on } from '@okiba/dom';
 
-/**
- * Return the first element if it only contains one
- * @example
- * const els = arrayOrOne([🍏, 🍌])
- * console.log(els) // [🍏, 🍌]
- *
- * const els = arrayOrOne([🍏])
- * console.log(els) // 🍏
- *
- * @param {Array-like} arrayLike The options object.
- * @returns {any} The first element or the argument, undefined if empty array
- */
-function arrayOrOne(arrayLike) {
-  if (arrayLike === void 0 || arrayLike.length === 0) {
-    return void 0;
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-
-  if (arrayLike.length === 1) {
-    return arrayLike[0];
-  }
-
-  return arrayLike;
-}
-/**
- * Cast an array-like object or single element to Array
- * @example
- * const elements = castArray(document.querySelectorAll('p')) // [p, p]
- * const fruits = castArray(🍒) // [🍒]
- *
- * @param {any} castable Array to cast
- * @returns {Array} The array-like converted to Array, or an Array containing the element
- */
-
-function castArray(castable) {
-  if (castable === void 0) return castable;
-
-  if (castable instanceof Array) {
-    return castable;
-  }
-
-  if (castable.callee || castable instanceof NodeList || castable instanceof DOMTokenList) {
-    return Array.prototype.slice.call(castable);
-  }
-
-  return [castable];
-}
-/**
- * Removes an element from an array in-place without causing Garbage Collection
- * @example
- * const array = [🍎, 🍐, 🍌]
- * spliceOne(array, 1)
- * console.log(array) // Logs: [🍎, 🍌]
- * @param {Array} array Array you want to remove an element from
- * @param {Number} index The index of the element to remove
- */
-
-function spliceOne(array, index) {
-  for (var i = index, k = i + 1, n = array.length; k < n; i += 1, k += 1) {
-    array[i] = array[k];
-  }
-
-  --array.length;
 }
 
-export { arrayOrOne, castArray, spliceOne };
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+var _temp;
+var index = new (_temp =
+/*#__PURE__*/
+function (_EventEmitter) {
+  _inherits(EventManager, _EventEmitter);
+
+  function EventManager() {
+    var _this;
+
+    _classCallCheck(this, EventManager);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventManager).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "onRaf", function (timestamp) {
+      _this.emit('raf', timestamp);
+
+      requestAnimationFrame(_this.onRaf);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onResize", function () {
+      _this.emit('resize', {
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onScroll", function (data) {
+      _this.emit('scroll', data);
+    });
+
+    _this.listen();
+
+    return _this;
+  }
+
+  _createClass(EventManager, [{
+    key: "listen",
+    value: function listen() {
+      requestAnimationFrame(this.onRaf);
+      on(window, 'resize', this.onResize, hasPassiveEvents ? {
+        passive: true,
+        capture: false
+      } : false);
+      on(window, 'scroll', this.onScroll, hasPassiveEvents ? {
+        passive: true,
+        capture: false
+      } : false);
+    }
+  }]);
+
+  return EventManager;
+}(EventEmitter), _temp)();
+
+export default index;
 //# sourceMappingURL=index.esm.js.map

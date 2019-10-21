@@ -1,6 +1,6 @@
-import SizesCache from './sizes-cache'
-import ScrollManager from './scroll-manager'
-import EventManager from './event-manager'
+import SizesCache from '@okiba/sizes-cache'
+import ScrollManager from '@okiba/scroll-manager'
+import EventManager from '@okiba/event-manager'
 
 export default class StickyContent {
   constructor(el, content, opts) {
