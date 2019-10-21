@@ -1,12 +1,12 @@
 {
   "name": "@okiba/sizes-cache",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Keeps sizes of dom elements up to date",
   "main": "./index.js",
   "module": "./dist/index.esm.js",
   "dependencies": {
     "@okiba/dom": "^1.0.8",
-    "@okiba/event-manager": "^0.0.2"
+    "@okiba/event-manager": "^0.0.3"
   },
   "repository": {
     "type": "git",
