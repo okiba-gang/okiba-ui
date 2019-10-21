@@ -1,13 +1,13 @@
 {
   "name": "@okiba/event-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Centralized event management",
   "main": "./index.js",
   "module": "./dist/index.esm.js",
   "dependencies": {
+    "@okiba/detect": "^0.0.2",
     "@okiba/dom": "^1.0.9",
-    "@okiba/event-emitter": "^1.0.8",
-    "@okiba/detect": "^0.0.1"
+    "@okiba/event-emitter": "^1.0.8"
   },
   "repository": {
     "type": "git",

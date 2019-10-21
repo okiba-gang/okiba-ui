@@ -1,14 +1,14 @@
 {
   "name": "@okiba/smooth-scroll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scrolls a panel following lerped scroll",
   "main": "./index.js",
   "module": "./dist/index.esm.js",
   "dependencies": {
+    "@okiba/event-manager": "^0.0.2",
     "@okiba/math": "^1.0.8",
-    "@okiba/event-manager": "^0.0.1",
-    "@okiba/sizes-cache": "^0.0.1",
-    "@okiba/scroll-manager": "^0.0.1"
+    "@okiba/scroll-manager": "^0.0.2",
+    "@okiba/sizes-cache": "^0.0.2"
   },
   "repository": {
     "type": "git",

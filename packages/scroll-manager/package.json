@@ -1,14 +1,14 @@
 {
   "name": "@okiba/scroll-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manages and lerps scroll position",
   "main": "./index.js",
   "module": "./dist/index.esm.js",
   "dependencies": {
-    "@okiba/event-manager": "^0.0.1",
     "@okiba/event-emitter": "^1.0.8",
-    "@okiba/sizes-cache": "^0.0.1",
-    "@okiba/math": "^1.0.8"
+    "@okiba/event-manager": "^0.0.2",
+    "@okiba/math": "^1.0.8",
+    "@okiba/sizes-cache": "^0.0.2"
   },
   "repository": {
     "type": "git",
