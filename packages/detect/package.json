@@ -1,6 +1,6 @@
 {
   "name": "@okiba/detect",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Feature detection",
   "main": "./index.js",
   "module": "./dist/index.esm.js",

@@ -1,12 +1,12 @@
 {
   "name": "@okiba/scroll-container",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Container for scroll helpers",
   "main": "./index.js",
   "module": "./dist/index.esm.js",
   "dependencies": {
     "@okiba/component": "^1.0.8",
-    "@okiba/event-manager": "^0.0.3"
+    "@okiba/event-manager": "^0.0.4"
   },
   "repository": {
     "type": "git",
