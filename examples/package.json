@@ -1,0 +1,15 @@
+{
+  "name": "okiba-components-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "babel.config.js",
+  "scripts": {
+    "dev": "parcel index.html -p 3117"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@okiba/detect": "file:../packages/detect",
+    "parcel-bundler": "^1.12.4"
+  }
+}
