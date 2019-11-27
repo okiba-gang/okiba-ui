@@ -31,5 +31,6 @@ Object.defineProperties(testIsTouch, {
   }
 })
 
+
 export const hasPassiveEvents = testHasPassiveEvents.check
-export const isTouch = testIsTouch.check
+export const hasTouch = testIsTouch.check

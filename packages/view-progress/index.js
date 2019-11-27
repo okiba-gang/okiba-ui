@@ -1,14 +1,13 @@
-import EventEmitter from '@okiba/event-emitter'
-import SizesCache from '@okiba/sizes-cache'
-import ScrollManager from '@okiba/scroll-manager'
-import EventManager from '@okiba/event-manager'
+import EventedComponent from '@okiba/evented-component'
+import SizesCache from './sizes-cache'
+import ScrollManager from './scroll-manager'
+import EventManager from './event-manager'
 import {map} from '@okiba/math'
 
-export default class ViewProgress extends EventEmitter {
-  constructor(el, opts) {
-    super()
-    this.opts = opts || {}
-    this.el = el
+export default class ViewProgress extends EventedComponent {
+  constructor({el, options = {}}) {
+    super({el, options})
+
     this.sizes = SizesCache.get(el)
     this.isInside = false
     this.onResize()
@@ -16,8 +15,10 @@ export default class ViewProgress extends EventEmitter {
   }
 
   onScroll = ({y, ...rest}) => {
-    if (!this.opts.overflow && !this.isInside) {
-      if (y < this.startY || y > this.endY) return
+    if (!this.options.overflow && !this.isInside) {
+      if (y < this.startY || y > this.endY) {
+        return
+      }
     }
 
     const progress = map(y, this.startY, this.endY, 0, 1)
@@ -37,22 +38,26 @@ export default class ViewProgress extends EventEmitter {
 
   onResize = () => {
     const {top, height} = this.sizes
-
+    const maxY = Math.max(0, SizesCache.body.height - SizesCache.window.height)
     this.startY = top - SizesCache.window.height
     this.endY = this.startY + height + SizesCache.window.height
 
-    if (this.endY >= SizesCache.body.height) {
-      this.endY = this.startY + height
-    }
-
-    if (this.startY < 0) {
-      this.startY = 0
-      this.endY = height
+    if (this.endY >= maxY) {
+      this.endY = maxY
     }
   }
 
   listen() {
     ScrollManager.on('scroll', this.onScroll)
     EventManager.on('resize', this.onResize)
+  }
+
+  unlisten() {
+    ScrollManager.off('scroll', this.onScroll)
+    EventManager.off('resize', this.onResize)
+  }
+
+  onDestroy() {
+    this.unlisten()
   }
 }

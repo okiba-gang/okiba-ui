@@ -4,8 +4,8 @@ import { offset } from '@okiba/dom'
 export default new class SizesCache {
   constructor() {
     this.map = new Map()
-    this.listen()
     this.onResize()
+    this.listen()
   }
 
   get(el) {
@@ -25,11 +25,11 @@ export default new class SizesCache {
     const height = el.clientHeight
 
     sizes.top = top
-    sizes.right = left + width
-    sizes.bottom = top + height
     sizes.left = left
     sizes.width = width
     sizes.height = height
+    sizes.right = left + width
+    sizes.bottom = top + height
   }
 
   onResize = () => {
@@ -40,7 +40,8 @@ export default new class SizesCache {
 
     this.body = {
       width: document.body.offsetWidth,
-      height: document.body.offsetHeight
+      height: document.body.offsetHeight,
+      scrollArea: document.body.offsetHeight - window.innerHeight
     }
 
     for (const el of this.map.keys()) {
@@ -50,5 +51,13 @@ export default new class SizesCache {
 
   listen() {
     EventManager.on('resize', this.onResize)
+  }
+
+  unlisten() {
+    EventManager.off('resize', this.onResize)
+  }
+
+  reset = () => {
+    this.map.clear()
   }
 }

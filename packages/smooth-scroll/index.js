@@ -1,12 +1,15 @@
-import {cap} from '@okiba/math'
+import Component from '@okiba/component'
 import ScrollManager from '@okiba/scroll-manager'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
+import {cap} from '@okiba/math'
+import {hasTouch} from '@okiba/detect'
 
-export default class SmoothScroll {
-  constructor(el) {
-    this.el = el
+export default class SmoothScroll extends Component {
+  constructor({el, options}) {
+    super({el, options})
     this.sizes = SizesCache.get(this.el)
+    hasTouch ? this.disable() : this.enable()
     this.onResize()
     this.listen()
   }
@@ -44,13 +47,23 @@ export default class SmoothScroll {
   }
 
   onResize = () => {
-    this.bottom = this.sizes.bottom
-    this.top = this.sizes.top - SizesCache.window.height
+    this.top = this.sizes.top - SizesCache.window.height + (this.options.thresholdTop || 0)
+    this.bottom = this.sizes.bottom + (this.options.thresholdBottom || 0)
   }
 
   listen() {
     EventManager.on('resize', this.onResize)
     EventManager.on('raf', this.onRaf)
     ScrollManager.on('scroll', this.onScroll)
+  }
+
+  unlisten() {
+    EventManager.off('resize', this.onResize)
+    EventManager.off('raf', this.onRaf)
+    ScrollManager.off('scroll', this.onScroll)
+  }
+
+  onDestroy() {
+    this.unlisten()
   }
 }

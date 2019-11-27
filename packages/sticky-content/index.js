@@ -1,13 +1,14 @@
+import Component from '@okiba/component'
 import SizesCache from '@okiba/sizes-cache'
 import ScrollManager from '@okiba/scroll-manager'
 import EventManager from '@okiba/event-manager'
 
-export default class StickyContent {
-  constructor(el, content, opts) {
-    this.opts = opts || {}
-    this.el = el
+export default class StickyContent extends Component {
+  constructor({el, content, options}) {
+    super({el, options})
     this.content = content
     this.sizes = SizesCache.get(el)
+    this.isEnabled = true
     this.onResize()
     this.listen()
   }
@@ -19,7 +20,6 @@ export default class StickyContent {
   }
 
   disable() {
-    if (!this.isEnabled) return
     this.isEnabled = false
     this.content.style.transform = ''
   }
@@ -31,7 +31,7 @@ export default class StickyContent {
 
     if (deltaY <= 0) {
       this.y = 0
-    } else if (!this.opts.overflow && y > this.limitY)  {
+    } else if (!this.options.overflow && y > this.limitY)  {
       this.y = this.maxY
     } else {
       this.y = deltaY
@@ -48,5 +48,14 @@ export default class StickyContent {
   listen() {
     EventManager.on('resize', this.onResize)
     ScrollManager.on('scroll', this.onScroll)
+  }
+
+  unlisten() {
+    EventManager.off('resize', this.onResize)
+    ScrollManager.off('scroll', this.onScroll)
+  }
+
+  onDestroy() {
+    this.unlisten()
   }
 }
