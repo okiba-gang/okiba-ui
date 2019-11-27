@@ -2,19 +2,15 @@
   "name": "@okiba/event-manager",
   "version": "0.0.4",
   "description": "Centralized event management",
-  "main": "./index.js",
-  "module": "./dist/index.esm.js",
-  "dependencies": {
-    "@okiba/detect": "^0.0.4",
-    "@okiba/dom": "^1.0.9",
-    "@okiba/event-emitter": "^1.0.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:okiba-gang/okiba-components.git"
-  },
+  "main": "dist/index.js",
+  "module": "index.js",
   "contributors": [
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@okiba/detect": "^0.0.4",
+    "@okiba/dom": "^0.0.4",
+    "@okiba/event-emitter": "^0.0.4"
+  }
 }

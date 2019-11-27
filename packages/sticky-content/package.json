@@ -2,19 +2,15 @@
   "name": "@okiba/sticky-content",
   "version": "0.0.4",
   "description": "Keeps a section in view while its parent is scrolling",
-  "main": "./index.js",
-  "module": "./dist/index.esm.js",
-  "dependencies": {
-    "@okiba/event-manager": "^0.0.4",
-    "@okiba/scroll-manager": "^0.0.4",
-    "@okiba/sizes-cache": "^0.0.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:okiba-gang/okiba-components.git"
-  },
+  "main": "dist/index.js",
+  "module": "index.js",
   "contributors": [
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@okiba/event-manager": "^0.0.4",
+    "@okiba/scroll-manager": "^0.0.4",
+    "@okiba/sizes-cache": "^0.0.4"
+  }
 }

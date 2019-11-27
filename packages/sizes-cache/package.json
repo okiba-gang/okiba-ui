@@ -2,18 +2,14 @@
   "name": "@okiba/sizes-cache",
   "version": "0.0.4",
   "description": "Keeps sizes of dom elements up to date",
-  "main": "./index.js",
-  "module": "./dist/index.esm.js",
-  "dependencies": {
-    "@okiba/dom": "^1.0.8",
-    "@okiba/event-manager": "^0.0.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:okiba-gang/okiba-components.git"
-  },
+  "main": "dist/index.js",
+  "module": "index.js",
   "contributors": [
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@okiba/dom": "^0.0.4",
+    "@okiba/event-manager": "^0.0.4"
+  }
 }

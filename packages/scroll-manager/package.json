@@ -2,20 +2,16 @@
   "name": "@okiba/scroll-manager",
   "version": "0.0.4",
   "description": "Manages and lerps scroll position",
-  "main": "./index.js",
-  "module": "./dist/index.esm.js",
-  "dependencies": {
-    "@okiba/event-emitter": "^1.0.8",
-    "@okiba/event-manager": "^0.0.4",
-    "@okiba/math": "^1.0.8",
-    "@okiba/sizes-cache": "^0.0.4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:okiba-gang/okiba-components.git"
-  },
+  "main": "dist/index.js",
+  "module": "index.js",
   "contributors": [
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "@okiba/event-emitter": "^0.0.4",
+    "@okiba/event-manager": "^0.0.4",
+    "@okiba/math": "^0.0.4",
+    "@okiba/sizes-cache": "^0.0.4"
+  }
 }

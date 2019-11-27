@@ -1,24 +1,31 @@
 {
     "name": "root",
     "private": true,
-    "scripts": {
-        "build": "rollup -c rollup.config.js",
-        "docs": "node ./docs/generate.js",
-        "version": "npm run build && npm run docs"
-    },
+    "workspaces": [
+        "packages/*"
+    ],
     "devDependencies": {
-        "@babel/core": "^7.5.5",
-        "@babel/plugin-proposal-class-properties": "^7.5.5",
-        "@babel/preset-env": "^7.5.5",
-        "lerna": "^3.16.4",
-        "lodash": "^4.17.15",
-        "node-fetch": "^2.5.0",
+        "@babel/cli": "^7.7.4",
+        "@babel/core": "^7.7.4",
+        "@babel/plugin-proposal-class-properties": "^7.7.4",
+        "@babel/preset-env": "^7.7.4",
+        "@okiba/component": "^1.0.12",
+        "@okiba/dom": "^1.0.12",
+        "@okiba/event-emitter": "^1.1.1",
+        "@okiba/math": "^1.0.11",
+        "babel-loader": "^8.0.6",
+        "concurrently": "^5.0.0",
+        "jsdoc-api": "^5.0.4",
+        "lerna": "^3.19.0",
         "nunjucks": "^3.2.0",
-        "regenerator-runtime": "^0.12.1",
-        "rollup": "^1.20.3",
-        "rollup-plugin-babel": "^4.3.3",
-        "rollup-plugin-commonjs": "^9.3.4",
-        "rollup-plugin-node-resolve": "^4.2.3",
-        "rollup-plugin-uglify": "^6.0.3"
+        "webpack": "^4.41.2"
+    },
+    "scripts": {
+        "bootstrap": "lerna bootstrap --use-workspaces",
+        "build": "lerna exec --parallel -- babel --root-mode upward index.js -d dist",
+        "dev:packages": "lerna exec --parallel -- babel -w --root-mode upward index.js -d dist",
+        "dev:examples": "cd examples && npm start",
+        "dev": "concurrently \"npm run dev:packages\" \"npm run dev:examples\"",
+        "docs": "node ./docs/generate.js"
     }
 }
