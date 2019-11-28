@@ -1,14 +1,14 @@
 const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-const srcPath = path.resolve(__dirname, 'src')
+const srcPath = path.resolve(__dirname, '../src')
 const srcFiles = fs.readdirSync(srcPath)
 const srcEntries = srcFiles.reduce((entries, entry) => {
   const name = entry.replace('.js', '')
   entries[name] = [
-    `webpack-hot-middleware/client?name=${name}`,
-    path.resolve(__dirname, 'src', entry)
+    path.resolve(__dirname, '../src', entry)
   ]
   return entries
 }, {})
@@ -18,8 +18,8 @@ module.exports = {
     ...srcEntries
   },
   output: {
-    path: path.resolve(__dirname, 'static'),
-    publicPath: __dirname,
+    path: path.resolve(__dirname, '../static'),
+    publicPath: path.resolve(__dirname, '..'),
     filename: '[name].js',
     chunkFilename: '[name].js'
   },
@@ -38,10 +38,10 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../packages'), 'node_modules']
+    modules: [path.resolve(__dirname, '../../packages'), 'node_modules']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin()
   ],
-  mode: 'development'
+  mode: 'production'
 }

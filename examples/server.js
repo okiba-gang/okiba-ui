@@ -5,7 +5,7 @@ const devMiddleware = require('webpack-dev-middleware')
 const hotMiddleware = require('webpack-hot-middleware')
 const express = require('express')
 const nunjucks = require('nunjucks')
-const config = require('./webpack.config')
+const config = require('./config/dev')
 
 const compiler = webpack(config)
 const app = express()
@@ -17,7 +17,7 @@ function handleIndexRoute (req, res) {
 function handleOtherRoutes (req, res) {
   const templateFilename = `${req.path.replace(/^\/+/, '')}.njk`
   const templateFilepath = path.resolve(__dirname, 'views', templateFilename)
-  if (fs.existsSync(templateFilepath)) {
+  if (!/(_default|index|404)/.test(templateFilename) && fs.existsSync(templateFilepath)) {
     res.render(templateFilename)
   } else {
     res.render('404.njk')

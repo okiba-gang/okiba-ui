@@ -1,1 +1,0 @@
-# okiba-components-examples

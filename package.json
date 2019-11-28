@@ -22,10 +22,16 @@
     },
     "scripts": {
         "bootstrap": "lerna bootstrap --use-workspaces",
-        "build": "lerna exec --parallel -- babel --root-mode upward index.js -d dist",
+        "init:packages": "yarn install && npm run bootstrap",
+        "init:examples": "cd examples && yarn install",
+        "init": "npm run init:packages && npm run init:examples",
+        "build:packages": "lerna exec --parallel -- babel --root-mode upward index.js -d dist",
+        "build:examples": "cd examples && npm run build",
+        "build": "npm run bootstrap && concurrently \"npm run build:packages\" \"npm run build:examples\"",
         "dev:packages": "lerna exec --parallel -- babel -w --root-mode upward index.js -d dist",
         "dev:examples": "cd examples && npm start",
-        "dev": "concurrently \"npm run dev:packages\" \"npm run dev:examples\"",
+        "dev": "npm run bootstrap && concurrently \"npm run dev:packages\" \"npm run dev:examples\"",
+        "publish": "lerna publish",
         "docs": "node ./docs/generate.js"
     }
 }
