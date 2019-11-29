@@ -5,11 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _eventEmitter = _interopRequireDefault(require("@okiba/event-emitter"));
+var _eventedComponent = _interopRequireDefault(require("@okiba/evented-component"));
 
 var _sizesCache = _interopRequireDefault(require("@okiba/sizes-cache"));
-
-var _scrollManager = _interopRequireDefault(require("@okiba/scroll-manager"));
 
 var _eventManager = _interopRequireDefault(require("@okiba/event-manager"));
 
@@ -47,25 +45,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var ViewProgress =
 /*#__PURE__*/
-function (_EventEmitter) {
-  _inherits(ViewProgress, _EventEmitter);
+function (_EventedComponent) {
+  _inherits(ViewProgress, _EventedComponent);
 
-  function ViewProgress(el, opts) {
+  function ViewProgress(_ref) {
     var _this;
+
+    var el = _ref.el,
+        _ref$options = _ref.options,
+        options = _ref$options === void 0 ? {} : _ref$options;
 
     _classCallCheck(this, ViewProgress);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ViewProgress).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ViewProgress).call(this, {
+      el: el,
+      options: options
+    }));
 
-    _defineProperty(_assertThisInitialized(_this), "onScroll", function (_ref) {
-      var y = _ref.y,
-          rest = _objectWithoutProperties(_ref, ["y"]);
+    _defineProperty(_assertThisInitialized(_this), "update", function (_ref2) {
+      var y = _ref2.y,
+          rest = _objectWithoutProperties(_ref2, ["y"]);
 
-      if (!_this.opts.overflow && !_this.isInside) {
-        if (y < _this.startY || y > _this.endY) return;
+      var adjustedY = Math.min(y, _sizesCache["default"].body.scrollArea);
+
+      if (!_this.options.overflow && !_this.isInside) {
+        if (adjustedY < _this.startY || adjustedY > _this.endY) {
+          return;
+        }
       }
 
-      var progress = (0, _math.map)(y, _this.startY, _this.endY, 0, 1);
+      var progress = (0, _math.map)(adjustedY, _this.startY, _this.endY, 0, 1);
       var isInside = progress >= 0 && progress <= 1;
 
       if (isInside !== _this.isInside) {
@@ -78,11 +87,10 @@ function (_EventEmitter) {
 
       _this.isInside = isInside;
 
-      _this.emit('progress', _objectSpread({
+      _this.emit('progress', _objectSpread({}, rest, {
         progress: progress,
-        isInside: isInside
-      }, rest, {
-        y: y
+        isInside: isInside,
+        adjustedY: adjustedY
       }));
     });
 
@@ -91,20 +99,9 @@ function (_EventEmitter) {
           top = _this$sizes.top,
           height = _this$sizes.height;
       _this.startY = top - _sizesCache["default"].window.height;
-      _this.endY = _this.startY + height + _sizesCache["default"].window.height;
-
-      if (_this.endY >= _sizesCache["default"].body.height) {
-        _this.endY = _this.startY + height;
-      }
-
-      if (_this.startY < 0) {
-        _this.startY = 0;
-        _this.endY = height;
-      }
+      _this.endY = Math.min(_sizesCache["default"].body.scrollArea, _this.startY + height + _sizesCache["default"].window.height);
     });
 
-    _this.opts = opts || {};
-    _this.el = el;
     _this.sizes = _sizesCache["default"].get(el);
     _this.isInside = false;
 
@@ -118,13 +115,21 @@ function (_EventEmitter) {
   _createClass(ViewProgress, [{
     key: "listen",
     value: function listen() {
-      _scrollManager["default"].on('scroll', this.onScroll);
-
       _eventManager["default"].on('resize', this.onResize);
+    }
+  }, {
+    key: "unlisten",
+    value: function unlisten() {
+      _eventManager["default"].off('resize', this.onResize);
+    }
+  }, {
+    key: "onDestroy",
+    value: function onDestroy() {
+      this.unlisten();
     }
   }]);
 
   return ViewProgress;
-}(_eventEmitter["default"]);
+}(_eventedComponent["default"]);
 
 exports["default"] = ViewProgress;

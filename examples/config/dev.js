@@ -1,21 +1,9 @@
-const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 
-const srcPath = path.resolve(__dirname, '../src')
-const srcFiles = fs.readdirSync(srcPath)
-const srcEntries = srcFiles.reduce((entries, entry) => {
-  const name = entry.replace('.js', '')
-  entries[name] = [
-    `webpack-hot-middleware/client?name=${name}`,
-    path.resolve(__dirname, '../src', entry)
-  ]
-  return entries
-}, {})
-
 module.exports = {
   entry: {
-    ...srcEntries
+    app: ['webpack-hot-middleware/client', path.resolve(__dirname, '../src/main.js')]
   },
   output: {
     path: path.resolve(__dirname, '../static'),
@@ -30,7 +18,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  debug: true
+                }
+              ]
+            ],
             plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
@@ -43,5 +38,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
-  mode: 'development'
+  mode: 'development',
+  devtool: 'inline-module-source-map'
 }

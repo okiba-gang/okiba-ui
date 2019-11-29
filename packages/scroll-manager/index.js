@@ -1,25 +1,24 @@
 import EventEmitter from '@okiba/event-emitter'
-import EventManager from './event-manager'
-import SizesCache from './sizes-cache'
-import {hasTouch} from '@okiba/detect'
+import EventManager from '@okiba/event-manager'
+import SizesCache from '@okiba/sizes-cache'
 import {lerp, cap} from '@okiba/math'
 
 
 export default new class ScrollManager extends EventEmitter {
   constructor() {
     super()
-
-    hasTouch ? this.disable() : this.enable()
     this.listen()
     this.trigger()
   }
 
   disable() {
+    if (!this.isEnabled) return
     this.isEnabled = false
     EventManager.off('raf', this.onRaf)
   }
 
   enable() {
+    if (this.isEnabled) return
     this.isEnabled = true
     EventManager.on('raf', this.onRaf)
   }

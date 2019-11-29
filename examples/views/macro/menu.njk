@@ -1,0 +1,14 @@
+{% macro menu(items) %}
+  <ul class="menu">
+    {% for item in items %}
+      <li class="menu-item">
+        {% if item.href|is_iterable %}
+          <span>{{ item.label }}</span>
+          {{ menu(item.href) }}
+        {% else %}
+          <a href="{{ item.href }}">{{ item.label }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endmacro %}

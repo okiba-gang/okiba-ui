@@ -21,8 +21,8 @@ export default new class SizesCache {
     const sizes = this.map.get(el)
 
     const {top, left} = offset(el)
-    const width = el.clientWidth
-    const height = el.clientHeight
+    const width = el.offsetWidth
+    const height = el.offsetHeight
 
     sizes.top = top
     sizes.left = left

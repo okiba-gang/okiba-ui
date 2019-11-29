@@ -1,0 +1,19 @@
+{% set title = 'Okiba | Event Manager' %}
+{% set pageCtrl = 'event-manager' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block main %}
+  <div style="position:fixed;">
+    <h1>Event Manager</h1>
+    <h4>Resize:</h4>
+    <p id="resize"></p>
+    <hr>
+    <h4>Scroll:</h4>
+    <p id="scroll"></p>
+    <hr>
+    <h4>Raf:</h4>
+    <p id="raf"></p>
+  </div>
+  <div style="height:300vh;"></div>
+{% endblock %}

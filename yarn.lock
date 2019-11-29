@@ -1524,6 +1524,14 @@
   resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.1.tgz#1e7434713371a8aa5ff7e1b4324f5ddc224e75af"
   integrity sha512-nTHS4cX89D5eUxAH1IcrsiKmWFhA4ryG2icc77DB2ZtU+998C7mHUxLmVB+GSx2DwHT5zf70D8X1lO2w1DKwHw==
 
+"@okiba/evented-component@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@okiba/evented-component/-/evented-component-1.1.1.tgz#4911ed82ec1a4da7615e94030cb98810caea61e7"
+  integrity sha512-oIl83CTSm2t2vsZneu3w/LWcMUB1XJviEITqTdubQ8nMMHDImhC5mrprR1oKcJmbjNzkMseQsvjPcLQlg0VbHg==
+  dependencies:
+    "@okiba/component" "^1.0.12"
+    "@okiba/event-emitter" "^1.1.1"
+
 "@okiba/math@^1.0.11":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.11.tgz#1f3cd0556ea41c374e8c71ba899829cf3c829ad7"

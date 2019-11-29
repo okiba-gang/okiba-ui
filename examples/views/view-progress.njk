@@ -1,0 +1,30 @@
+{% set title = 'Okiba | View Progress' %}
+{% set pageCtrl = 'view-progress' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block head %}
+  <style>
+    .view-progress-element {
+      height: 50vh;
+      border: solid 1px red;
+      opacity: 0;
+      transition: opacity .4s ease-in-out;
+    }
+
+    .view-progress-element.is-entered {
+      opacity: 1;
+    }
+  </style>
+{% endblock %}
+
+{% block main %}
+  {# <h1>View Progress</h1> #}
+  {% for index in range(1, 10) %}
+    <section style="margin-bottom: 8px;">
+      <div class="view-progress-element js-view-progress-element">
+        <p style="padding: 8px; margin: 0;">Progress: <span class="js-view-progress-label"></span></p>
+      </div>
+    </section>
+  {% endfor %}
+{% endblock %}

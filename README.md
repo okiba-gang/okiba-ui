@@ -147,7 +147,7 @@ About views, you can create a new one starting from the template below:
 
 {% set title = 'Okiba components | Awesome module' %}
 
-{% extends '_default.njk' %}
+{% extends 'templates/_default.njk' %}
 
 {% block main %}
   <h1>Awesome module example</h1>

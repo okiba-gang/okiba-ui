@@ -1,18 +1,14 @@
 import Component from '@okiba/component'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
-import { hasTouch } from '@okiba/detect'
-
-const ui = {
-  content: '.js-scroll-content'
-}
 
 export default class ScrollContainer extends Component {
-  constructor({el}) {
-    super({el, ui})
+  constructor({el, options = {}}) {
+    const { content = '.js-scroll-content', ...restOptions } = options
+    super({el, options: restOptions, ui: { content }})
     this.onResize()
     this.listen()
-    hasTouch ? this.disable() : this.enable()
+    options.enabled && this.enable()
   }
 
   disable() {
@@ -62,6 +58,10 @@ export default class ScrollContainer extends Component {
   }
 
   onDestroy() {
+    if (this.isEnabled) {
+      this.disable()
+    }
+
     this.unlisten()
   }
 }

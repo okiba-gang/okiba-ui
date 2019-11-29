@@ -1,0 +1,105 @@
+{% from 'macro/menu.njk' import menu %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ title }}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    div {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      display: flex;
+      width: 100%;
+      height: 64px;
+      padding: 8px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      align-items: center;
+      background-color: #f4f4f4;
+      border-bottom: solid 1px #ccc;
+    }
+
+    .menu {
+      display: flex;
+      padding: 0;
+      position: relative;
+      margin: 0;
+      align-items: center;
+      list-style: none;
+    }
+
+    .menu-item {
+      padding: 8px;
+      position: relative;
+      white-space: nowrap;
+      text-transform: capitalize;  
+    }
+
+    .menu-item .menu {
+      display: none;
+      min-width: 240px;
+      padding: 8px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #f4f4f4;
+      border: solid 1px #ccc;
+    }
+
+    .menu-item:hover .menu {
+      display: block;
+    }
+
+    .content {
+      height: 100%;
+      padding: 72px 8px 8px;
+      overflow: hidden;
+      position: relative;
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="header">
+    {# {% for item in routes %}
+      {{ item.href }}
+    {% endfor %} #}
+    <nav>
+      {{ menu(routes) }}
+    </nav>
+  </header>
+  <main id="app" class="content" data-page-ctrl="{{ pageCtrl }}">
+    {% block main %}{% endblock %}
+  </main>
+  <script src="/static/app.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

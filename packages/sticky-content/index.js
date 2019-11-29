@@ -1,12 +1,12 @@
+import { qs } from '@okiba/dom'
 import Component from '@okiba/component'
 import SizesCache from '@okiba/sizes-cache'
-import ScrollManager from '@okiba/scroll-manager'
 import EventManager from '@okiba/event-manager'
 
 export default class StickyContent extends Component {
-  constructor({el, content, options}) {
+  constructor({el, options = {}}) {
     super({el, options})
-    this.content = content
+    this.target = qs(options.targetSelector || '.js-sticky-target')
     this.sizes = SizesCache.get(el)
     this.isEnabled = true
     this.onResize()
@@ -16,15 +16,15 @@ export default class StickyContent extends Component {
   enable() {
     if (this.isEnabled) return
     this.isEnabled = true
-    this.content.style.transform = `translate3d(0, ${this.y}px, 0)`
+    this.target.style.transform = `translate3d(0, ${this.y}px, 0)`
   }
 
   disable() {
     this.isEnabled = false
-    this.content.style.transform = ''
+    this.target.style.transform = ''
   }
 
-  onScroll = ({y}) => {
+  update = ({ y }) => {
     if (!this.isEnabled) return
 
     const deltaY = y - this.sizes.top
@@ -37,7 +37,7 @@ export default class StickyContent extends Component {
       this.y = deltaY
     }
 
-    this.content.style.transform = `translate3d(0, ${this.y}px, 0)`
+    this.target.style.transform = `translate3d(0, ${this.y}px, 0)`
   }
 
   onResize = () => {
@@ -47,12 +47,10 @@ export default class StickyContent extends Component {
 
   listen() {
     EventManager.on('resize', this.onResize)
-    ScrollManager.on('scroll', this.onScroll)
   }
 
   unlisten() {
     EventManager.off('resize', this.onResize)
-    ScrollManager.off('scroll', this.onScroll)
   }
 
   onDestroy() {

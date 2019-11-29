@@ -12,6 +12,7 @@
         "@okiba/component": "^1.0.12",
         "@okiba/dom": "^1.0.12",
         "@okiba/event-emitter": "^1.1.1",
+        "@okiba/evented-component": "^1.1.1",
         "@okiba/math": "^1.0.11",
         "babel-loader": "^8.0.6",
         "concurrently": "^5.0.0",

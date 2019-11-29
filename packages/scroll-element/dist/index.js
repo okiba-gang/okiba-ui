@@ -7,13 +7,11 @@ exports["default"] = void 0;
 
 var _component = _interopRequireDefault(require("@okiba/component"));
 
-var _scrollManager = _interopRequireDefault(require("@okiba/scroll-manager"));
+var _eventManager = _interopRequireDefault(require("@okiba/event-manager"));
 
-var _scrollContainer = _interopRequireDefault(require("@okiba/scroll-container"));
+var _sizesCache = _interopRequireDefault(require("@okiba/sizes-cache"));
 
-var _scrollElement = _interopRequireDefault(require("@okiba/scroll-element"));
-
-var _detect = require("@okiba/detect");
+var _math = require("@okiba/math");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -41,89 +39,89 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SmoothScroll =
+var ScrollElement =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(SmoothScroll, _Component);
+  _inherits(ScrollElement, _Component);
 
-  function SmoothScroll(_ref) {
+  function ScrollElement(_ref) {
     var _this;
 
     var el = _ref.el,
         _ref$options = _ref.options,
         options = _ref$options === void 0 ? {} : _ref$options;
 
-    _classCallCheck(this, SmoothScroll);
+    _classCallCheck(this, ScrollElement);
 
-    var _options$container = options.container,
-        container = _options$container === void 0 ? '.js-scroll-container' : _options$container,
-        _options$content = options.content,
-        content = _options$content === void 0 ? '.js-scroll-content' : _options$content,
-        _options$elements = options.elements,
-        elements = _options$elements === void 0 ? '.js-scroll-element' : _options$elements,
-        _options$enabled = options.enabled,
-        enabled = _options$enabled === void 0 ? !_detect.hasTouch : _options$enabled,
-        restOptions = _objectWithoutProperties(options, ["container", "content", "elements", "enabled"]);
+    var enabled = options.enabled,
+        restOptions = _objectWithoutProperties(options, ["enabled"]);
 
-    var components = {
-      container: {
-        selector: container,
-        type: _scrollContainer["default"],
-        options: {
-          enabled: enabled,
-          content: content
-        }
-      },
-      elements: {
-        selector: elements,
-        type: _scrollElement["default"],
-        options: {
-          enabled: enabled
-        }
-      }
-    };
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SmoothScroll).call(this, {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ScrollElement).call(this, {
       el: el,
-      options: restOptions,
-      components: components
+      options: restOptions
     }));
 
-    _defineProperty(_assertThisInitialized(_this), "onScroll", function (data) {
-      _this.components.elements.forEach(function (element) {
-        return element.update(data);
-      });
+    _defineProperty(_assertThisInitialized(_this), "onRaf", function () {
+      _this.y = _this.targetY;
+      _this.el.style.transform = "translate3d(0, -".concat(_this.y, "px, 0)");
+      _this.hasRafRequest = false;
+
+      _eventManager["default"].off('raf', _this.onRaf);
     });
+
+    _defineProperty(_assertThisInitialized(_this), "onResize", function () {
+      _this.top = _this.sizes.top - _sizesCache["default"].window.height + (_this.options.thresholdTop || 0);
+      _this.bottom = _this.sizes.bottom + (_this.options.thresholdBottom || 0);
+    });
+
+    _this.sizes = _sizesCache["default"].get(_this.el);
+    enabled && _this.enable();
+
+    _this.onResize();
 
     _this.listen();
 
     return _this;
   }
 
-  _createClass(SmoothScroll, [{
-    key: "enable",
-    value: function enable() {
-      this.components.container.enable();
-      this.components.elements.forEach(function (element) {
-        return element.enable();
-      });
-    }
-  }, {
+  _createClass(ScrollElement, [{
     key: "disable",
     value: function disable() {
-      this.components.container.disable();
-      this.components.elements.forEach(function (element) {
-        return element.disable();
-      });
+      if (!this.isEnabled) return;
+      this.isEnabled = false;
+      this.el.style.transform = '';
+    }
+  }, {
+    key: "enable",
+    value: function enable() {
+      if (this.isEnabled) return;
+      this.isEnabled = true;
+    }
+  }, {
+    key: "update",
+    value: function update(_ref2) {
+      var y = _ref2.y;
+      this.targetY = (0, _math.cap)(y, this.top, this.bottom);
+
+      if (this.isEnabled && this.targetY !== this.y) {
+        _eventManager["default"].on('raf', this.onRaf);
+
+        this.hasRafRequest = true;
+      }
     }
   }, {
     key: "listen",
     value: function listen() {
-      _scrollManager["default"].on('scroll', this.onScroll);
+      _eventManager["default"].on('resize', this.onResize);
     }
   }, {
     key: "unlisten",
     value: function unlisten() {
-      _scrollManager["default"].off('scroll', this.onScroll);
+      _eventManager["default"].off('resize', this.onResize);
+
+      if (this.hasRafRequest) {
+        _eventManager["default"].off('raf', this.onRaf);
+      }
     }
   }, {
     key: "onDestroy",
@@ -132,7 +130,7 @@ function (_Component) {
     }
   }]);
 
-  return SmoothScroll;
+  return ScrollElement;
 }(_component["default"]);
 
-exports["default"] = SmoothScroll;
+exports["default"] = ScrollElement;

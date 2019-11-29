@@ -61,9 +61,10 @@ function (_EventEmitter) {
       }
 
       _this.emit('scroll', {
-        y: ~~_this.lerpY,
+        y: _this.lerpY,
         delta: _this.deltaLerpY,
-        acceleration: _this.deltaLerpY / _sizesCache["default"].window.height
+        acceleration: _this.deltaLerpY / _sizesCache["default"].window.height,
+        progress: (0, _math.cap)(_this.lerpY / _sizesCache["default"].body.scrollArea, 0, 1)
       });
     });
 
@@ -75,45 +76,64 @@ function (_EventEmitter) {
         _this.emit('scroll', {
           y: _this.targetY,
           delta: _this.deltaY,
-          acceleration: _this.deltaY / _sizesCache["default"].window.height
+          acceleration: _this.deltaY / _sizesCache["default"].window.height,
+          progress: _this.targetY / _sizesCache["default"].body.scrollArea
         });
       }
     });
 
-    _this.targetY = _this.lerpY = window.scrollY || window.pageYOffset;
-
-    _this.emit('scroll', {
-      y: _this.targetY,
-      delta: 0,
-      acceleration: 0
-    });
-
     _this.listen();
 
-    return _this;
-  } // Puo essere tolto metodo
+    _this.trigger();
 
+    return _this;
+  }
 
   _createClass(ScrollManager, [{
     key: "disable",
     value: function disable() {
       if (!this.isEnabled) return;
       this.isEnabled = false;
+
+      _eventManager["default"].off('raf', this.onRaf);
     }
   }, {
     key: "enable",
     value: function enable() {
       if (this.isEnabled) return;
       this.isEnabled = true;
+
+      _eventManager["default"].on('raf', this.onRaf);
     }
   }, {
     key: "listen",
     value: function listen() {
-      _eventManager["default"].on('raf', this.onRaf);
-
       _eventManager["default"].on('scroll', this.onChange);
 
       _eventManager["default"].on('resize', this.onChange);
+    }
+  }, {
+    key: "unlisten",
+    value: function unlisten() {
+      if (this.isEnabled) {
+        _eventManager["default"].off('raf', this.onRaf);
+      }
+
+      _eventManager["default"].off('scroll', this.onChange);
+
+      _eventManager["default"].off('resize', this.onChange);
+    }
+  }, {
+    key: "trigger",
+    value: function trigger() {
+      this.targetY = window.scrollY || window.pageYOffset;
+      this.lerpY = this.lerpY ? this.lerpY - 1 : this.targetY - 1;
+      this.emit('scroll', {
+        y: this.targetY,
+        delta: 0,
+        acceleration: 0,
+        progress: (0, _math.cap)(this.targetY / _sizesCache["default"].body.scrollArea, 0, 1)
+      });
     }
   }]);
 

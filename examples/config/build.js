@@ -1,21 +1,9 @@
-const fs = require('fs')
 const path = require('path')
-const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-const srcPath = path.resolve(__dirname, '../src')
-const srcFiles = fs.readdirSync(srcPath)
-const srcEntries = srcFiles.reduce((entries, entry) => {
-  const name = entry.replace('.js', '')
-  entries[name] = [
-    path.resolve(__dirname, '../src', entry)
-  ]
-  return entries
-}, {})
 
 module.exports = {
   entry: {
-    ...srcEntries
+    app: path.resolve(__dirname, '../src/main.js')
   },
   output: {
     path: path.resolve(__dirname, '../static'),

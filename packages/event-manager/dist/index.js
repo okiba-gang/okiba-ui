@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _eventEmitter = _interopRequireDefault(require("@okiba/event-emitter"));
 
-var _detect = require("@okiba/detect");
-
 var _dom = require("@okiba/dom");
+
+var _detect = require("@okiba/detect");
 
 var _temp;
 
@@ -35,6 +35,31 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var debounceEvent = function debounceEvent(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 250;
+  var c = arguments.length > 2 ? arguments[2] : undefined;
+  return function () {
+    for (var _len = arguments.length, d = new Array(_len), _key = 0; _key < _len; _key++) {
+      d[_key] = arguments[_key];
+    }
+
+    return clearTimeout(c, c = setTimeout.apply(void 0, [a, b].concat(d)));
+  };
+};
+/** Polyfilled custom event ie9+ */
+
+
+var dispatchScroll = function dispatchScroll() {
+  if (typeof window.CustomEvent === 'function') {
+    window.dispatchEvent(new CustomEvent('scroll'));
+    return;
+  }
+
+  var scroll = document.createEvent('CustomEvent');
+  scroll.initCustomEvent('scroll', false, false, null);
+  window.dispatchEvent(scroll);
+};
+
 var _default = new (_temp =
 /*#__PURE__*/
 function (_EventEmitter) {
@@ -50,7 +75,7 @@ function (_EventEmitter) {
     _defineProperty(_assertThisInitialized(_this), "onRaf", function (timestamp) {
       _this.emit('raf', timestamp);
 
-      requestAnimationFrame(_this.onRaf);
+      _this.rafID = requestAnimationFrame(_this.onRaf);
     });
 
     _defineProperty(_assertThisInitialized(_this), "onResize", function () {
@@ -58,11 +83,17 @@ function (_EventEmitter) {
         width: window.innerWidth,
         height: window.innerHeight
       });
+
+      dispatchScroll();
     });
 
     _defineProperty(_assertThisInitialized(_this), "onScroll", function (data) {
       _this.emit('scroll', data);
     });
+
+    _this.debouncedResize = debounceEvent(_this.onResize);
+
+    _this.debouncedResize();
 
     _this.listen();
 
@@ -72,12 +103,25 @@ function (_EventEmitter) {
   _createClass(EventManager, [{
     key: "listen",
     value: function listen() {
-      requestAnimationFrame(this.onRaf);
-      (0, _dom.on)(window, 'resize', this.onResize, _detect.hasPassiveEvents ? {
+      this.rafID = requestAnimationFrame(this.onRaf);
+      (0, _dom.on)(window, 'resize', this.debouncedResize, _detect.hasPassiveEvents ? {
         passive: true,
         capture: false
       } : false);
       (0, _dom.on)(window, 'scroll', this.onScroll, _detect.hasPassiveEvents ? {
+        passive: true,
+        capture: false
+      } : false);
+    }
+  }, {
+    key: "unlisten",
+    value: function unlisten() {
+      cancelAnimationFrame(this.rafID);
+      (0, _dom.off)(window, 'resize', this.debouncedResize, _detect.hasPassiveEvents ? {
+        passive: true,
+        capture: false
+      } : false);
+      (0, _dom.off)(window, 'scroll', this.onScroll, _detect.hasPassiveEvents ? {
         passive: true,
         capture: false
       } : false);

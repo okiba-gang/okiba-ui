@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isTouch = exports.hasPassiveEvents = void 0;
+exports.hasTouch = exports.hasPassiveEvents = void 0;
 
 var _hasPassiveEvents;
 
@@ -38,5 +38,5 @@ Object.defineProperties(testIsTouch, {
 });
 var hasPassiveEvents = testHasPassiveEvents.check;
 exports.hasPassiveEvents = hasPassiveEvents;
-var isTouch = testIsTouch.check;
-exports.isTouch = isTouch;
+var hasTouch = testIsTouch.check;
+exports.hasTouch = hasTouch;

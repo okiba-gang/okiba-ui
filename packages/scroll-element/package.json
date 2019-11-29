@@ -1,0 +1,17 @@
+{
+  "name": "@okiba/scroll-element",
+  "version": "0.0.4",
+  "description": "Translates a panel according to scroll",
+  "main": "dist/index.js",
+  "module": "index.js",
+  "contributors": [
+    "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@okiba/event-manager": "^0.0.4",
+    "@okiba/math": "^0.0.4",
+    "@okiba/scroll-manager": "^0.0.4",
+    "@okiba/sizes-cache": "^0.0.4"
+  }
+}

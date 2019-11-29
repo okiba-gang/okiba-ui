@@ -36,7 +36,8 @@ function () {
       };
       _this.body = {
         width: document.body.offsetWidth,
-        height: document.body.offsetHeight
+        height: document.body.offsetHeight,
+        scrollArea: document.body.offsetHeight - window.innerHeight
       };
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
@@ -64,9 +65,13 @@ function () {
       }
     });
 
+    _defineProperty(this, "reset", function () {
+      _this.map.clear();
+    });
+
     this.map = new Map();
-    this.listen();
     this.onResize();
+    this.listen();
   }
 
   _createClass(SizesCache, [{
@@ -88,19 +93,24 @@ function () {
           top = _offset.top,
           left = _offset.left;
 
-      var width = el.clientWidth;
-      var height = el.clientHeight;
+      var width = el.offsetWidth;
+      var height = el.offsetHeight;
       sizes.top = top;
-      sizes.right = left + width;
-      sizes.bottom = top + height;
       sizes.left = left;
       sizes.width = width;
       sizes.height = height;
+      sizes.right = left + width;
+      sizes.bottom = top + height;
     }
   }, {
     key: "listen",
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
+    }
+  }, {
+    key: "unlisten",
+    value: function unlisten() {
+      _eventManager["default"].off('resize', this.onResize);
     }
   }]);
 

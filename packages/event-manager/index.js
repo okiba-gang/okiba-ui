@@ -4,6 +4,18 @@ import {hasPassiveEvents} from '@okiba/detect'
 
 const debounceEvent = (a, b = 250, c)=>(...d)=>clearTimeout(c, c = setTimeout(a, b, ...d))
 
+/** Polyfilled custom event ie9+ */
+const dispatchScroll = () => {
+  if (typeof window.CustomEvent === 'function') {
+    window.dispatchEvent(new CustomEvent('scroll'))
+    return
+  }
+
+  const scroll = document.createEvent('CustomEvent')
+  scroll.initCustomEvent('scroll', false, false, null)
+  window.dispatchEvent(scroll)
+}
+
 export default new class EventManager extends EventEmitter {
   constructor() {
     super()
@@ -23,7 +35,7 @@ export default new class EventManager extends EventEmitter {
       width: window.innerWidth,
       height: window.innerHeight
     })
-    this.emit('scroll', window.scrollY)
+    dispatchScroll()
   }
 
   onScroll = (data) => {
