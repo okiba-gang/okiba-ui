@@ -133,13 +133,13 @@ function (_Component) {
     key: "listen",
 
     /**
-     * Adds resize event listener to ScrollManager
+     * Adds scroll event listener to ScrollManager
      */
     value: function listen() {
       _scrollManager["default"].on('scroll', this.onScroll);
     }
     /**
-     * Removes resize event listener from ScrollManager
+     * Removes scroll event listener from ScrollManager
      */
 
   }, {

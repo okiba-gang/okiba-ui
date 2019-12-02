@@ -18,6 +18,10 @@ export default new class SizesCache {
     this.listen()
   }
 
+  /**
+   * Element's sizes getter
+   * @param {Element} el 
+   */
   get(el) {
     if (!this.map.has(el)) {
       this.map.set(el, {})
@@ -27,6 +31,10 @@ export default new class SizesCache {
     return this.map.get(el)
   }
 
+  /**
+   * Computes element's sizes
+   * @param {Element} el 
+   */
   compute(el) {
     const sizes = this.map.get(el)
 
@@ -42,6 +50,9 @@ export default new class SizesCache {
     sizes.bottom = top + height
   }
 
+  /**
+   * Updates elements' sizes on resize
+   */
   onResize = () => {
     this.window = {
       width: window.innerWidth,
@@ -59,14 +70,23 @@ export default new class SizesCache {
     }
   }
 
+  /**
+   * Adds resize event listener to EventManager
+   */
   listen() {
     EventManager.on('resize', this.onResize)
   }
 
+  /**
+   * Removes resize event listener from EventManager
+   */
   unlisten() {
     EventManager.off('resize', this.onResize)
   }
 
+  /**
+   * Resets component's data
+   */
   reset = () => {
     this.map.clear()
   }

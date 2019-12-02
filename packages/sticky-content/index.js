@@ -1,8 +1,3 @@
-import { qs } from '@okiba/dom'
-import Component from '@okiba/component'
-import SizesCache from '@okiba/sizes-cache'
-import EventManager from '@okiba/event-manager'
-
 /**
  * @module StickyContent
  * @description Makes an element sticky according to page scroll
@@ -29,7 +24,13 @@ import EventManager from '@okiba/event-manager'
  *     }
  *   ]
  * })
- *
+ */
+import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
+import SizesCache from '@okiba/sizes-cache'
+import EventManager from '@okiba/event-manager'
+
+/**
  * Accepts an __hash__ whose properties can be:
  * @param {Object}  args                          Arguments to create a component
  * @param {Element} args.el                       DOM Element to be bound

@@ -1,9 +1,3 @@
-import Component from '@okiba/component'
-import ScrollManager from '@okiba/scroll-manager'
-import ScrollContainer from '@okiba/scroll-container'
-import ScrollElement from '@okiba/scroll-element'
-import { hasTouch } from '@okiba/detect'
-
 /**
  * @module SmoothScroll
  * @description Makes elements scroll smoothly with lerped translations
@@ -22,7 +16,14 @@ import { hasTouch } from '@okiba/detect'
  *     }
  *   ]
  * })
- *
+ */
+import Component from '@okiba/component'
+import ScrollManager from '@okiba/scroll-manager'
+import ScrollContainer from '@okiba/scroll-container'
+import ScrollElement from '@okiba/scroll-element'
+import { hasTouch } from '@okiba/detect'
+
+/**
  * Accepts an __hash__ whose properties can be:
  * @param {Object}  args                                            Arguments to create a component
  * @param {Element} args.el                                         DOM Element to be bound
@@ -85,14 +86,14 @@ export default class SmoothScroll extends Component {
   }
 
   /**
-   * Adds resize event listener to ScrollManager
+   * Adds scroll event listener to ScrollManager
    */
   listen() {
     ScrollManager.on('scroll', this.onScroll)
   }
 
   /**
-   * Removes resize event listener from ScrollManager
+   * Removes scroll event listener from ScrollManager
    */
   unlisten() {
     ScrollManager.off('scroll', this.onScroll)

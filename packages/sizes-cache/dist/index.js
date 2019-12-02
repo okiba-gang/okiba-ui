@@ -73,6 +73,11 @@ function () {
     this.onResize();
     this.listen();
   }
+  /**
+   * Element's sizes getter
+   * @param {Element} el 
+   */
+
 
   _createClass(SizesCache, [{
     key: "get",
@@ -84,6 +89,11 @@ function () {
 
       return this.map.get(el);
     }
+    /**
+     * Computes element's sizes
+     * @param {Element} el 
+     */
+
   }, {
     key: "compute",
     value: function compute(el) {
@@ -102,16 +112,32 @@ function () {
       sizes.right = left + width;
       sizes.bottom = top + height;
     }
+    /**
+     * Updates elements' sizes on resize
+     */
+
   }, {
     key: "listen",
+
+    /**
+     * Adds resize event listener to EventManager
+     */
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
     }
+    /**
+     * Removes resize event listener from EventManager
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
       _eventManager["default"].off('resize', this.onResize);
     }
+    /**
+     * Resets component's data
+     */
+
   }]);
 
   return SizesCache;

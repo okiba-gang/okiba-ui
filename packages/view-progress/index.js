@@ -1,8 +1,3 @@
-import EventedComponent from '@okiba/evented-component'
-import SizesCache from '@okiba/sizes-cache'
-import EventManager from '@okiba/event-manager'
-import { map } from '@okiba/math'
-
 /**
  * @module ViewProgress
  * @description Retrieves the percentage (0 to 1) of element's in-view portion according to page scroll
@@ -36,8 +31,13 @@ import { map } from '@okiba/math'
  *     }
  *   ]
  * })
- *
- *
+ */
+import EventedComponent from '@okiba/evented-component'
+import SizesCache from '@okiba/sizes-cache'
+import EventManager from '@okiba/event-manager'
+import { map } from '@okiba/math'
+
+/**
  * Accepts an __hash__ whose properties can be:
  * @param {Object}  args                          Arguments to create a component
  * @param {Element} args.el                       DOM Element to be bound
