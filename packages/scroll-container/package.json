@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-container",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Container for scroll helpers",
   "main": "dist/index.js",
   "module": "index.js",

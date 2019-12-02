@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-manager",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Manages and lerps scroll position",
   "main": "dist/index.js",
   "module": "index.js",

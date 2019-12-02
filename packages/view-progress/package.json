@@ -1,6 +1,6 @@
 {
   "name": "@okiba/view-progress",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Informs an element about how much of it has been viewed",
   "main": "dist/index.js",
   "module": "index.js",

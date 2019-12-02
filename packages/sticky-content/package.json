@@ -1,6 +1,6 @@
 {
   "name": "@okiba/sticky-content",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Keeps a section in view while its parent is scrolling",
   "main": "dist/index.js",
   "module": "index.js",
