@@ -67,6 +67,10 @@ function (_Component) {
     options.enabled && _this.enable();
     return _this;
   }
+  /**
+   * Disable component feature and reset the dom element to initial style
+   */
+
 
   _createClass(ScrollContainer, [{
     key: "disable",
@@ -84,6 +88,10 @@ function (_Component) {
         width: ''
       });
     }
+    /**
+     * Enable component feature, set the body height to element height and set the element in position fixed
+     */
+
   }, {
     key: "enable",
     value: function enable() {
@@ -97,23 +105,43 @@ function (_Component) {
         width: '100%'
       });
     }
+    /**
+     * Resize handler
+     */
+
   }, {
     key: "updateBodyHeight",
+
+    /**
+     * Update the body height like the element height
+     */
     value: function updateBodyHeight() {
       _sizesCache["default"].body.height = this.sizes.height;
       _sizesCache["default"].body.scrollArea = this.sizes.height - _sizesCache["default"].window.height;
       document.body.style.height = "".concat(this.sizes.height, "px");
     }
+    /**
+     * Adds event listeners
+     */
+
   }, {
     key: "listen",
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
     }
+    /**
+     * Removes event listeners
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
       _eventManager["default"].off('resize', this.onResize);
     }
+    /**
+     * Disable all component feature and remove all listeners
+     */
+
   }, {
     key: "onDestroy",
     value: function onDestroy() {

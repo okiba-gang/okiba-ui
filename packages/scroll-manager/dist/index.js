@@ -88,6 +88,10 @@ function (_EventEmitter) {
 
     return _this;
   }
+  /**
+   * Disable lerped scroll calculation and remove the raf listener
+   */
+
 
   _createClass(ScrollManager, [{
     key: "disable",
@@ -97,6 +101,10 @@ function (_EventEmitter) {
 
       _eventManager["default"].off('raf', this.onRaf);
     }
+    /**
+     * Enable lerped scroll calculation and add the raf listener
+     */
+
   }, {
     key: "enable",
     value: function enable() {
@@ -105,13 +113,35 @@ function (_EventEmitter) {
 
       _eventManager["default"].on('raf', this.onRaf);
     }
+    /**
+     * Calculate the lerped scroll position and emit a scroll event.
+     * The emitted scroll event pass an Object like:
+     * ```javascript
+     * {
+     *  y // Lerped Y
+     *  delta // Difference between actual y and the last emitted y
+     *  acceleration // The accelleration of the scroll
+     *  progress // The global progress of the page
+     * }
+     * ```
+     *
+     */
+
   }, {
     key: "listen",
+
+    /**
+     * Adds event listeners
+     */
     value: function listen() {
       _eventManager["default"].on('scroll', this.onChange);
 
       _eventManager["default"].on('resize', this.onChange);
     }
+    /**
+     * Removes event listeners
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
@@ -123,6 +153,10 @@ function (_EventEmitter) {
 
       _eventManager["default"].off('resize', this.onChange);
     }
+    /**
+     * Update the scroll based on the page scroll and trigger a `scroll` event
+     */
+
   }, {
     key: "trigger",
     value: function trigger() {

@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.hasTouch = exports.hasPassiveEvents = void 0;
 
+/**
+ * @module  detect
+ * @description Utilities to check some browser features
+ */
 var _hasPassiveEvents;
 
 var testHasPassiveEvents = {};
@@ -36,7 +40,29 @@ Object.defineProperties(testIsTouch, {
     }
   }
 });
+/**
+ * Check if browser supports passive events
+ *
+ * @example
+ * import {hasPassiveEvents} from '@okiba/detect'
+ *
+ * console.log(hasPassiveEvents) // true
+ *
+ * @return {Boolean} true if browser supports passive events
+ */
+
 var hasPassiveEvents = testHasPassiveEvents.check;
+/**
+ * Check if browser has touch support
+ *
+ * @example
+ * import {hasTouch} from '@okiba/detect'
+ *
+ * console.log(hasTouch) // true
+ *
+ * @return {Boolean} true if browser has touch support
+ */
+
 exports.hasPassiveEvents = hasPassiveEvents;
 var hasTouch = testIsTouch.check;
 exports.hasTouch = hasTouch;

@@ -102,6 +102,10 @@ function (_EventEmitter) {
 
   _createClass(EventManager, [{
     key: "listen",
+
+    /**
+     * Adds event listeners on window resize, window scroll and requestAnimationFrame
+     */
     value: function listen() {
       this.rafID = requestAnimationFrame(this.onRaf);
       (0, _dom.on)(window, 'resize', this.debouncedResize, _detect.hasPassiveEvents ? {
@@ -113,6 +117,10 @@ function (_EventEmitter) {
         capture: false
       } : false);
     }
+    /**
+     * Removes event listeners on window resize, window scroll and requestAnimationFrame
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {

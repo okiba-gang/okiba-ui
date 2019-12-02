@@ -83,6 +83,10 @@ function (_Component) {
 
     return _this;
   }
+  /**
+   * Disable component feature and reset the dom element transform
+   */
+
 
   _createClass(ScrollElement, [{
     key: "disable",
@@ -91,12 +95,23 @@ function (_Component) {
       this.isEnabled = false;
       this.el.style.transform = '';
     }
+    /**
+     * Enable component feature
+     */
+
   }, {
     key: "enable",
     value: function enable() {
       if (this.isEnabled) return;
       this.isEnabled = true;
     }
+    /**
+     * Update the target Y to reach and request an animation frame if component is enabled
+     * * Accepts an __hash__ whose properties can be:
+     * @param {Object} args Arguments to create a component
+     * @param   {Number}   {y}  Y to reach
+     */
+
   }, {
     key: "update",
     value: function update(_ref2) {
@@ -109,11 +124,23 @@ function (_Component) {
         this.hasRafRequest = true;
       }
     }
+    /**
+     * Update the translate Y of the element like to target Y
+     */
+
   }, {
     key: "listen",
+
+    /**
+     * Adds event listeners
+     */
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
     }
+    /**
+     * Removes event listeners
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
@@ -123,6 +150,10 @@ function (_Component) {
         _eventManager["default"].off('raf', this.onRaf);
       }
     }
+    /**
+     * Destroy component removing event listeners
+     */
+
   }, {
     key: "onDestroy",
     value: function onDestroy() {
