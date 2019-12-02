@@ -11,10 +11,10 @@ const templateRoot = readFileSync('./docs/partials/readme-root.njk', 'utf8')
 const packages = readdirSync('./packages')
 
 const baseData = {
-  name: 'Okiba',
+  name: 'Okiba Components',
   description: '',
   packages: [],
-  url: 'https://github.com/okiba-gang/okiba/tree/master/packages/'
+  url: 'https://github.com/okiba-gang/okiba-components/tree/master/packages/'
 }
 
 async function asyncForEach(array, callback) {

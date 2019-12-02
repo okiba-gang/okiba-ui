@@ -11,9 +11,9 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@okiba/event-manager": "^0.0.4",
-    "@okiba/math": "^1.0.13",
-    "@okiba/scroll-manager": "^0.0.4",
-    "@okiba/sizes-cache": "^0.0.4"
+    "@okiba/event-manager": "^1.0.0",
+    "@okiba/math": "^1.0.14",
+    "@okiba/scroll-manager": "^1.0.0",
+    "@okiba/sizes-cache": "^1.0.0"
   }
 }

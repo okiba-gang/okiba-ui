@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@okiba/component": "^1.0.14",
-    "@okiba/event-manager": "^0.0.4"
+    "@okiba/component": "^1.0.15",
+    "@okiba/event-manager": "^1.0.0"
   }
 }
