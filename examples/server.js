@@ -5,58 +5,51 @@ const devMiddleware = require('webpack-dev-middleware')
 const hotMiddleware = require('webpack-hot-middleware')
 const express = require('express')
 const nunjucks = require('nunjucks')
-const config = require('./config/dev')
+const webpackConfig = require('./config/bundler/dev')
+const { getBaseRoute, getRoutes } = require('./utils/routing')
+const config = require('./config')
 
-const compiler = webpack(config)
+const port = process.env.PORT || 3000
+const compiler = webpack(webpackConfig)
 const app = express()
-const env = nunjucks.configure('views', { autoescape: true, express: app, noCache: true })
-const folderToExclude = ['templates', 'macro']
-
-function getRoutes(path, basePath = '/') {
-  return fs.readdirSync(path).reduce((acc, entry) => {
-
-    if (entry === 'index.njk' && basePath === '/') return acc
-
-    const slug = entry.replace('.njk', '')
-    const label = slug.replace(/[-]/g, ' ')
-
-    if (fs.lstatSync(`${path}/${entry}`).isDirectory()) {
-      if (!folderToExclude.includes(entry)) {
-        acc = [...acc, { label, href: getRoutes(`${path}/${entry}`, `${basePath}${entry}/`) }]
-      }
-    } else if (entry !== '404.njk') {
-      acc = [...acc, { label, href: `${basePath}${slug}` }]
-    }
-
-    return acc
-  }, [])
+const globalData = {
+  staticPath: `/${config.staticFolder}`,
+  routes: [
+    getBaseRoute(config.paths.views, '/'),
+    ...getRoutes(config.paths.views, config.excludeFromViews, '/')
+  ]
 }
 
-const viewsPath = path.resolve(__dirname, 'views')
-const routes = [{ label: 'home', href: '/' }, ...getRoutes(viewsPath)]
+function handleRequest (req, res) {
+  if (req.path === '/') {
+    res.render('index.njk', globalData)
+    return
+  }
 
-function handleIndexRoute (req, res) {
-  res.render('index.njk', { routes })
-}
+  const rootPath = path.resolve(__dirname, 'views', req.path)
+  const rootIndexFilepath = `${rootPath}/index.njk`
+  const rootIndexFilename = `${req.path.replace(/^\/|\/$/g, '')}/index.njk`
 
-function handleOtherRoutes (req, res) {
-  const templateFilename = `${req.path.replace(/^\/+/, '')}.njk`
+  if (fs.existsSync(`${config.paths.views}/${rootIndexFilepath}`)) {
+    res.render(rootIndexFilename, globalData)
+    return
+  }
+
+  const templateFilename = `${req.path.replace(/^\/|\/$/g, '')}.njk`
   const templateFilepath = path.resolve(__dirname, 'views', templateFilename)
-  const regex = new RegExp(`${folderToExclude.join('|')}|index|404`)
-  if (!regex.test(templateFilename) && fs.existsSync(templateFilepath)) {
-    res.render(templateFilename, { routes })
+  const toExclude = new RegExp(`(${config.excludeFromRoutes.join('|')})`)
+
+  if (!toExclude.test(templateFilename) && fs.existsSync(templateFilepath)) {
+    res.render(templateFilename, globalData)
   } else {
-    res.render('404.njk', { routes })
+    res.render('404.njk', globalData)
   }
 }
 
-env.addFilter('is_iterable', el => (typeof el === 'object'))
+nunjucks.configure('views', { autoescape: true, express: app, noCache: true })
 
-app.use(devMiddleware(compiler, { publicPath: config.output.publicPath, writeToDisk: true }))
+app.use(devMiddleware(compiler, { publicPath: config.paths.dev.publicAssets, writeToDisk: true }))
 app.use(hotMiddleware(compiler, { reload: true }))
-app.use('/static', express.static('static'))
-
-app.get('/', handleIndexRoute)
-app.get('*', handleOtherRoutes)
-
-app.listen(3000, () => console.log('Examples running on http://localhost:3000'))
+app.use(`/${config.staticFolder}`, express.static(config.paths.dev.output.replace(__dirname, '.')))
+app.get('*', handleRequest)
+app.listen(3000, () => console.log(`Examples running on http://localhost:${port}`))

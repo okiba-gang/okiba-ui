@@ -1,0 +1,48 @@
+.menu {
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  align-items: center;
+  list-style: none;
+
+  .menu-item & {
+    display: none;
+    min-width: 160px;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f4f4f4;
+    border: solid 1px #ccc;
+  }
+
+  .menu-item:hover & {
+    display: block;
+  }
+}
+
+.menu-item {
+  padding: 16px 8px;
+  position: relative;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 31px;
+  text-transform: uppercase;
+  color: #666;
+
+  &:hover {
+    color: #000;
+  }
+
+  .menu-item & {
+    padding: 8px;
+    line-height: 16px;
+    text-align: right; 
+  }
+
+  a {
+    display: block;
+  }
+}

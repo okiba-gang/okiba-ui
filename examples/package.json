@@ -11,16 +11,23 @@
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "babel-loader": "^8.0.6",
+    "chalk": "^3.0.0",
     "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
     "express": "^4.17.1",
     "nunjucks": "^3.2.0",
+    "style-loader": "^1.0.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "build": "webpack --config config/build.js --progress"
+    "clean:dist": "rm -rf dist",
+    "clean:tmp": "rm -rf tmp",
+    "build:html": "node bin/compile-templates.js",
+    "build:static": "webpack --config ./config/bundler/build.js --progress",
+    "build": "npm run clean:dist && npm run build:static && npm run build:html",
+    "start": "npm run clean:tmp && node server.js"
   }
 }

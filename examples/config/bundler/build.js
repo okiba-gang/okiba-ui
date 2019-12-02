@@ -1,15 +1,14 @@
-const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const config = require('../index')
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../src/main.js')
+    app: config.paths.entry
   },
   output: {
-    path: path.resolve(__dirname, '../static'),
-    publicPath: path.resolve(__dirname, '..'),
-    filename: '[name].js',
-    chunkFilename: '[name].js'
+    path: config.paths.dist.output,
+    publicPath: config.paths.dist.publicAssets,
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -22,11 +21,15 @@ module.exports = {
             plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
+      },
+      {
+        test: /\.(s)?css$/,
+        use: ['style-loader','css-loader', 'sass-loader']
       }
     ]
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../../packages'), 'node_modules']
+    modules: [config.paths.packages, 'node_modules']
   },
   plugins: [
     new CleanWebpackPlugin()

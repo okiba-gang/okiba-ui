@@ -55,23 +55,18 @@ function (_Component) {
 
     _classCallCheck(this, SmoothScroll);
 
-    var _options$container = options.container,
-        container = _options$container === void 0 ? '.js-scroll-container' : _options$container,
-        _options$content = options.content,
-        content = _options$content === void 0 ? '.js-scroll-content' : _options$content,
-        _options$elements = options.elements,
+    var _options$elements = options.elements,
         elements = _options$elements === void 0 ? '.js-scroll-element' : _options$elements,
         _options$enabled = options.enabled,
         enabled = _options$enabled === void 0 ? !_detect.hasTouch : _options$enabled,
-        restOptions = _objectWithoutProperties(options, ["container", "content", "elements", "enabled"]);
+        restOptions = _objectWithoutProperties(options, ["elements", "enabled"]);
 
     var components = {
       container: {
-        selector: container,
+        ghost: true,
         type: _scrollContainer["default"],
         options: {
-          enabled: enabled,
-          content: content
+          enabled: enabled
         }
       },
       elements: {
@@ -79,7 +74,8 @@ function (_Component) {
         type: _scrollElement["default"],
         options: {
           enabled: enabled
-        }
+        },
+        asArray: true
       }
     };
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SmoothScroll).call(this, {
@@ -96,12 +92,15 @@ function (_Component) {
 
     _this.listen();
 
+    enabled ? _scrollManager["default"].enable() : _scrollManager["default"].disable();
     return _this;
   }
 
   _createClass(SmoothScroll, [{
     key: "enable",
     value: function enable() {
+      _scrollManager["default"].enable();
+
       this.components.container.enable();
       this.components.elements.forEach(function (element) {
         return element.enable();
@@ -110,6 +109,8 @@ function (_Component) {
   }, {
     key: "disable",
     value: function disable() {
+      _scrollManager["default"].disable();
+
       this.components.container.disable();
       this.components.elements.forEach(function (element) {
         return element.disable();

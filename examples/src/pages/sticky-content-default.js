@@ -1,5 +1,5 @@
-import Component from '@okiba/component'
 import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
 import StickyContent from '@okiba/sticky-content'
 import EventManager from '@okiba/event-manager'
 

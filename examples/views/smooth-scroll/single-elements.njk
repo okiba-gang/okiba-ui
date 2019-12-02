@@ -1,0 +1,13 @@
+{% set title = 'Single Elements Smooth Scroll' %}
+{% set description = 'sroll translation applied on single elements' %}
+{% set pageCtrl = 'smooth-scroll-single-elements' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block main %}
+  {% for index in range(1, 101) %}
+    <div class="js-scroll-element">
+      <h2>Element #{{ index }}</h2>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% set title = 'Disabled Smooth Scroll' %}
+{% set description = 'no translations applied (native scroll)' %}
+{% set pageCtrl = 'smooth-scroll-disabled' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block main %}
+  {% for index in range(0, 100) %}
+    <div class="js-scroll-element">
+      <h2>Element #{{ index + 1 }}</h2>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,5 +1,5 @@
-import Component from '@okiba/component'
 import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 

@@ -7,7 +7,7 @@ const app = new Component({
   el: qs('#app'),
   components: [
     {
-      selector: '#scrollable',
+      ghost: true,
       type: SmoothScroll,
       options: {
         enabled: false

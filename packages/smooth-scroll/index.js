@@ -7,8 +7,6 @@ import { hasTouch } from '@okiba/detect'
 export default class SmoothScroll extends Component {
   constructor({el, options = {}}) {
     const {
-      container = '.js-scroll-container',
-      content = '.js-scroll-content',
       elements = '.js-scroll-element',
       enabled = !hasTouch,
       ...restOptions
@@ -16,27 +14,32 @@ export default class SmoothScroll extends Component {
 
     const components = {
       container: {
-        selector: container,
+        ghost: true,
         type: ScrollContainer,
-        options: { enabled: enabled, content }
+        options: { enabled }
       },
       elements: {
         selector: elements,
         type: ScrollElement,
-        options: { enabled: enabled }
+        options: { enabled },
+        asArray: true
       }
     }
 
     super({ el, options: restOptions, components })
     this.listen()
+
+    enabled ? ScrollManager.enable() : ScrollManager.disable()
   }
 
   enable() {
+    ScrollManager.enable()
     this.components.container.enable()
     this.components.elements.forEach((element) => element.enable())
   }
 
   disable() {
+    ScrollManager.disable()
     this.components.container.disable()
     this.components.elements.forEach((element) => element.disable())
   }

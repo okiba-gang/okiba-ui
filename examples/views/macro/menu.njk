@@ -2,11 +2,13 @@
   <ul class="menu">
     {% for item in items %}
       <li class="menu-item">
-        {% if item.href|is_iterable %}
-          <span>{{ item.label }}</span>
-          {{ menu(item.href) }}
-        {% else %}
+        {% if item.href %}
           <a href="{{ item.href }}">{{ item.label }}</a>
+        {% else %}
+          <span>{{ item.label }}</span>
+        {% endif %}
+        {% if item.sublinks %}
+          {{ menu(item.sublinks) }}
         {% endif %}
       </li>
     {% endfor %}

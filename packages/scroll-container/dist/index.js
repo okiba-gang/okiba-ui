@@ -15,10 +15,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -51,25 +47,18 @@ function (_Component) {
 
     _classCallCheck(this, ScrollContainer);
 
-    var _options$content = options.content,
-        content = _options$content === void 0 ? '.js-scroll-content' : _options$content,
-        restOptions = _objectWithoutProperties(options, ["content"]);
-
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ScrollContainer).call(this, {
       el: el,
-      options: restOptions,
-      ui: {
-        content: content
-      }
+      options: options
     }));
 
     _defineProperty(_assertThisInitialized(_this), "onResize", function () {
-      _this.height = _this.ui.content.offsetHeight;
-
       if (_this.isEnabled) {
         _this.updateBodyHeight();
       }
     });
+
+    _this.sizes = _sizesCache["default"].get(el);
 
     _this.onResize();
 
@@ -111,9 +100,9 @@ function (_Component) {
   }, {
     key: "updateBodyHeight",
     value: function updateBodyHeight() {
-      _sizesCache["default"].body.height = this.height;
-      _sizesCache["default"].body.scrollArea = this.height - _sizesCache["default"].window.height;
-      document.body.style.height = "".concat(this.height, "px");
+      _sizesCache["default"].body.height = this.sizes.height;
+      _sizesCache["default"].body.scrollArea = this.sizes.height - _sizesCache["default"].window.height;
+      document.body.style.height = "".concat(this.sizes.height, "px");
     }
   }, {
     key: "listen",

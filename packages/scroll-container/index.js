@@ -3,9 +3,9 @@ import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 
 export default class ScrollContainer extends Component {
-  constructor({el, options = {}}) {
-    const { content = '.js-scroll-content', ...restOptions } = options
-    super({el, options: restOptions, ui: { content }})
+  constructor({ el, options = {} }) {
+    super({ el, options })
+    this.sizes = SizesCache.get(el)
     this.onResize()
     this.listen()
     options.enabled && this.enable()
@@ -37,16 +37,15 @@ export default class ScrollContainer extends Component {
   }
 
   onResize = () => {
-    this.height = this.ui.content.offsetHeight
     if (this.isEnabled) {
       this.updateBodyHeight()
     }
   }
 
   updateBodyHeight() {
-    SizesCache.body.height = this.height
-    SizesCache.body.scrollArea = this.height - SizesCache.window.height
-    document.body.style.height = `${this.height}px`
+    SizesCache.body.height = this.sizes.height
+    SizesCache.body.scrollArea = this.sizes.height - SizesCache.window.height
+    document.body.style.height = `${this.sizes.height}px`
   }
 
   listen() {

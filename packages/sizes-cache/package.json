@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@okiba/dom": "^0.0.4",
+    "@okiba/dom": "^1.0.14",
     "@okiba/event-manager": "^0.0.4"
   }
 }

@@ -1,12 +1,19 @@
-{% set title = 'Okiba | View Progress' %}
+{% set title = 'View Progress' %}
 {% set pageCtrl = 'view-progress' %}
 
 {% extends 'templates/_default.njk' %}
 
 {% block head %}
   <style>
+    section:nth-child(n+2) {
+      margin-top: 8px;
+    }
+
     .view-progress-element {
+      display: flex;
       height: 50vh;
+      flex-direction: column;
+      justify-content: space-between;
       border: solid 1px red;
       opacity: 0;
       transition: opacity .4s ease-in-out;
@@ -19,12 +26,14 @@
 {% endblock %}
 
 {% block main %}
-  {# <h1>View Progress</h1> #}
-  {% for index in range(1, 10) %}
-    <section style="margin-bottom: 8px;">
-      <div class="view-progress-element js-view-progress-element">
-        <p style="padding: 8px; margin: 0;">Progress: <span class="js-view-progress-label"></span></p>
-      </div>
-    </section>
-  {% endfor %}
+  <div id="view-progress">
+    {% for index in range(1, 10) %}
+      <section>
+        <div class="view-progress-element">
+          <p style="padding: 8px; margin: 0;">Progress: <span class="js-view-progress-label"></span></p>
+          <p style="padding: 8px; margin: 0;">Progress: <span class="js-view-progress-label"></span></p>
+        </div>
+      </section>
+    {% endfor %}
+  </div>
 {% endblock %}
