@@ -30,7 +30,7 @@
         "init": "yarn run init:packages && yarn run init:examples",
         "build:packages": "yarn run init:packages && webpack --progress",
         "build:examples": "yarn run init:examples && cd examples && yarn run build",
-        "build": "yarn run build:packages && yarn run build:examples && yarn run docs",
+        "build": "yarn run build:packages && yarn run build:examples",
         "dev": "yarn run bootstrap && cd examples && yarn start",
         "docs": "node ./docs/generate.js",
         "version": "yarn run build && yarn run docs",
