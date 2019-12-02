@@ -98,8 +98,8 @@ function (_EventedComponent) {
       var _this$sizes = _this.sizes,
           top = _this$sizes.top,
           height = _this$sizes.height;
-      _this.startY = top - _sizesCache["default"].window.height;
-      _this.endY = Math.min(_sizesCache["default"].body.scrollArea, _this.startY + height + _sizesCache["default"].window.height);
+      _this.startY = top - _sizesCache["default"].window.height + (_this.options.thresholdTop || 0);
+      _this.endY = Math.min(_sizesCache["default"].body.scrollArea, _this.startY + height + _sizesCache["default"].window.height + (_this.options.thresholdBottom || 0));
     });
 
     _this.sizes = _sizesCache["default"].get(el);
@@ -111,17 +111,35 @@ function (_EventedComponent) {
 
     return _this;
   }
+  /**
+   * Updates element's progress and emits enter, exit and progress events according to passed scroll position
+   * @param {Object} args
+   * @param {Number} args.y The current scrollY
+   */
+
 
   _createClass(ViewProgress, [{
     key: "listen",
+
+    /**
+     * Adds resize event listener to EventManager
+     */
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
     }
+    /**
+     * Removes resize event listener from EventManager
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
       _eventManager["default"].off('resize', this.onResize);
     }
+    /**
+     * Removes all event listeners on destroy from EventManager
+     */
+
   }, {
     key: "onDestroy",
     value: function onDestroy() {

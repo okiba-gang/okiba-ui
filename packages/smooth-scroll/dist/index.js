@@ -95,6 +95,10 @@ function (_Component) {
     enabled ? _scrollManager["default"].enable() : _scrollManager["default"].disable();
     return _this;
   }
+  /**
+   * Enables component's features
+   */
+
 
   _createClass(SmoothScroll, [{
     key: "enable",
@@ -106,6 +110,10 @@ function (_Component) {
         return element.enable();
       });
     }
+    /**
+     * Disables component's features
+     */
+
   }, {
     key: "disable",
     value: function disable() {
@@ -116,16 +124,33 @@ function (_Component) {
         return element.disable();
       });
     }
+    /**
+     * Updates inner elements on scroll
+     * @param {Object} data Scroll event's data
+     */
+
   }, {
     key: "listen",
+
+    /**
+     * Adds resize event listener to ScrollManager
+     */
     value: function listen() {
       _scrollManager["default"].on('scroll', this.onScroll);
     }
+    /**
+     * Removes resize event listener from ScrollManager
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
       _scrollManager["default"].off('scroll', this.onScroll);
     }
+    /**
+     * Removes all event listeners on destroy from ScrollManager
+     */
+
   }, {
     key: "onDestroy",
     value: function onDestroy() {

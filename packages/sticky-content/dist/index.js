@@ -35,6 +35,40 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * @module StickyContent
+ * @description Makes an element sticky according to page scroll
+ * Can be extended or instantiated
+ * @example
+ * import { qs } from '@okiba/dom'
+ * import Component from '@okiba/component'
+ * import StickyContent from '@okiba/sticky-content'
+ * import EventManager from '@okiba/event-manager'
+ *
+ * class StickyComponent extends StickyContent {
+ *   constructor(args) {
+ *     super(args)
+ *     EventManager.on('scroll', () => this.update({ y: window.scrollY }))
+ *   }
+ * }
+ *
+ * const app = new Component({
+ *   el: qs('#app'),
+ *   components: [
+ *     {
+ *       selector: '.sticky',
+ *       type: StickyComponent
+ *     }
+ *   ]
+ * })
+ *
+ * Accepts an __hash__ whose properties can be:
+ * @param {Object}  args                          Arguments to create a component
+ * @param {Element} args.el                       DOM Element to be bound
+ * @param {Object}  args.options                  Custom options passed to the component
+ * @param {String}  args.options.targetSelector   The css selector of element to be made sticky
+ * @param {Boolean} args.options.overflow         Keeps element sticky even if its limitY has been reached
+ */
 var StickyContent =
 /*#__PURE__*/
 function (_Component) {
@@ -85,6 +119,10 @@ function (_Component) {
 
     return _this;
   }
+  /**
+   * Enables component's features
+   */
+
 
   _createClass(StickyContent, [{
     key: "enable",
@@ -93,22 +131,44 @@ function (_Component) {
       this.isEnabled = true;
       this.target.style.transform = "translate3d(0, ".concat(this.y, "px, 0)");
     }
+    /**
+     * Disables component's features
+     */
+
   }, {
     key: "disable",
     value: function disable() {
       this.isEnabled = false;
       this.target.style.transform = '';
     }
+    /**
+     * Updates element's position according to passed scroll position
+     * @param {Object} args
+     * @param {Number} args.y The current scrollY
+     */
+
   }, {
     key: "listen",
+
+    /**
+     * Adds resize event listener to EventManager
+     */
     value: function listen() {
       _eventManager["default"].on('resize', this.onResize);
     }
+    /**
+     * Removes resize event listener from EventManager
+     */
+
   }, {
     key: "unlisten",
     value: function unlisten() {
       _eventManager["default"].off('resize', this.onResize);
     }
+    /**
+     * Removes all event listeners on destroy from EventManager
+     */
+
   }, {
     key: "onDestroy",
     value: function onDestroy() {
