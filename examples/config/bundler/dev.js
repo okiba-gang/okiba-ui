@@ -1,3 +1,4 @@
+const path = require('path')
 const webpack = require('webpack')
 const config = require('../index')
 
@@ -14,6 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: [/node_modules\/@okiba\/.*/, config.paths.packages, config.paths.src],
         use: {
           loader: 'babel-loader',
           options: {

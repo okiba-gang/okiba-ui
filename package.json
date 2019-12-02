@@ -15,28 +15,29 @@
         "@okiba/evented-component": "^1.1.3",
         "@okiba/math": "^1.0.13",
         "babel-loader": "^8.0.6",
-        "concurrently": "^5.0.0",
+        "core-js": "3",
         "jsdoc-api": "^5.0.4",
         "lerna": "^3.19.0",
         "nunjucks": "^3.2.0",
-        "webpack": "^4.41.2"
+        "unminified-webpack-plugin": "^2.0.0",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10"
     },
     "scripts": {
         "bootstrap": "lerna bootstrap --use-workspaces",
-        "init:packages": "yarn install && npm run bootstrap",
+        "init:packages": "yarn install && yarn run bootstrap",
         "init:examples": "cd examples && yarn install",
-        "init": "npm run init:packages && npm run init:examples",
-        "build:packages": "npm run init:packages && lerna exec --parallel -- babel --root-mode upward index.js -d dist",
-        "build:examples": "npm run init:examples && cd examples && npm run build",
-        "build": "npm run build:packages && npm run build:examples",
-        "dev:packages": "lerna exec --parallel -- babel -w --root-mode upward index.js -d dist",
-        "dev:examples": "cd examples && npm start",
-        "dev": "npm run bootstrap && concurrently \"npm run dev:packages\" \"npm run dev:examples\"",
-        "publish": "lerna publish",
-        "docs": "node ./docs/generate.js"
+        "init": "yarn run init:packages && yarn run init:examples",
+        "build:packages": "yarn run init:packages && webpack --progress",
+        "build:examples": "yarn run init:examples && cd examples && yarn run build",
+        "build": "yarn run build:packages && yarn run build:examples && yarn run docs",
+        "dev": "yarn run bootstrap && cd examples && yarn start",
+        "docs": "node ./docs/generate.js",
+        "version": "yarn run build && yarn run docs",
+        "publish": "lerna publish"
     },
     "contributors": [
-      "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
-      "Andrea 'Fiad' Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
+        "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
+        "Andrea 'Fiad' Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
     ]
 }

@@ -30,7 +30,7 @@
     "clean:tmp": "rm -rf tmp",
     "build:html": "node bin/compile-templates.js",
     "build:static": "webpack --config ./config/bundler/build.js --progress",
-    "build": "npm run clean:dist && npm run build:static && npm run build:html",
-    "start": "npm run clean:tmp && node server.js"
+    "build": "yarn run clean:dist && yarn run build:static && yarn run build:html",
+    "start": "yarn run clean:tmp && node server.js"
   }
 }
