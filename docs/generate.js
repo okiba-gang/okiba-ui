@@ -25,6 +25,7 @@ async function asyncForEach(array, callback) {
 
 async function generate() {
   await asyncForEach(packages, async name => {
+    if (name === '.DS_Store') return
     const packageData = model(await jsdoc.explain({
       files: `./packages/${name}/index.js`
     }), baseData)

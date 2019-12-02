@@ -34,5 +34,9 @@
         "dev": "npm run bootstrap && concurrently \"npm run dev:packages\" \"npm run dev:examples\"",
         "publish": "lerna publish",
         "docs": "node ./docs/generate.js"
-    }
+    },
+    "contributors": [
+      "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
+      "Andrea 'Fiad' Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
+    ]
 }

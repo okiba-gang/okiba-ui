@@ -4,7 +4,8 @@
   "private": true,
   "license": "MIT",
   "contributors": [
-    "Andrea 'Fiad' Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
+    "Andrea 'Fiad' Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)",
+    "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
   ],
   "devDependencies": {
     "@babel/core": "^7.7.4",

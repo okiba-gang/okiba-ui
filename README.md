@@ -1,159 +1,128 @@
-# okiba-components
-##### Set of ready-made components that offer new capabilities or solve specific issues
+# Okiba
 
+[![Tests Status](https://github.com/okiba-gang/okiba/workflows/Run%20Tests/badge.svg)](https://github.com/okiba-gang/okiba/actions?workflow=Run+Tests)
+[![Maintainability](https://api.codeclimate.com/v1/badges/29a8700f940f1019e52e/maintainability)](https://codeclimate.com/github/okiba-gang/okiba/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/29a8700f940f1019e52e/test_coverage)](https://codeclimate.com/github/okiba-gang/okiba/test_coverage)
+🏅
+
+Sharp collection of tools for front-end development, created with performance in mind.  🗡
+
+Our primary concerns are: **maximum FPS** and **minimum bundle size** 🚀
+
+You can visualize it as a bag full of **ninja tools** for you to pick and use to tackle your **front-end challenges**.
+
+______
+
+
+#### Okiba **is**:
+
+##### A set of tools you can use separately.
+
+It is meant to **level-up** and **ease-in** your web-development routines.
+
+It's designed so that you can drop-in as much or as less you want, by importing just what you actually use, up to a single function level, so that your final bundle will stay slim.
+
+It is always evolving and open to contributons from OSS peers.
+
+#### Okiba **is not**:
+
+##### A library, framework or language.
+
+It is not meant to replace the tools you already have, but rather offer battle-tested solutions to common routine tasks; sometimes it offers a cheaper alternative.
+
+It does not impose choiches and integrates smoothly with frameworks you already use.
+
+______
+
+We strive to achieve **affidability** and **affordability**.
+
+#### Our granularity is *fine*
+
+###### We `export` single units that you can `import` separately. ✨
+
+This way **tree-shake** and **uglification** can work at their best.
+
+Being **dependency-free** you always know what you're using and can look it up in our API, no surpises.
+
+
+#### Our code is *DRY* and *minimal*
+
+###### If something is common we abstract it away. 💡
+
+We don't put something in until it is actually needed.
+
+We strictly check for duplication and complexity, and take charge of some development pain in order to keep bundle size small.
+
+#### Our seriousness level is *high*
+
+###### Our quality checks are automated. 🤖
+
+Metrics matter, so our CI tools help us by enforcing **100% coverage** and **A maintainability**.
+
+No line makes it into `master` if the overall code quality gets degraded.
+
+_We could state that our API is 100% documented, but we still have no tests in place to back this metric up... so we don't 🤡_
+
+______
+
+## Full API List:
+
+
+#### [detect](https://github.com/okiba-gang/okiba/tree/master/packages/detect)
+Utilities to check some browser features
+
+###### [`hasPassiveEvents`](https://github.com/okiba-gang/okiba/tree/master/packages/detect#haspassiveevents), [`hasTouch`](https://github.com/okiba-gang/okiba/tree/master/packages/detect#hastouch)
 ---
 
-## Getting started
-This boilerplate allows you to easily manage multiple packages as a monorepo and to facilitate their development by creating examples runnable over a dev server with *[HMR](https://webpack.js.org/concepts/hot-module-replacement/)*, so you can test their implementation and behaviours live.
+#### [event-manager](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager)
+A class that extends EventEmitter (@okiba/event-emitter) to centralize resize and scroll events and RequestAnimationFrame handler
 
-### Requirements
-The boilerplate is based on *Yarn*'s workspaces, so install it globally. Check out the [documentation](https://yarnpkg.com/en/docs/install).
+###### [`dispatchScroll`](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager#dispatchscroll), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager#onresize), [`onScroll`](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager#onscroll), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/event-manager#unlisten)
+---
 
-### Workspace initialization
-To initialize the workspace, run the following command:
+#### [scroll-container](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container)
+A class that extends Component (@okiba/component). When is enabled, it set the height of body with the element body, and set the element in fixed position so you can use the native scroll to animate what you want.
 
-```
-npm run init
-```
+###### [`disable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#disable), [`enable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#enable), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#onresize), [`updateBodyHeight`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#updatebodyheight), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#unlisten), [`onDestroy`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-container#ondestroy)
+---
 
-It will handle dependencies installation and lerna bootstrap.
+#### [scroll-element](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element)
+A class that extends Component (@okiba/component). When enabled, this component translate the dom element to the last Y passed to `onScroll` function
 
-### Development
-To start developing both modules and examples, run the following command:
+###### [`disable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#disable), [`enable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#enable), [`update`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#updateargs-y), [`onRaf`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#onraf), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#onresize), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#unlisten), [`onDestroy`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-element#ondestroy)
+---
 
-```
-npm run dev
-```
+#### [scroll-manager](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager)
+A class that extends EventEmitter (@okiba/event-emitter). Basically emits `scroll` events in two different ways, when enabled it lerp the scroll position and emits `scroll` events on request animation frame, when disable is like a proxy of native scroll events.
 
-You can also launch modules and examples development separately, as shown below:
+###### [`disable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#disable), [`enable`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#enable), [`onRaf`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#onraf), [`onChange`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#onchange), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#unlisten), [`trigger`](https://github.com/okiba-gang/okiba/tree/master/packages/scroll-manager#trigger)
+---
 
-```
-npm run dev:packages
-```
+#### [sizes-cache](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache)
+A class to compute and cache element sizes.
 
-```
-npm run dev:examples
-```
+###### [`get`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#getel), [`compute`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#computeel), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#onresize), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#unlisten), [`reset`](https://github.com/okiba-gang/okiba/tree/master/packages/sizes-cache#reset)
+---
 
-#### Routing
-By starting global or examples-only development, a dev server will run on http://localhost:3000 and, for each view defined in *examples/views* folder, a route will be available and it'll correspond to its filename (e.g. http://localhost:3000/awesome-module).
+#### [smooth-scroll](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll)
+Makes elements scroll smoothly with lerped translations
+Can be extended or instantiated
 
-### Production
-To build both packages and examples run the following command:
+###### [`enable`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#enable), [`disable`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#disable), [`onScroll`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#onscrolldata), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#unlisten), [`onDestroy`](https://github.com/okiba-gang/okiba/tree/master/packages/smooth-scroll#ondestroy)
+---
 
-```
-npm run build
-```
+#### [sticky-content](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content)
+Makes an element sticky according to page scroll
+Can be extended or instantiated
 
-You can also compile modules and examples separately, as shown below:
+###### [`module:StickyContent`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#module:stickycontentargs-args.el-args.options-args.options.targetSelector-args.options.overflow), [`enable`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#enable), [`disable`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#disable), [`update`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#updateargs-args.y), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#onresize), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#unlisten), [`onDestroy`](https://github.com/okiba-gang/okiba/tree/master/packages/sticky-content#ondestroy)
+---
 
-```
-npm run build:packages
-```
+#### [view-progress](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress)
+Retrieves the percentage (0 to 1) of element's in-view portion according to page scroll
+Can be extended or instantiated
 
-```
-npm run build:examples
-```
+###### [`update`](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress#updateargs-args.y), [`onResize`](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress#onresize), [`listen`](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress#listen), [`unlisten`](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress#unlisten), [`onDestroy`](https://github.com/okiba-gang/okiba/tree/master/packages/view-progress#ondestroy)
 
-On process complete, you can find the transpiled version of each module at *module-folder/dist*.
 
-### Release
-To release your modules, run the following command:
 
-```
-npm run publish
-```
-
-### Adding modules
-You can write your own modules in *packages* folder as usual with *[Lerna](https://github.com/lerna/lerna)*.
-More pratically, follow the structure below:
-
-```
-|-- packages
-|   |-- awesome-module
-|   |   |-- index.js
-|   |   |-- package.json
-```
-
-where *index.js* will be your module's entry point and *package.json* will look like follows:
-
-```json
-{
-  "name": "@okiba/awesome-module",
-  "version": "0.0.1",
-  "main": "dist/index.js",
-  "module": "index.js",
-  "license": "ISC",
-  "peerDependencies": {}
-}
-```
-
-At this point, since modules are part of an unique workspace and they may share dependencies, you can add common dependencies with by running following command from the root directory:
-
-```
-yarn add -W <module>
-```
-
-where the *-W* flag makes the dependency available in the whole workspace. If you're dealing with devDependency, use *-DW* flag instead of *-W*.
-
-Alternatively, you can add module-specific dependencies by running the command below directly in the module's folder:
-
-```
-cd packages/awesome-module
-yarn add [-D] <module>
-```
-
-#### Modules resolution
-Thanks to *Lerna*, you can simply import one of your modules as a dependency of another module and it will be automatically resolved, like follows:
-
-```js
-/** packages/awesome-module/index.js */
-import { hasPassiveEvents } from '@okiba/detect'
-
-console.log(hasPassiveEvents)
-```
-
-__N.B.:__ The module's name used in import statement above must match with the one defined in module's package.json file.
-
-### Adding examples
-To create a new example, move to *examples* folder and add the following files:
-
-- *src/awesome-module.js*: the logic implementation of the example
-- *views/awesome-module.njk*: the html markup of the example
-
-##### JS
-Javascript side, you can import your modules and npm dependencies and freely implement whatever you want. Only don't forget to enable *HMR* for a more comfortable development:
-
-```js
-/** examples/src/awesome-module.js */
-import _ from 'lodash'
-import { isTouch } from '@okiba/detect'
-
-if (isTouch) {
-  // logic here
-}
-
-// hmr support
-if (module.hot) {
-  module.hot.accept()
-}
-```
-
-##### NJK
-About views, you can create a new one starting from the template below:
-
-```twig
-{# examples/views/awesome-module.njk #}
-
-{% set title = 'Okiba components | Awesome module' %}
-
-{% extends 'templates/_default.njk' %}
-
-{% block main %}
-  <h1>Awesome module example</h1>
-{% endblock %}
-
-{% block scripts %}
-  <script src="static/awesome-module.js"></script>
-{% endblock %}
-```
