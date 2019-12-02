@@ -1,6 +1,6 @@
 {
   "name": "@okiba/sizes-cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Keeps sizes of dom elements up to date",
   "main": "dist/index.js",
   "module": "index.js",
