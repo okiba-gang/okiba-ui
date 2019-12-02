@@ -1,6 +1,7 @@
 const chalk = require('chalk')
 const nunjucks = require('nunjucks')
-const fs = require('../utils/fs-custom')
+const { writeFileSync } = require('fs')
+const { ensureFileSync } = require('fs-extra')
 const { getBaseRoute, getRoutes, getViews } = require('../utils/routing')
 const config = require('../config')
 
@@ -33,7 +34,9 @@ templates.forEach((viewPath, i) => {
     if (err) {
       console.error(err)
     } else {
-      fs.writeFileSyncRecursive(fullFilename, content)
+      ensureFileSync(fullFilename)
+      writeFileSync(fullFilename, content)
+
       console.log(baseFilename.substring(1), chalk.green('✓'))
 
       if (i === templates.length - 1) {

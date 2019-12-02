@@ -5,8 +5,8 @@ nunjucks.configure({autoescape: false})
 
 const {model, modelPackage} = require('./model-data')
 
-const template = readFileSync('./docs/partials/readme-package.njk', 'utf8')
-const templateRoot = readFileSync('./docs/partials/readme-root.njk', 'utf8')
+const template = readFileSync('./bin/readme/partials/readme-package.njk', 'utf8')
+const templateRoot = readFileSync('./bin/readme/partials/readme-root.njk', 'utf8')
 
 const packages = readdirSync('./packages')
 

@@ -32,8 +32,8 @@
         "build:examples": "yarn run init:examples && cd examples && yarn run build",
         "build": "yarn run build:packages && yarn run build:examples",
         "dev": "yarn run bootstrap && cd examples && yarn start",
-        "docs": "node ./docs/generate.js",
-        "version": "yarn run build && yarn run docs",
+        "readme": "node ./bin/readme/generate.js",
+        "version": "yarn run build && yarn run readme",
         "publish": "lerna publish"
     },
     "contributors": [

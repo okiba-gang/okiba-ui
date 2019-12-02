@@ -14,9 +14,8 @@ module.exports = {
       output: path.resolve(__dirname, '../tmp'),
     },
     dist: {
-      publicAssets: '/Users/andrea.fiadone/Desktop/dist/static/',
-      templates: path.resolve(__dirname, '../dist'),
-      output: path.resolve(__dirname, '../dist/static')
+      templates: path.resolve(__dirname, '../../docs'),
+      output: path.resolve(__dirname, '../../docs/static')
     }
   }
 }
