@@ -1,3 +1,13 @@
+/**
+ * @module SizesCache
+ * @description A class to compute and cache element sizes.
+ * @example
+ * import { qs } from '@okiba/dom'
+ * import SizesCache from '@okiba/size-cache'
+ *
+ * const sizes = SizesCache.get(qs('#app'))
+ * console.log(sizes)
+ */
 import EventManager from '@okiba/event-manager'
 import { offset } from '@okiba/dom'
 
