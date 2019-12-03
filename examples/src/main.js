@@ -1,6 +1,6 @@
 import './styles/main.scss'
 
-__webpack_public_path__ = window.publicAssetsPath
+__webpack_public_path__ = window.publicScriptsPath
 
 const root = document.getElementById('app')
 

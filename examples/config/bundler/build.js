@@ -1,4 +1,4 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const config = require('../index')
 
 module.exports = {
@@ -7,7 +7,6 @@ module.exports = {
   },
   output: {
     path: config.paths.dist.output,
-    publicPath: config.paths.dist.publicAssets,
     filename: '[name].js'
   },
   module: {
@@ -32,7 +31,12 @@ module.exports = {
     modules: [config.paths.packages, 'node_modules']
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CopyPlugin([
+      {
+        from: `${config.paths.src}/${config.assetsFolder}`,
+        to: config.paths.dist.assets
+      }
+    ])
   ],
   mode: 'production'
 }

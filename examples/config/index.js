@@ -1,7 +1,8 @@
 const path = require('path')
 
 module.exports = {
-  staticFolder: 'static',
+  scriptsFolder: 'scripts',
+  assetsFolder: 'assets',
   excludeFromViews: ['macro', 'templates'],
   excludeFromRoutes: ['macro', 'templates', '404', 'index'],
   paths: {
@@ -10,12 +11,14 @@ module.exports = {
     views: path.resolve(__dirname, '../views'),
     packages: path.resolve(__dirname, '../../packages'),
     dev: {
-      publicAssets: path.resolve(__dirname, '..'),
-      output: path.resolve(__dirname, '../tmp'),
+      public: path.resolve(__dirname, '..'),
+      output: path.resolve(__dirname, '../tmp/scripts'),
+      assets: path.resolve(__dirname, '../tmp/assets')
     },
     dist: {
       templates: path.resolve(__dirname, '../../docs'),
-      output: path.resolve(__dirname, '../../docs/static')
+      output: path.resolve(__dirname, '../../docs/scripts'),
+      assets: path.resolve(__dirname, '../../docs/assets')
     }
   }
 }

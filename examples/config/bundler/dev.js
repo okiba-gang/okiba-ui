@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     path: config.paths.dev.output,
-    publicPath: config.paths.dev.publicAssets,
+    publicPath: config.paths.dev.public,
     filename: '[name].js'
   },
   module: {
@@ -42,6 +42,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new CopyPlugin([
+      {
+        from: `${config.paths.src}/${config.assetsFolder}`,
+        to: config.paths.dev.assets
+      }
+    ])
   ],
   mode: 'development',
   devtool: 'inline-module-source-map'

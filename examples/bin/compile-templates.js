@@ -14,7 +14,7 @@ const templates = getViews(config.paths.views, config.excludeFromViews)
  */
 function getGlobalData(basePath) {
   return {
-    staticPath: basePath + config.staticFolder,
+    staticPath: basePath + config.scriptsFolder,
     routes: [
       getBaseRoute(config.paths.views, basePath, true),
       ...getRoutes(config.paths.views, config.excludeFromViews, basePath, true)
