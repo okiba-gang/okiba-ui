@@ -6,7 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Okiba | {{ title }}</title>
+  <title>Okiba Components | {{ title }}</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ assetsPath }}/favicon.ico">
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -27,8 +28,8 @@
   <main id="app" class="content" data-page-ctrl="{{ pageCtrl }}">
     {% block main %}{% endblock %}
   </main>
-  <script>window.publicScriptsPath = '{{ staticPath }}/';</script>
-  <script src="{{ staticPath }}/app.js"></script>
+  <script>window.publicScriptsPath = '{{ scriptsPath }}/';</script>
+  <script src="{{ scriptsPath }}/app.js"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

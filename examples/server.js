@@ -13,7 +13,8 @@ const port = process.env.PORT || 3000
 const compiler = webpack(webpackConfig)
 const app = express()
 const globalData = {
-  staticPath: `/${config.scriptsFolder}`,
+  scriptsPath: `/${config.scriptsFolder}`,
+  assetsPath: `/${config.assetsFolder}`,
   routes: [
     getBaseRoute(config.paths.views, '/'),
     ...getRoutes(config.paths.views, config.excludeFromViews, '/')
@@ -51,5 +52,6 @@ nunjucks.configure('views', { autoescape: true, express: app, noCache: true })
 app.use(devMiddleware(compiler, { publicPath: config.paths.dev.publicAssets, writeToDisk: true }))
 app.use(hotMiddleware(compiler, { reload: true }))
 app.use(`/${config.scriptsFolder}`, express.static(config.paths.dev.output.replace(__dirname, '.')))
+app.use(`/${config.assetsFolder}`, express.static(config.paths.dev.assets.replace(__dirname, '.')))
 app.get('*', handleRequest)
 app.listen(3000, () => console.log(`Examples running on http://localhost:${port}`))
