@@ -4475,6 +4475,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * @param {Object}  args.options                  Custom options passed to the component
  * @param {String}  args.options.targetSelector   The css selector of element to be made sticky
  * @param {Boolean} args.options.overflow         Keeps element sticky even if its limitY has been reached
+ * @param {Number}  args.options.thresholdTop     Adjusts start scroll position
  */
 
 var StickyContent =
@@ -4499,7 +4500,7 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_this), "update", function (_ref2) {
       var y = _ref2.y;
       if (!_this.isEnabled) return;
-      var deltaY = y - _this.sizes.top;
+      var deltaY = y - _this.startY;
 
       if (deltaY <= 0) {
         _this.y = 0;
@@ -4513,6 +4514,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "onResize", function () {
+      _this.startY = _this.sizes.top + (_this.options.thresholdTop || 0);
       _this.maxY = _this.sizes.height - _okiba_sizes_cache__WEBPACK_IMPORTED_MODULE_10__["default"].window.height;
       _this.limitY = _this.sizes.bottom - _okiba_sizes_cache__WEBPACK_IMPORTED_MODULE_10__["default"].window.height;
     });

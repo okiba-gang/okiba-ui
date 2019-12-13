@@ -43,16 +43,16 @@ npm i --save @okiba/sticky-content
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/sticky-content@1.0.1/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/sticky-content@1.0.2/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/sticky-content@1.0.1/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/sticky-content@1.0.2/dist/index.js"></script>
 ```
 
 
 
 
-## constructor(args, args.el, args.options, args.options.targetSelector, args.options.overflow)
+## constructor(args, args.el, args.options, args.options.targetSelector, args.options.overflow, args.options.thresholdTop)
 
 
 
@@ -88,6 +88,11 @@ The css selector of element to be made sticky
 ##### + `args.options.overflow`: `Boolean`
 
 Keeps element sticky even if its limitY has been reached
+
+
+##### + `args.options.thresholdTop`: `Number`
+
+Adjusts start scroll position
 
 
 
