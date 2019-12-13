@@ -1,6 +1,6 @@
 {
   "name": "@okiba/smooth-scroll",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Scrolls a panel following lerped scroll",
   "main": "dist/index.js",
   "module": "index.js",

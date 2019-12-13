@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-element",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Translates a panel according to scroll",
   "main": "dist/index.js",
   "module": "index.js",
