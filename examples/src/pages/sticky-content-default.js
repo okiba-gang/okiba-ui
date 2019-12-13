@@ -15,7 +15,11 @@ const app = new Component({
   components: [
     {
       selector: '#sticky',
-      type: StickyComponent
+      type: StickyComponent,
+      options: {
+        thresholdTop: 200,
+        overflow: true
+      }
     }
   ]
 })

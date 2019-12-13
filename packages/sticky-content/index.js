@@ -37,6 +37,7 @@ import EventManager from '@okiba/event-manager'
  * @param {Object}  args.options                  Custom options passed to the component
  * @param {String}  args.options.targetSelector   The css selector of element to be made sticky
  * @param {Boolean} args.options.overflow         Keeps element sticky even if its limitY has been reached
+ * @param {Number}  args.options.thresholdTop     Adjusts start scroll position
  */
 export default class StickyContent extends Component {
   constructor({ el, options = {} }) {
@@ -73,7 +74,7 @@ export default class StickyContent extends Component {
   update = ({ y }) => {
     if (!this.isEnabled) return
 
-    const deltaY = y - this.sizes.top
+    const deltaY = y - this.startY
 
     if (deltaY <= 0) {
       this.y = 0
@@ -90,6 +91,7 @@ export default class StickyContent extends Component {
    * Updates element's boundaries according to current viewport sizes
    */
   onResize = () => {
+    this.startY = this.sizes.top + (this.options.thresholdTop || 0)
     this.maxY = this.sizes.height - SizesCache.window.height
     this.limitY = this.sizes.bottom - SizesCache.window.height
   }
