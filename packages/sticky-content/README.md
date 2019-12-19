@@ -43,10 +43,10 @@ npm i --save @okiba/sticky-content
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/sticky-content@1.0.2/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/sticky-content@1.0.3/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/sticky-content@1.0.2/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/sticky-content@1.0.3/dist/index.js"></script>
 ```
 
 

@@ -28,10 +28,10 @@ npm i --save @okiba/scroll-manager
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/scroll-manager@1.0.2/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/scroll-manager@1.0.3/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/scroll-manager@1.0.2/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/scroll-manager@1.0.3/dist/index.js"></script>
 ```
 
 
