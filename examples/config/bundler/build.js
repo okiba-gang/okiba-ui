@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: [/node_modules\/(swiper|dom7|@okiba)\/.*/, config.paths.packages, config.paths.src],
+        exclude: [/node_modules\/(?!(swiper|dom7|@okiba)\/).*/],
         use: {
           loader: 'babel-loader',
           options: {
