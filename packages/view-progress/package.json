@@ -1,6 +1,6 @@
 {
   "name": "@okiba/view-progress",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Informs an element about how much of it has been viewed",
   "main": "dist/index.js",
   "module": "index.js",
@@ -12,9 +12,9 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/event-emitter": "^1.1.4",
-    "@okiba/event-manager": "^1.0.2",
+    "@okiba/event-manager": "^1.0.3",
     "@okiba/math": "^1.0.14",
-    "@okiba/scroll-manager": "^1.0.2",
-    "@okiba/sizes-cache": "^1.0.2"
+    "@okiba/scroll-manager": "^1.0.3",
+    "@okiba/sizes-cache": "^1.0.3"
   }
 }

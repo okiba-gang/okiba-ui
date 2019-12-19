@@ -1,6 +1,6 @@
 {
   "name": "@okiba/detect",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Feature detection",
   "main": "dist/index.js",
   "module": "index.js",
