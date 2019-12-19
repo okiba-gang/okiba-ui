@@ -1,6 +1,10 @@
 #active-menu {
-  visibility: hidden;
   position: absolute;
+  top: 36px;
+  right: 36px;
+  transform: translate(50%, -50%);
+  margin: 0;
+  visibility: hidden;
 }
 
 .MenuHamburger {
@@ -61,15 +65,14 @@
   max-width: 480px;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 100%;
   z-index: 2;
-  transform: translate3d(100%, 0, 0);
   background-color: #1D1D1D;
   color: #FFFFFF;
   transition: transform .2s;
 
   #active-menu:checked ~ & {
-    transform: none;
+    transform: translate3d(-100%, 0, 0);
   }
 
   ul {
