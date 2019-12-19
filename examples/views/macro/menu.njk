@@ -1,16 +1,30 @@
-{% macro menu(items) %}
-  <ul class="menu">
+{% macro menuItems(items) %}
+  <ul>
     {% for item in items %}
-      <li class="menu-item">
+      <li>
         {% if item.href %}
-          <a href="{{ item.href }}">{{ item.label }}</a>
-        {% else %}
-          <span>{{ item.label }}</span>
-        {% endif %}
-        {% if item.sublinks %}
-          {{ menu(item.sublinks) }}
+          <a class="MenuItem" href="{{ item.href }}">{{ item.label }}</a>
+        {% elif item.sublinks %}
+          <details>
+            <summary class="MenuItem">{{ item.label }}</summary>
+            {{ menuItems(item.sublinks) }}
+          </details>
         {% endif %}
       </li>
     {% endfor %}
   </ul>
+{% endmacro %}
+
+{% macro menu(items, title, description) %}
+  <input type="checkbox" id="active-menu">
+  <label class="MenuHamburger" for="active-menu"></label>
+  <aside class="MenuPanel">
+    <div class="MenuPanel_header">
+      <h1>{{ title }}</h1>
+      {% if description %}
+        <p>{{ description }}</p>
+      {% endif %}
+    </div>
+    {{ menuItems(items) }}
+  </aside>
 {% endmacro %}

@@ -40,8 +40,8 @@ import EventManager from '@okiba/event-manager'
  * @param {Number}  args.options.thresholdTop     Adjusts start scroll position
  */
 export default class StickyContent extends Component {
-  constructor({ el, options = {} }) {
-    super({ el, options })
+  constructor({ el, options = {}, ...args }) {
+    super({ el, options, ...args })
     this.target = qs(options.targetSelector || '.js-sticky-target')
     this.sizes = SizesCache.get(el)
     this.isEnabled = true

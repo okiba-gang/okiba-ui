@@ -2,15 +2,11 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
-  overscroll-behavior-y: none;
-}
-
-div {
-  overflow: hidden;
-}
-
-.content {
-  padding: 72px 8px 8px;
+  overscroll-behavior: none;
 }

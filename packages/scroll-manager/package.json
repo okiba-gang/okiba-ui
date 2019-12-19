@@ -10,10 +10,10 @@
     "Andrea Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
   ],
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "@okiba/event-emitter": "^1.1.4",
-    "@okiba/event-manager": "^1.0.0",
+    "@okiba/event-manager": "^1.0.2",
     "@okiba/math": "^1.0.14",
-    "@okiba/sizes-cache": "^1.0.0"
+    "@okiba/sizes-cache": "^1.0.2"
   }
 }

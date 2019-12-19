@@ -11,20 +11,7 @@
   {% block head %}{% endblock %}
 </head>
 <body>
-  <header class="header">
-    <div class="header-info">
-      <img class="header-logo" alt="Okiba" src="https://avatars3.githubusercontent.com/u/44700474?s=48&v=4" />
-      <div>
-        <h1 class="header-title">{{ title }}</h1>
-        {% if description %}
-          <p class="header-description">{{ description }}</p>
-        {% endif %}
-      </div>
-    </div>
-    <nav class="header-nav">
-      {{ menu(routes) }}
-    </nav>
-  </header>
+  {{ menu(routes, title, description) }}
   <main id="app" class="content" data-page-ctrl="{{ pageCtrl }}">
     {% block main %}{% endblock %}
   </main>

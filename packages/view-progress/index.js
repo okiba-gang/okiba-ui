@@ -47,8 +47,8 @@ import { map } from '@okiba/math'
  * @param {Number}  args.options.thresholdBottom  A value added to element's bot position to adjust its bounding area
  */
 export default class ViewProgress extends EventedComponent {
-  constructor({ el, options = {} }) {
-    super({ el, options })
+  constructor({ el, options = {}, ...args }) {
+    super({ el, options, args })
 
     this.sizes = SizesCache.get(el)
     this.isInside = false

@@ -13,9 +13,9 @@ import SizesCache from '@okiba/sizes-cache'
 import { cap } from '@okiba/math'
 
 export default class ScrollElement extends Component {
-  constructor({el, options = {}}) {
+  constructor({ el, options = {}, ...args }) {
     const { enabled, ...restOptions } = options
-    super({ el, options: restOptions })
+    super({ el, options: restOptions, ...args })
     this.sizes = SizesCache.get(this.el)
     enabled && this.enable()
     this.onResize()

@@ -1504,6 +1504,11 @@
   resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.13.tgz#36f03c43e42134500f004e48eb089d59674db37b"
   integrity sha512-orAiJtPs2v1ns2RMWYHm81i3OioUBDgBfh4CucuLHErTywD69CA0/PSu0jCTFYvQkvgeYWFhgLUu7ZNkrmfEaA==
 
+"@okiba/arrays@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.14.tgz#285832653974c89d1235ca664de41c2271cb2128"
+  integrity sha512-/qW7dfLWgjxnM8ifKTidFo2ktB94SrywEcjc0Aca8HwpMXRBConQGNAOs0ExTqwxPidvy43J9DBw0ijKycn/qQ==
+
 "@okiba/component@^1.0.14":
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/@okiba/component/-/component-1.0.14.tgz#c63b8cf4262847923636de464da6c81580ed9223"
@@ -1512,6 +1517,14 @@
     "@okiba/arrays" "^1.0.13"
     "@okiba/dom" "^1.0.14"
 
+"@okiba/component@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@okiba/component/-/component-1.0.15.tgz#45c2e233c88880097eddae55022744a38cd10fd2"
+  integrity sha512-fyaaIWGF3mIHxeB0C36QqtE1m3ca018NY6KM+TJrM9wtZ9LJOOmVuQVlVZVIDfEsTCJS+Fwx20l2GUkzFO46xA==
+  dependencies:
+    "@okiba/arrays" "^1.0.14"
+    "@okiba/dom" "^1.0.15"
+
 "@okiba/dom@^1.0.14":
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.14.tgz#adc997948f98720857b4e50c78f839b23b991fc2"
@@ -1519,10 +1532,22 @@
   dependencies:
     "@okiba/arrays" "^1.0.13"
 
+"@okiba/dom@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.15.tgz#6533df38499a54693bac14b43082574e0f1cb896"
+  integrity sha512-sgHhTJ5xOspFUHB9XsAK/IM7y7dg1+lt4aYROsBVEs8+9hFbVf7h4R2UGSz4PHDYUwJ1jaGE9L9f92qFBd0BMw==
+  dependencies:
+    "@okiba/arrays" "^1.0.14"
+
 "@okiba/event-emitter@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.3.tgz#981377f02548f8cdefb32b40fd4d4b0c55cea0e7"
   integrity sha512-TyukzTUkNX4hSKF1jice+PPT4+XqMFfM4BT82Qh4dNk4SMWnhjNatZPe+SbDqNf7Vf1Re1a8eMjMwPoIW6Nbhg==
+
+"@okiba/event-emitter@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.4.tgz#81ce98c7a88a1ffec13c75a376e3f37ddeb4997c"
+  integrity sha512-KY35tr+Pe3dm39hrF76dHSd2LQpHmTMrD8tjoI2aUiF3X/cNgSWa9fUj9RcZ1nT82DJvpohKEAXQlG7vVdWJCw==
 
 "@okiba/evented-component@^1.1.3":
   version "1.1.3"
@@ -1536,6 +1561,11 @@
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.13.tgz#b4b9fba1d98b49d30d39ff92267334f3d0fcef0f"
   integrity sha512-IFW0uagkU4KPEa5XCejG6U9cycxAZ1OViKg94yhMclYunrr2S+QEt+KEXdWrd8MgkFomoLtoa+hKK+pnh7Tc5A==
+
+"@okiba/math@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.14.tgz#934806144e51bf1c80461e90476d17e7ebe59e51"
+  integrity sha512-JkTKMVJeXdUehznGffo9NVwXKnZpATpBnjYE1/SSlmdIU0AhcODdLT5WMd6ZsxrLU+6d4aMbYyXhGeMKxHmg2A==
 
 "@types/events@*":
   version "3.0.0"

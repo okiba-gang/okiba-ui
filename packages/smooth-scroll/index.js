@@ -32,7 +32,7 @@ import { hasTouch } from '@okiba/detect'
  * @param {Boolean} [args.options.enabled = true]                   Defines if smooth scroll is enabled
  */
 export default class SmoothScroll extends Component {
-  constructor({ el, options = {} }) {
+  constructor({ el, options = {}, ...args }) {
     const {
       elements = '.js-scroll-element',
       enabled = !hasTouch,
@@ -53,7 +53,7 @@ export default class SmoothScroll extends Component {
       }
     }
 
-    super({ el, options: restOptions, components })
+    super({ el, options: restOptions, ...args, components })
     this.listen()
 
     enabled ? ScrollManager.enable() : ScrollManager.disable()

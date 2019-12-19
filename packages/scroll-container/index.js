@@ -12,8 +12,8 @@ import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 
 export default class ScrollContainer extends Component {
-  constructor({ el, options = {} }) {
-    super({ el, options })
+  constructor({ el, options = {}, ...args }) {
+    super({ el, options, ...args })
     this.sizes = SizesCache.get(el)
     this.onResize()
     this.listen()
