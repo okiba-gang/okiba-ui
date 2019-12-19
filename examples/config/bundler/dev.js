@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: [/node_modules\/@okiba\/.*/, config.paths.packages, config.paths.src],
+        include: [/node_modules\/(swiper|dom7|@okiba)\/.*/, config.paths.packages, config.paths.src],
         use: {
           loader: 'babel-loader',
           options: {
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(s)?css$/,
-        use: ['style-loader','css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },

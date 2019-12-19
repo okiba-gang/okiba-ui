@@ -65,14 +65,15 @@
   max-width: 480px;
   position: fixed;
   top: 0;
-  left: 100%;
+  right: 0;
+  transform: translate3d(100%, 0, 0);
   z-index: 2;
   background-color: #1D1D1D;
   color: #FFFFFF;
   transition: transform .2s;
 
   #active-menu:checked ~ & {
-    transform: translate3d(-100%, 0, 0);
+    transform: none;
   }
 
   ul {

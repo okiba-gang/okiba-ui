@@ -1,4 +1,6 @@
+const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('../index')
 
 module.exports = {
@@ -13,6 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: [/node_modules\/(swiper|dom7|@okiba)\/.*/, config.paths.packages, config.paths.src],
         use: {
           loader: 'babel-loader',
           options: {
@@ -23,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.(s)?css$/,
-        use: ['style-loader','css-loader', 'sass-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -36,7 +39,10 @@ module.exports = {
         from: `${config.paths.src}/${config.assetsFolder}`,
         to: config.paths.dist.assets
       }
-    ])
+    ]),
+    new MiniCssExtractPlugin({
+      filename: `../${path.relative(process.cwd(), config.paths.dist.assets)}/[name].css`
+    })
   ],
   mode: 'production'
 }
