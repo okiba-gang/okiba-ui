@@ -34,5 +34,8 @@
     "build:scripts": "webpack --config ./config/bundler/build.js --progress",
     "build": "yarn run clean:dist && yarn run build:scripts && yarn run build:html",
     "start": "yarn run clean:tmp && node server.js"
+  },
+  "dependencies": {
+    "three": "^0.112.1"
   }
 }
