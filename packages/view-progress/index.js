@@ -48,7 +48,7 @@ import { map } from '@okiba/math'
  */
 export default class ViewProgress extends EventedComponent {
   constructor({ el, options = {}, ...args }) {
-    super({ el, options, args })
+    super({ el, options, ...args })
 
     this.sizes = SizesCache.get(el)
     this.isInside = false
