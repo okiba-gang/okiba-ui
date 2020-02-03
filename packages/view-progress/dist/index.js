@@ -5751,11 +5751,10 @@ function (_EventedComponent) {
 
     view_progress_classCallCheck(this, ViewProgress);
 
-    _this = view_progress_possibleConstructorReturn(this, view_progress_getPrototypeOf(ViewProgress).call(this, {
+    _this = view_progress_possibleConstructorReturn(this, view_progress_getPrototypeOf(ViewProgress).call(this, _objectSpread({
       el: el,
-      options: options,
-      args: args
-    }));
+      options: options
+    }, args)));
 
     _defineProperty(view_progress_assertThisInitialized(_this), "update", function (_ref2) {
       var y = _ref2.y,
