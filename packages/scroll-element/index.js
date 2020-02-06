@@ -44,19 +44,19 @@ export default class ScrollElement extends Component {
    */
   update({ y }) {
     this.targetY = cap(y, this.top, this.bottom)
-    if (this.isEnabled && this.targetY !== this.y) {
-      EventManager.on('raf', this.onRaf)
+    if (this.isEnabled && !this.hasRafRequest && this.targetY !== this.y) {
       this.hasRafRequest = true
+      EventManager.on('raf', this.onRaf)
     }
   }
   /**
    * Update the translate Y of the element like to target Y
    */
   onRaf = () => {
-    this.y = this.targetY
-    this.el.style.transform = `translate3d(0, -${this.y}px, 0)`
     this.hasRafRequest = false
     EventManager.off('raf', this.onRaf)
+    this.y = this.targetY
+    this.el.style.transform = `translate3d(0, -${this.y}px, 0)`
   }
   /**
    * Update element bounds after a resize (top and bottom)
@@ -64,6 +64,10 @@ export default class ScrollElement extends Component {
   onResize = () => {
     this.top = this.sizes.top - SizesCache.window.height + (this.options.thresholdTop || 0)
     this.bottom = this.sizes.bottom + (this.options.thresholdBottom || 0)
+    if (!this.hasRafRequest) {
+      this.hasRafRequest = true
+      EventManager.on('raf', this.onRaf)
+    }
   }
   /**
    * Adds event listeners
