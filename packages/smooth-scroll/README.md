@@ -35,10 +35,10 @@ npm i --save @okiba/smooth-scroll
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/smooth-scroll@1.0.4/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/smooth-scroll@1.0.5/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/smooth-scroll@1.0.4/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/smooth-scroll@1.0.5/dist/index.js"></script>
 ```
 
 

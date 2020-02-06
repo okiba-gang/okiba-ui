@@ -6756,15 +6756,20 @@ function (_Component) {
     }, args)));
 
     _defineProperty(_assertThisInitialized(_this), "onRaf", function () {
-      _this.y = _this.targetY;
-      _this.el.style.transform = "translate3d(0, -".concat(_this.y, "px, 0)");
       _this.hasRafRequest = false;
       event_manager["default"].off('raf', _this.onRaf);
+      _this.y = _this.targetY;
+      _this.el.style.transform = "translate3d(0, -".concat(_this.y, "px, 0)");
     });
 
     _defineProperty(_assertThisInitialized(_this), "onResize", function () {
       _this.top = _this.sizes.top - sizes_cache["default"].window.height + (_this.options.thresholdTop || 0);
       _this.bottom = _this.sizes.bottom + (_this.options.thresholdBottom || 0);
+
+      if (!_this.hasRafRequest) {
+        _this.hasRafRequest = true;
+        event_manager["default"].on('raf', _this.onRaf);
+      }
     });
 
     _this.sizes = sizes_cache["default"].get(_this.el);
@@ -6811,9 +6816,9 @@ function (_Component) {
       var y = _ref2.y;
       this.targetY = cap(y, this.top, this.bottom);
 
-      if (this.isEnabled && this.targetY !== this.y) {
-        event_manager["default"].on('raf', this.onRaf);
+      if (this.isEnabled && !this.hasRafRequest && this.targetY !== this.y) {
         this.hasRafRequest = true;
+        event_manager["default"].on('raf', this.onRaf);
       }
     }
     /**
