@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-manager",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Manages and lerps scroll position",
   "main": "dist/index.js",
   "module": "index.js",
@@ -12,8 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/event-emitter": "^1.1.4",
-    "@okiba/event-manager": "^1.0.4",
+    "@okiba/event-manager": "^1.0.5",
     "@okiba/math": "^1.0.14",
-    "@okiba/sizes-cache": "^1.0.4"
+    "@okiba/sizes-cache": "^1.0.5"
   }
 }

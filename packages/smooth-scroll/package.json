@@ -1,6 +1,6 @@
 {
   "name": "@okiba/smooth-scroll",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Scrolls a panel following lerped scroll",
   "main": "dist/index.js",
   "module": "index.js",
@@ -11,9 +11,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/event-manager": "^1.0.4",
+    "@okiba/event-manager": "^1.0.5",
     "@okiba/math": "^1.0.14",
-    "@okiba/scroll-manager": "^1.0.4",
-    "@okiba/sizes-cache": "^1.0.4"
+    "@okiba/scroll-manager": "^1.0.5",
+    "@okiba/sizes-cache": "^1.0.5"
   }
 }
