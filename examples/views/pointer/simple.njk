@@ -1,0 +1,30 @@
+{% set title = 'Pointer' %}
+{% set pageCtrl = 'cursor-simple' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block main %}
+  <style>
+    .Cursor {
+      display: flex;
+      width: 32px;
+      height: 32px;
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      border: solid 2px currentColor;
+      border-radius: 50%;
+      color: #02BFF2;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .Cursor.hidden {
+      opacity: 0;
+    }
+  </style>
+
+  <h1 data-cursor="title">Pointer</h1>
+  <a href="#">Anchor</a>
+  <div class="Cursor hidden"></div>
+{% endblock %}

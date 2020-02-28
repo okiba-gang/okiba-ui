@@ -1,0 +1,69 @@
+{% set title = 'Pointer' %}
+{% set pageCtrl = 'cursor-complex' %}
+
+{% extends 'templates/_default.njk' %}
+
+{% block main %}
+  <style>
+    .Cursor {
+      pointer-events: none;
+    }
+
+    .Cursor_circle {
+      width: 48px;
+      height: 48px;
+      z-index: 999;
+      transition: opacity .4s;
+    }
+
+    .Cursor_circle span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: solid 2px currentColor;
+      border-radius: 50%;
+      color: #02BFF2;
+      transition: transform .4s;
+    }
+
+    .Cursor.morph .Cursor_circle span {
+      transform: scale(1.25);
+    }
+
+    .Cursor.down .Cursor_circle span {
+      transform: scale(0.6666);
+    }
+
+    .Cursor .Cursor_circle:first-child {
+      opacity: .2;
+    }
+
+    .Cursor .Cursor_circle:nth-child(2) {
+      opacity: .4;
+    }
+
+    .Cursor_circle:last-child {
+      opacity: 1;
+    }
+
+    .Cursor:not(.morph):not(.down) .Cursor_circle:nth-child(2) span {
+      transform: scale(0.6666);
+    }
+
+    .Cursor:not(.morph):not(.down) .Cursor_circle:last-child span {
+      transform: scale(0.3333);
+    }
+
+    .Cursor.hidden .Cursor_circle {
+      opacity: 0 !important;
+    }
+  </style>
+
+  <h1 data-cursor="title">Pointer</h1>
+  <a href="#">Anchor</a>
+  <div class="Cursor hidden">
+    <div class="Cursor_circle"><span></span></div>
+    <div class="Cursor_circle"><span></span></div>
+    <div class="Cursor_circle"><span></span></div>
+  </div>
+{% endblock %}
