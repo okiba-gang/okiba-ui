@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 130);
+/******/ 	return __webpack_require__(__webpack_require__.s = 129);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2326,87 +2326,7 @@ module.exports = function (METHOD_NAME) {
 
 
 /***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return arrayOrOne; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return castArray; });
-/* unused harmony export spliceOne */
-/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(56);
-/* harmony import */ var core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/**
- * @module arrays
- * @description Array utils for okiba js
- */
-
-/**
- * Return the first element if it only contains one
- * @example
- * const els = arrayOrOne([🍏, 🍌])
- * console.log(els) // [🍏, 🍌]
- *
- * const els = arrayOrOne([🍏])
- * console.log(els) // 🍏
- *
- * @param {Array-like} arrayLike The options object.
- * @returns {any} The first element or the argument, undefined if empty array
- */
-function arrayOrOne(arrayLike) {
-  if (arrayLike === void 0 || arrayLike.length === 0) {
-    return void 0;
-  }
-
-  if (arrayLike.length === 1) {
-    return arrayLike[0];
-  }
-
-  return arrayLike;
-}
-/**
- * Cast an array-like object or single element to Array
- * @example
- * const elements = castArray(document.querySelectorAll('p')) // [p, p]
- * const fruits = castArray(🍒) // [🍒]
- *
- * @param {any} castable Array to cast
- * @returns {Array} The array-like converted to Array, or an Array containing the element
- */
-
-function castArray(castable) {
-  if (castable === void 0) return castable;
-
-  if (castable instanceof Array) {
-    return castable;
-  }
-
-  if (castable.callee || castable instanceof NodeList || castable instanceof DOMTokenList || castable instanceof HTMLCollection) {
-    return Array.prototype.slice.call(castable);
-  }
-
-  return [castable];
-}
-/**
- * Removes an element from an array in-place without causing Garbage Collection
- * @example
- * const array = [🍎, 🍐, 🍌]
- * spliceOne(array, 1)
- * console.log(array) // Logs: [🍎, 🍌]
- * @param {Array} array Array you want to remove an element from
- * @param {Number} index The index of the element to remove
- */
-
-function spliceOne(array, index) {
-  for (var i = index, k = i + 1, n = array.length; k < n; i += 1, k += 1) {
-    array[i] = array[k];
-  }
-
-  --array.length;
-}
-
-/***/ }),
+/* 38 */,
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4601,23 +4521,278 @@ module.exports = function (METHOD_NAME, argument) {
 
 
 /***/ }),
-/* 112 */
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(5);
+var $find = __webpack_require__(36).find;
+var addToUnscopables = __webpack_require__(86);
+
+var FIND = 'find';
+var SKIPS_HOLES = true;
+
+// Shouldn't skip holes
+if (FIND in []) Array(1)[FIND](function () { SKIPS_HOLES = false; });
+
+// `Array.prototype.find` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.find
+$({ target: 'Array', proto: true, forced: SKIPS_HOLES }, {
+  find: function find(callbackfn /* , that = undefined */) {
+    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables(FIND);
+
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(5);
+var $entries = __webpack_require__(124).entries;
+
+// `Object.entries` method
+// https://tc39.github.io/ecma262/#sec-object.entries
+$({ target: 'Object', stat: true }, {
+  entries: function entries(O) {
+    return $entries(O);
+  }
+});
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var DESCRIPTORS = __webpack_require__(7);
+var objectKeys = __webpack_require__(39);
+var toIndexedObject = __webpack_require__(9);
+var propertyIsEnumerable = __webpack_require__(58).f;
+
+// `Object.{ entries, values }` methods implementation
+var createMethod = function (TO_ENTRIES) {
+  return function (it) {
+    var O = toIndexedObject(it);
+    var keys = objectKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+    while (length > i) {
+      key = keys[i++];
+      if (!DESCRIPTORS || propertyIsEnumerable.call(O, key)) {
+        result.push(TO_ENTRIES ? [key, O[key]] : O[key]);
+      }
+    }
+    return result;
+  };
+};
+
+module.exports = {
+  // `Object.entries` method
+  // https://tc39.github.io/ecma262/#sec-object.entries
+  entries: createMethod(true),
+  // `Object.values` method
+  // https://tc39.github.io/ecma262/#sec-object.values
+  values: createMethod(false)
+};
+
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var redefine = __webpack_require__(13);
+var anObject = __webpack_require__(10);
+var fails = __webpack_require__(1);
+var flags = __webpack_require__(126);
+
+var TO_STRING = 'toString';
+var RegExpPrototype = RegExp.prototype;
+var nativeToString = RegExpPrototype[TO_STRING];
+
+var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+// FF44- RegExp#toString has a wrong name
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
+
+// `RegExp.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+if (NOT_GENERIC || INCORRECT_NAME) {
+  redefine(RegExp.prototype, TO_STRING, function toString() {
+    var R = anObject(this);
+    var p = String(R.source);
+    var rf = R.flags;
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
+    return '/' + p + '/' + f;
+  }, { unsafe: true });
+}
+
+
+/***/ }),
+/* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var anObject = __webpack_require__(10);
+
+// `RegExp.prototype.flags` getter implementation
+// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+module.exports = function () {
+  var that = anObject(this);
+  var result = '';
+  if (that.global) result += 'g';
+  if (that.ignoreCase) result += 'i';
+  if (that.multiline) result += 'm';
+  if (that.dotAll) result += 's';
+  if (that.unicode) result += 'u';
+  if (that.sticky) result += 'y';
+  return result;
+};
+
+
+/***/ }),
+/* 127 */,
+/* 128 */,
+/* 129 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export byId */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return qs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return qsa; });
-/* unused harmony export on */
-/* unused harmony export off */
-/* unused harmony export eventCoords */
-/* unused harmony export offset */
-/* unused harmony export getElements */
-/* unused harmony export isChildOf */
-/* unused harmony export delegate */
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _okiba_arrays__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(38);
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
+var es_symbol = __webpack_require__(40);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
+var es_symbol_description = __webpack_require__(41);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__(42);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
+var es_array_find = __webpack_require__(122);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__(15);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.entries.js
+var es_object_entries = __webpack_require__(123);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-prototype-of.js
+var es_object_get_prototype_of = __webpack_require__(59);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
+var es_object_keys = __webpack_require__(43);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
+var es_object_to_string = __webpack_require__(22);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
+var es_regexp_to_string = __webpack_require__(125);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__(23);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
+var web_dom_collections_for_each = __webpack_require__(44);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(24);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
+var es_array_concat = __webpack_require__(26);
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.slice.js
+var es_array_slice = __webpack_require__(56);
+
+// CONCATENATED MODULE: ./packages/pointer/node_modules/@okiba/arrays/index.js
+
+
+/**
+ * @module arrays
+ * @description Array utils for okiba js
+ */
+
+/**
+ * Return the first element if it only contains one
+ * @example
+ * const els = arrayOrOne([🍏, 🍌])
+ * console.log(els) // [🍏, 🍌]
+ *
+ * const els = arrayOrOne([🍏])
+ * console.log(els) // 🍏
+ *
+ * @param {Array-like} arrayLike The options object.
+ * @returns {any} The first element or the argument, undefined if empty array
+ */
+function arrayOrOne(arrayLike) {
+  if (arrayLike === void 0 || arrayLike.length === 0) {
+    return void 0;
+  }
+
+  if (arrayLike.length === 1) {
+    return arrayLike[0];
+  }
+
+  return arrayLike;
+}
+/**
+ * Cast an array-like object or single element to Array
+ * @example
+ * const elements = castArray(document.querySelectorAll('p')) // [p, p]
+ * const fruits = castArray(🍒) // [🍒]
+ *
+ * @param {any} castable Array to cast
+ * @returns {Array} The array-like converted to Array, or an Array containing the element
+ */
+
+function castArray(castable) {
+  if (castable === void 0) return castable;
+
+  if (castable instanceof Array) {
+    return castable;
+  }
+
+  if (castable.callee || castable instanceof NodeList || castable instanceof DOMTokenList || castable instanceof HTMLCollection) {
+    return Array.prototype.slice.call(castable);
+  }
+
+  return [castable];
+}
+/**
+ * Removes an element from an array in-place without causing Garbage Collection
+ * @example
+ * const array = [🍎, 🍐, 🍌]
+ * spliceOne(array, 1)
+ * console.log(array) // Logs: [🍎, 🍌]
+ * @param {Array} array Array you want to remove an element from
+ * @param {Number} index The index of the element to remove
+ */
+
+function spliceOne(array, index) {
+  for (var i = index, k = i + 1, n = array.length; k < n; i += 1, k += 1) {
+    array[i] = array[k];
+  }
+
+  --array.length;
+}
+// CONCATENATED MODULE: ./packages/pointer/node_modules/@okiba/dom/index.js
 
 
 /**
@@ -4675,14 +4850,14 @@ function qs(selector) {
 
 function qsa(selector) {
   var element = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-  return Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_1__[/* castArray */ "b"])(element.querySelectorAll(selector));
+  return castArray(element.querySelectorAll(selector));
 }
 
 function evt(source, type, handler, action, options) {
   if (!type || !handler) return false;
-  var elements = Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_1__[/* castArray */ "b"])(source);
-  var types = Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_1__[/* castArray */ "b"])(type);
-  var handlers = Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_1__[/* castArray */ "b"])(handler);
+  var elements = castArray(source);
+  var types = castArray(type);
+  var handlers = castArray(handler);
 
   for (var i = 0; i < elements.length; ++i) {
     for (var j = 0; j < types.length; ++j) {
@@ -4840,7 +5015,7 @@ function getElements(target) {
   }
 
   if (target instanceof NodeList) {
-    els = Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_1__[/* castArray */ "b"])(target);
+    els = castArray(target);
   }
 
   if (target instanceof Array) {
@@ -4932,387 +5107,10 @@ function delegate(target, event, callback, options) {
     off(window, event, check);
   };
 }
-
-/***/ }),
-/* 113 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
-/* harmony import */ var core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_concat__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(85);
-/* harmony import */ var core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(43);
-/* harmony import */ var core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_keys__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(44);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _okiba_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(112);
-/* harmony import */ var _okiba_arrays__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(38);
-
-
-
-
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-/**
- * @module Component
- * @description  Manages a DOM component, binds UI and recursively binds child components.
- * Can be extended or instantiated
- * @example
- * // ./components/Slider.js
- *
- * import Component from '@okiba/component'
- * import SliderControls from '@components/SliderControls'
- *
- * const ui = {
- *   slides: '.slide',
- * }
- *
- * const components = {
- *   controls: {
- *     selector: '.slider-controls', type: SliderControls, options: {big: true}
- *   }
- * }
- *
- * class Slider extends Component {
- *   constructor({el, options}) {
- *     super({el, ui, components, options})
- *
- *     this.ui.slides.forEach(
- *       slide => slide.style.opacity = 0
- *     )
- *
- *     this.components.controls.forEach(
- *       controls => controls.onNext(this.next.bind(this))
- *     )
- *   }
- * }
- *
- * @example
- * // ./main.js
- *
- * import {qs} from '@okiba/dom'
- * import Component from '@okiba/component'
- * import Slider from './components/Slider'
- *
- * const app = new Component({
- *   el: qs('#app'),
- *   components: {
- *     selector: '.slider', type: Slider
- *   }
- * })
- */
-
-
-
-function bindUi(ui, el) {
-  return Object.keys(ui).reduce(function (hash, key) {
-    var _ui$key = ui[key],
-        _ui$key$optional = _ui$key.optional,
-        optional = _ui$key$optional === void 0 ? false : _ui$key$optional,
-        _ui$key$asArray = _ui$key.asArray,
-        asArray = _ui$key$asArray === void 0 ? false : _ui$key$asArray;
-    var els = Object(_okiba_dom__WEBPACK_IMPORTED_MODULE_4__[/* qsa */ "b"])(ui[key].selector || ui[key], el);
-
-    if (els.length) {
-      hash[key] = asArray ? els : Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_5__[/* arrayOrOne */ "a"])(els);
-    } else if (!optional) {
-      throw new Error("[!!] [Component] Cant't find UI element for selector: ".concat(ui[key]));
-    }
-
-    return hash;
-  }, {});
-}
-
-function bindComponents(components, el) {
-  return Object.keys(components).reduce(function (hash, key) {
-    var _components$key = components[key],
-        type = _components$key.type,
-        selector = _components$key.selector,
-        options = _components$key.options,
-        _components$key$ghost = _components$key.ghost,
-        ghost = _components$key$ghost === void 0 ? false : _components$key$ghost,
-        _components$key$optio = _components$key.optional,
-        optional = _components$key$optio === void 0 ? false : _components$key$optio,
-        _components$key$asArr = _components$key.asArray,
-        asArray = _components$key$asArr === void 0 ? false : _components$key$asArr;
-
-    if (typeof selector !== 'string' && !ghost || !type) {
-      throw new Error("[!!] [Component] Invalid component configuration for key: ".concat(key));
-    }
-
-    var els = ghost ? [el] : Object(_okiba_dom__WEBPACK_IMPORTED_MODULE_4__[/* qsa */ "b"])(selector, el);
-
-    if (els.length) {
-      els = asArray ? els : Object(_okiba_arrays__WEBPACK_IMPORTED_MODULE_5__[/* arrayOrOne */ "a"])(els);
-      hash[key] = Array.isArray(els) ? els.map(function (n) {
-        return new type({
-          el: n,
-          options: options
-        });
-      }) : new type({
-        el: els,
-        options: options
-      });
-    } else if (!optional) {
-      throw new Error("[!!] [Component] Cant't find node with selector ".concat(selector, " for sub-component: ").concat(key));
-    }
-
-    return hash;
-  }, {});
-}
-/**
- * Accepts an __hash__ whose properties can be:
- * @param {Object} args Arguments to create a component
- * @param   {Element}   {el}       DOM Element to be bound
- * @param   {Object}    [{ui}]
- * UI hash where keys are name and values are selectors
- * ```javascript
- * { buttonNext: '#buttonNext' }
- * ```
- * Becomes:
- * ```javascript
- * this.ui.buttonNext
- * ```
- *
- * @param   {Object}    [{components}]
- * Components hash for childs to bind, keys are names and values are component initialization props:
- * ```javascript
- * {
- *   slider: {
- *     // Matched using [qs]('https://github/okiba-gang/okiba/packages/dom'), scoped to the current component element
- *     selector: '.domSelector',
- *     // Component class, extending Okiba Component
- *     type: Slider,
- *     // Options hash
- *     options: {fullScreen: true}
- *   }
- *  viewProgress: {
- *     // Bind ViewProgress component on parent Component dom node
- *     ghost: true,
- *     // Component class, extending Okiba Component
- *     type: ViewProgress
- *   }
- * }
- * ```
- *
- * Becomes:
- * ```javascript
- * this.components.slider
- * ```
- * @param   {Object}    [{options}]         Custom options passed to the component
- */
-
-
-var Component =
-/*#__PURE__*/
-function () {
-  function Component(args) {
-    _classCallCheck(this, Component);
-
-    this.el = args.el;
-
-    if (args.options) {
-      this.options = args.options;
-    }
-
-    if (args.ui) {
-      this.ui = bindUi(args.ui, args.el);
-    }
-
-    if (args.components) {
-      this.components = bindComponents(args.components, args.el);
-    }
-  }
-  /**
-   * @function onDestroy
-   * @description Virtual method, needs to be overridden
-   * It's the place to call cleanup functions as it will
-   * be called when your component is destroyed
-   */
-
-  /**
-   * Should not be overridden, will call `onDestroy`
-   * and forward destruction to all child components
-   */
-
-
-  _createClass(Component, [{
-    key: "destroy",
-    value: function destroy() {
-      var _this = this;
-
-      if (this.onDestroy) {
-        this.onDestroy();
-      }
-
-      if (this.components) {
-        Object.keys(this.components).forEach(function (key) {
-          return (_this.components[key].length ? _this.components[key] : [_this.components[key]]).forEach(function (c) {
-            return c.destroy();
-          });
-        });
-      }
-
-      this.components = null;
-    }
-  }]);
-
-  return Component;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Component);
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(5);
-var $filter = __webpack_require__(36).filter;
-var fails = __webpack_require__(1);
-var arrayMethodHasSpeciesSupport = __webpack_require__(37);
-
-var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter');
-// Edge 14- issue
-var USES_TO_LENGTH = HAS_SPECIES_SUPPORT && !fails(function () {
-  [].filter.call({ length: -1, 0: 1 }, function (it) { throw it; });
-});
-
-// `Array.prototype.filter` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.filter
-// with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH }, {
-  filter: function filter(callbackfn /* , thisArg */) {
-    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(5);
-var fails = __webpack_require__(1);
-var toIndexedObject = __webpack_require__(9);
-var nativeGetOwnPropertyDescriptor = __webpack_require__(27).f;
-var DESCRIPTORS = __webpack_require__(7);
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
-var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
-$({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
-    return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
-  }
-});
-
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__(5);
-var DESCRIPTORS = __webpack_require__(7);
-var ownKeys = __webpack_require__(84);
-var toIndexedObject = __webpack_require__(9);
-var getOwnPropertyDescriptorModule = __webpack_require__(27);
-var createProperty = __webpack_require__(57);
-
-// `Object.getOwnPropertyDescriptors` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
-$({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
-    var O = toIndexedObject(object);
-    var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-    var keys = ownKeys(O);
-    var result = {};
-    var index = 0;
-    var key, descriptor;
-    while (keys.length > index) {
-      descriptor = getOwnPropertyDescriptor(O, key = keys[index++]);
-      if (descriptor !== undefined) createProperty(result, key, descriptor);
-    }
-    return result;
-  }
-});
-
-
-/***/ }),
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
-var es_symbol = __webpack_require__(40);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
-var es_symbol_description = __webpack_require__(41);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
-var es_symbol_iterator = __webpack_require__(42);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
-var es_array_filter = __webpack_require__(114);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__(15);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__(115);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
-var es_object_get_own_property_descriptors = __webpack_require__(116);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-prototype-of.js
-var es_object_get_prototype_of = __webpack_require__(59);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__(43);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.to-string.js
-var es_object_to_string = __webpack_require__(22);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__(23);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__(44);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__(24);
-
-// EXTERNAL MODULE: ./node_modules/@okiba/component/index.js
-var component = __webpack_require__(113);
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.map.js
 var es_map = __webpack_require__(60);
 
-// CONCATENATED MODULE: ./node_modules/@okiba/event-emitter/index.js
+// CONCATENATED MODULE: ./packages/pointer/node_modules/@okiba/event-emitter/index.js
 
 
 
@@ -5409,7 +5207,7 @@ function () {
 }();
 
 /* harmony default export */ var event_emitter = (EventEmitter);
-// CONCATENATED MODULE: ./node_modules/@okiba/evented-component/index.js
+// CONCATENATED MODULE: ./packages/pointer/Pointer.js
 
 
 
@@ -5418,141 +5216,518 @@ function () {
 
 
 
+
+
+
+
+
+
+var _temp;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function evented_component_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function evented_component_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function evented_component_createClass(Constructor, protoProps, staticProps) { if (protoProps) evented_component_defineProperties(Constructor.prototype, protoProps); if (staticProps) evented_component_defineProperties(Constructor, staticProps); return Constructor; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Pointer_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Pointer_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function Pointer_createClass(Constructor, protoProps, staticProps) { if (protoProps) Pointer_defineProperties(Constructor.prototype, protoProps); if (staticProps) Pointer_defineProperties(Constructor, staticProps); return Constructor; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
- * @module EventedComponent
- * @description A component that has events.
- * Extends [Component](https://github.com/okiba-gang/okiba/tree/master/packages/component) and
- * composes with [EventEmitter](https://github.com/okiba-gang/okiba/tree/master/packages/event-emitter),
- * inerithing both's method sets.
- * @see  {"Component": "component"}
+ * @module Pointer
+ * @description Handles pointer movements and interceptions
  * @example
- * // FetchButton.js
+ * import Pointer from '@okiba/pointer'
  *
- * import EventedComponent from '@okiba/evented-component'
- * import {on, off} from '@okiba/dom'
+ * function onMoveCallback({ x, y }, target) {...}
+ * function onViewportEnterCallback() {...}
+ * function onViewportLeavesCallback() {...}
+ * function onLinkEnter({ x, y }, target) {...}
+ * function onLinkLeave({ x, y }, target) {...}
  *
- * class FetchButton extends EventedComponent {
- *   constructor(args) {
- *     super(args)
+ * Pointer.on('move', onMoveCallback)
+ * Pointer.on('viewportEnter', onViewportEnterCallback)
+ * Pointer.on('viewportLeave', onViewportLeaveCallback)
+ * Pointer.addInterceptors({
+ *  'a': {
+ *    onEnter: onLinkEnter
+ *    onLeave: onLinkLeave
+ *  }
+ * })
  *
- *     this.onClick = this.onClick.bind(this)
- *     on(this.el, 'click', this.onClick)
- *   }
- *
- *   onClick() {
- *     fetch('/api')
- *       .then(data => this.emit('update', data))
- *   }
- *
- *   onDestroy() {
- *     off(this.el, 'click', this.onClick)
- *   }
- * }
- *
+ */
+
+
+/* harmony default export */ var pointer_Pointer = (new (_temp =
+/*#__PURE__*/
+function (_EventEmitter) {
+  _inherits(Pointer, _EventEmitter);
+
+  /**
+   * @constructor
+   */
+  function Pointer() {
+    var _this;
+
+    Pointer_classCallCheck(this, Pointer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Pointer).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "onViewportEnter", function (_ref) {
+      var target = _ref.target;
+
+      _this.emit('viewportEnter', {
+        coords: _this.coords,
+        target: target
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onViewportLeave", function (_ref2) {
+      var target = _ref2.target;
+
+      _this.emit('viewportLeave', {
+        coords: _this.coords,
+        target: target
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onOver", function (_ref3) {
+      var target = _ref3.target;
+
+      var callbacks = _this.getInterceptionCallbacks(target);
+
+      if (callbacks) {
+        _this.onTargetEnter(target, callbacks);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onDown", function (_ref4) {
+      var target = _ref4.target;
+
+      _this.emit('down', {
+        coords: _this.coords,
+        target: target
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onUp", function (_ref5) {
+      var target = _ref5.target;
+
+      _this.emit('up', {
+        coords: _this.coords,
+        target: target
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onMove", function (e) {
+      var _eventCoords = eventCoords(e),
+          x = _eventCoords.clientX,
+          y = _eventCoords.clientY;
+
+      _this.coords = {
+        x: x,
+        y: y
+      };
+
+      _this.emit('move', {
+        coords: _this.coords,
+        target: e.target
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onTargetEnter", function (target) {
+      var _ref6 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          onEnter = _ref6.onEnter,
+          onLeave = _ref6.onLeave;
+
+      _this.interception = {
+        target: target,
+        onEnter: onEnter,
+        onLeave: onLeave
+      };
+
+      if (typeof onEnter === 'function') {
+        onEnter({
+          coords: _this.coords,
+          target: target
+        });
+      }
+
+      on(target, 'mouseleave', _this.onTargetLeave);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onTargetLeave", function () {
+      var _this$interception = _this.interception,
+          target = _this$interception.target,
+          onLeave = _this$interception.onLeave;
+      off(target, 'mouseleave', _this.onTargetLeave);
+
+      if (typeof onLeave === 'function') {
+        onLeave({
+          coords: _this.coords,
+          target: target
+        });
+      }
+
+      _this.interception = null;
+    });
+
+    _this.coords = {
+      x: 0,
+      y: 0
+    };
+    _this.interceptors = {};
+    _this.interception = null;
+
+    _this.listen();
+
+    return _this;
+  }
+  /**
+   * Triggers viewportEnter event
+   * @param {Event} e The mouseenter event
+   */
+
+
+  Pointer_createClass(Pointer, [{
+    key: "getInterceptionCallbacks",
+
+    /**
+     * Retrieves interception callbacks by event target
+     * @param {HTMLElement} target The event target
+     * @returns {Object}
+     */
+    value: function getInterceptionCallbacks(target) {
+      var selectors = Object.keys(this.interceptors);
+      if (!selectors.length) return undefined;
+      var key = selectors.find(function (selector) {
+        return target.matches(selector);
+      });
+      return !!key && this.interceptors[key];
+    }
+    /**
+     * Adds interceptors
+     * @param {Object} interceptors The interceptors collection
+     */
+
+  }, {
+    key: "addInterceptors",
+    value: function addInterceptors() {
+      var _this2 = this;
+
+      var interceptors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      Object.entries(interceptors).forEach(function (_ref7) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+            selector = _ref8[0],
+            _ref8$ = _ref8[1],
+            callbacks = _ref8$ === void 0 ? {} : _ref8$;
+
+        if (_this2.interceptors.hasOwnProperty(selector)) {
+          console.warn("An interceptor for selector ".concat(selector, " already exists"));
+        } else {
+          _this2.interceptors[selector] = callbacks;
+        }
+      });
+    }
+    /**
+     * Removes interceptors
+     * @param {String[]} selectors The interception target selectors
+     */
+
+  }, {
+    key: "removeInterceptors",
+    value: function removeInterceptors() {
+      var _this3 = this;
+
+      var selectors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      selectors.forEach(function (selector) {
+        if (_this3.interceptors.hasOwnProperty(selector)) {
+          delete _this3.interceptors[selector];
+        } else {
+          console.warn("Trying to remove an undefined interceptor for selector ".concat(selector));
+        }
+      });
+    }
+  }, {
+    key: "listen",
+    value: function listen() {
+      on(document, 'mouseenter', this.onViewportEnter);
+      on(document, 'mouseleave', this.onViewportLeave);
+      on(document, 'mouseover', this.onOver);
+      on(document, 'mousedown', this.onDown);
+      on(document, 'mouseup', this.onUp);
+      on(window, 'mousemove', this.onMove);
+    }
+    /**
+     * Destroys pointer
+     */
+
+  }, {
+    key: "unlisten",
+    value: function unlisten() {
+      off(document, 'mouseenter', this.onViewportEnter);
+      off(document, 'mouseleave', this.onViewportLeave);
+      off(document, 'mouseover', this.onOver);
+      off(document, 'mousedown', this.onDown);
+      off(document, 'mouseup', this.onUp);
+      off(window, 'mousemove', this.onMove);
+    }
+  }]);
+
+  return Pointer;
+}(event_emitter), _temp)());
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__(85);
+
+// CONCATENATED MODULE: ./packages/pointer/node_modules/@okiba/component/index.js
+
+
+
+
+
+function component_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function component_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function component_createClass(Constructor, protoProps, staticProps) { if (protoProps) component_defineProperties(Constructor.prototype, protoProps); if (staticProps) component_defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * @module Component
+ * @description  Manages a DOM component, binds UI and recursively binds child components.
+ * Can be extended or instantiated
  * @example
- * // UIPiece.js
+ * // ./components/Slider.js
  *
  * import Component from '@okiba/component'
+ * import SliderControls from '@components/SliderControls'
  *
- * const components = {
- *   fetchButton: {selector: '.fetch-button', type: FetchButton}
+ * const ui = {
+ *   slides: '.slide',
  * }
  *
- * class UIPiece extends Component {
+ * const components = {
+ *   controls: {
+ *     selector: '.slider-controls', type: SliderControls, options: {big: true}
+ *   }
+ * }
+ *
+ * class Slider extends Component {
  *   constructor({el, options}) {
  *     super({el, ui, components, options})
  *
- *     this.components.fetchButton.on(
- *       'update', this.update
+ *     this.ui.slides.forEach(
+ *       slide => slide.style.opacity = 0
  *     )
- *   }
  *
- *   onDestroy() {
- *     this.components.fetchButton.off(
- *       'update', this.update
+ *     this.components.controls.forEach(
+ *       controls => controls.onNext(this.next.bind(this))
  *     )
  *   }
  * }
+ *
+ * @example
+ * // ./main.js
+ *
+ * import {qs} from '@okiba/dom'
+ * import Component from '@okiba/component'
+ * import Slider from './components/Slider'
+ *
+ * const app = new Component({
+ *   el: qs('#app'),
+ *   components: {
+ *     selector: '.slider', type: Slider
+ *   }
+ * })
  */
 
 
 
-var evented_component_EventedComponent =
+function bindUi(ui, el) {
+  return Object.keys(ui).reduce(function (hash, key) {
+    var _ui$key = ui[key],
+        _ui$key$optional = _ui$key.optional,
+        optional = _ui$key$optional === void 0 ? false : _ui$key$optional,
+        _ui$key$asArray = _ui$key.asArray,
+        asArray = _ui$key$asArray === void 0 ? false : _ui$key$asArray;
+    var els = qsa(ui[key].selector || ui[key], el);
+
+    if (els.length) {
+      hash[key] = asArray ? els : arrayOrOne(els);
+    } else if (!optional) {
+      throw new Error("[!!] [Component] Cant't find UI element for selector: ".concat(ui[key]));
+    }
+
+    return hash;
+  }, {});
+}
+
+function bindComponents(components, el) {
+  return Object.keys(components).reduce(function (hash, key) {
+    var _components$key = components[key],
+        type = _components$key.type,
+        selector = _components$key.selector,
+        options = _components$key.options,
+        _components$key$ghost = _components$key.ghost,
+        ghost = _components$key$ghost === void 0 ? false : _components$key$ghost,
+        _components$key$optio = _components$key.optional,
+        optional = _components$key$optio === void 0 ? false : _components$key$optio,
+        _components$key$asArr = _components$key.asArray,
+        asArray = _components$key$asArr === void 0 ? false : _components$key$asArr;
+
+    if (typeof selector !== 'string' && !ghost || !type) {
+      throw new Error("[!!] [Component] Invalid component configuration for key: ".concat(key));
+    }
+
+    var els = ghost ? [el] : qsa(selector, el);
+
+    if (els.length) {
+      els = asArray ? els : arrayOrOne(els);
+      hash[key] = Array.isArray(els) ? els.map(function (n) {
+        return new type({
+          el: n,
+          options: options
+        });
+      }) : new type({
+        el: els,
+        options: options
+      });
+    } else if (!optional) {
+      throw new Error("[!!] [Component] Cant't find node with selector ".concat(selector, " for sub-component: ").concat(key));
+    }
+
+    return hash;
+  }, {});
+}
+/**
+ * Accepts an __hash__ whose properties can be:
+ * @param {Object} args Arguments to create a component
+ * @param   {Element}   {el}       DOM Element to be bound
+ * @param   {Object}    [{ui}]
+ * UI hash where keys are name and values are selectors
+ * ```javascript
+ * { buttonNext: '#buttonNext' }
+ * ```
+ * Becomes:
+ * ```javascript
+ * this.ui.buttonNext
+ * ```
+ *
+ * @param   {Object}    [{components}]
+ * Components hash for childs to bind, keys are names and values are component initialization props:
+ * ```javascript
+ * {
+ *   slider: {
+ *     // Matched using [qs]('https://github/okiba-gang/okiba/packages/dom'), scoped to the current component element
+ *     selector: '.domSelector',
+ *     // Component class, extending Okiba Component
+ *     type: Slider,
+ *     // Options hash
+ *     options: {fullScreen: true}
+ *   }
+ *  viewProgress: {
+ *     // Bind ViewProgress component on parent Component dom node
+ *     ghost: true,
+ *     // Component class, extending Okiba Component
+ *     type: ViewProgress
+ *   }
+ * }
+ * ```
+ *
+ * Becomes:
+ * ```javascript
+ * this.components.slider
+ * ```
+ * @param   {Object}    [{options}]         Custom options passed to the component
+ */
+
+
+var Component =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(EventedComponent, _Component);
+function () {
+  function Component(args) {
+    component_classCallCheck(this, Component);
 
-  function EventedComponent(args) {
-    var _this;
+    this.el = args.el;
 
-    evented_component_classCallCheck(this, EventedComponent);
+    if (args.options) {
+      this.options = args.options;
+    }
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(EventedComponent).call(this, args));
-    _this.emitter = new event_emitter();
-    /**
-     * @function on
-     * @see {"EventEmitter::on": "event-emitter#emitname-data"}
-     */
+    if (args.ui) {
+      this.ui = bindUi(args.ui, args.el);
+    }
 
-    _this.on = _this.emitter.on.bind(_this.emitter);
-    /**
-     * @function off
-     * @see {"EventEmitter::off": "event-emitter##offname-handler"}
-     */
-
-    _this.off = _this.emitter.off.bind(_this.emitter);
-    /**
-     * @function emit
-     * @see {"EventEmitter::emit": "event-emitter#emitname-data"}
-     */
-
-    _this.emit = _this.emitter.emit.bind(_this.emitter);
-    return _this;
+    if (args.components) {
+      this.components = bindComponents(args.components, args.el);
+    }
   }
   /**
-   *
-   * @see  {"Component": "component#destroy"}
+   * @function onDestroy
+   * @description Virtual method, needs to be overridden
+   * It's the place to call cleanup functions as it will
+   * be called when your component is destroyed
+   */
+
+  /**
+   * Should not be overridden, will call `onDestroy`
+   * and forward destruction to all child components
    */
 
 
-  evented_component_createClass(EventedComponent, [{
+  component_createClass(Component, [{
     key: "destroy",
     value: function destroy() {
-      component["a" /* default */].prototype.destroy.apply(this);
-      this.emitter.destroy();
+      var _this = this;
+
+      if (this.onDestroy) {
+        this.onDestroy();
+      }
+
+      if (this.components) {
+        Object.keys(this.components).forEach(function (key) {
+          return (_this.components[key].length ? _this.components[key] : [_this.components[key]]).forEach(function (c) {
+            return c.destroy();
+          });
+        });
+      }
+
+      this.components = null;
     }
   }]);
 
-  return EventedComponent;
-}(component["a" /* default */]);
+  return Component;
+}();
 
+/* harmony default export */ var component = (Component);
+// EXTERNAL MODULE: ./packages/event-manager/index.js + 3 modules
+var event_manager = __webpack_require__(11);
 
 // EXTERNAL MODULE: ./packages/sizes-cache/index.js + 2 modules
 var sizes_cache = __webpack_require__(25);
 
-// EXTERNAL MODULE: ./packages/event-manager/index.js + 3 modules
-var event_manager = __webpack_require__(11);
+// EXTERNAL MODULE: ./packages/detect/index.js
+var detect = __webpack_require__(14);
 
-// CONCATENATED MODULE: ./packages/view-progress/node_modules/@okiba/math/index.js
+// CONCATENATED MODULE: ./packages/pointer/node_modules/@okiba/math/index.js
 /**
  * @module math
  * @description Collection of math functions
@@ -5650,8 +5825,7 @@ function round(n) {
 
   return Math.round(n * roundMap[p]) / roundMap[p];
 }
-// CONCATENATED MODULE: ./packages/view-progress/index.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return view_progress_ViewProgress; });
+// CONCATENATED MODULE: ./packages/pointer/Cursor.js
 
 
 
@@ -5662,194 +5836,254 @@ function round(n) {
 
 
 
+function Cursor_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Cursor_typeof = function _typeof(obj) { return typeof obj; }; } else { Cursor_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Cursor_typeof(obj); }
 
+function Cursor_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function Cursor_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
+function Cursor_createClass(Constructor, protoProps, staticProps) { if (protoProps) Cursor_defineProperties(Constructor.prototype, protoProps); if (staticProps) Cursor_defineProperties(Constructor, staticProps); return Constructor; }
 
-function view_progress_typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { view_progress_typeof = function _typeof(obj) { return typeof obj; }; } else { view_progress_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return view_progress_typeof(obj); }
+function Cursor_possibleConstructorReturn(self, call) { if (call && (Cursor_typeof(call) === "object" || typeof call === "function")) { return call; } return Cursor_assertThisInitialized(self); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function Cursor_getPrototypeOf(o) { Cursor_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Cursor_getPrototypeOf(o); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function Cursor_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function Cursor_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) Cursor_setPrototypeOf(subClass, superClass); }
 
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+function Cursor_setPrototypeOf(o, p) { Cursor_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return Cursor_setPrototypeOf(o, p); }
 
-function view_progress_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function view_progress_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function view_progress_createClass(Constructor, protoProps, staticProps) { if (protoProps) view_progress_defineProperties(Constructor.prototype, protoProps); if (staticProps) view_progress_defineProperties(Constructor, staticProps); return Constructor; }
-
-function view_progress_possibleConstructorReturn(self, call) { if (call && (view_progress_typeof(call) === "object" || typeof call === "function")) { return call; } return view_progress_assertThisInitialized(self); }
-
-function view_progress_getPrototypeOf(o) { view_progress_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return view_progress_getPrototypeOf(o); }
-
-function view_progress_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function view_progress_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) view_progress_setPrototypeOf(subClass, superClass); }
-
-function view_progress_setPrototypeOf(o, p) { view_progress_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return view_progress_setPrototypeOf(o, p); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function Cursor_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 /**
- * @module ViewProgress
- * @description Retrieves the percentage (0 to 1) of element's in-view portion according to page scroll
- * Can be extended or instantiated
+ * @module Cursor
+ * @description Custom cursor base class
  * @example
- * import { qs, qsa, on } from '@okiba/dom'
- * import Component from '@okiba/component'
- * import ViewProgress from '@okiba/view-progress'
- *
- * class ViewProgressComponent extends ViewProgress {
- *   constructor(args) {
- *     super(args)
- *     this.on('enter', this.onEnter)
- *     this.on('progress', this.onProgress)
- *     this.on('exit', this.onExit)
- *     this.update({ y: window.scrollY })
- *     on(window, 'scroll', () => this.update({ y: window.scrollY }))
- *   }
- *
- *   onEnter = () => console.log()(`${this.el} entered`)
- *   onProgress = ({ progress }) => console.log(progress)
- *   onExit = () => console.log()(`${this.el} exited`)
- * }
- *
- * const app = new Component({
- *   el: qs('#app'),
- *   components: [
- *     {
- *       selector: '.view-progress-element',
- *       type: ViewProgress
- *     }
- *   ]
- * })
  */
 
 
 
 
-/**
- * Accepts an __hash__ whose properties can be:
- * @param {Object}  args                          Arguments to create a component
- * @param {Element} args.el                       DOM Element to be bound
- * @param {Object}  args.options                  Custom options passed to the component
- * @param {Boolean} args.options.overflow         Keeps emitting progress even if elements is out of viewport
- * @param {Number}  args.options.thresholdTop     A value added to element's top position to adjust its bounding area
- * @param {Number}  args.options.thresholdBottom  A value added to element's bot position to adjust its bounding area
- */
 
-var view_progress_ViewProgress =
+
+
+var Cursor_Cursor =
 /*#__PURE__*/
-function (_EventedComponent) {
-  view_progress_inherits(ViewProgress, _EventedComponent);
+function (_Component) {
+  Cursor_inherits(Cursor, _Component);
 
-  function ViewProgress(_ref) {
+  /**
+   * Default triggers selectors
+   */
+
+  /**
+   * @constructor
+   * @param {Object} props
+   */
+  function Cursor(props) {
     var _this;
 
-    var el = _ref.el,
-        _ref$options = _ref.options,
-        options = _ref$options === void 0 ? {} : _ref$options,
-        args = _objectWithoutProperties(_ref, ["el", "options"]);
+    Cursor_classCallCheck(this, Cursor);
 
-    view_progress_classCallCheck(this, ViewProgress);
+    _this = Cursor_possibleConstructorReturn(this, Cursor_getPrototypeOf(Cursor).call(this, props));
 
-    _this = view_progress_possibleConstructorReturn(this, view_progress_getPrototypeOf(ViewProgress).call(this, _objectSpread({
-      el: el,
-      options: options
-    }, args)));
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onPointerMove", function (_ref) {
+      var coords = _ref.coords;
+      _this.coords.current = coords;
 
-    _defineProperty(view_progress_assertThisInitialized(_this), "update", function (_ref2) {
-      var y = _ref2.y,
-          rest = _objectWithoutProperties(_ref2, ["y"]);
+      if (!_this.enabled) {
+        _this.move();
 
-      var adjustedY = Math.min(y, sizes_cache["default"].body.scrollArea);
-
-      if (!_this.options.overflow && !_this.isInside) {
-        if (adjustedY < _this.startY || adjustedY > _this.endY) {
-          return;
-        }
+        _this.enabled = true;
+        event_manager["default"].on('raf', _this.onRAF);
       }
-
-      var progress = map(adjustedY, _this.startY, _this.endY, 0, 1);
-      var isInside = progress >= 0 && progress <= 1;
-
-      if (isInside !== _this.isInside) {
-        if (isInside) {
-          _this.emit('enter');
-        } else {
-          _this.emit('exit');
-        }
-      }
-
-      _this.isInside = isInside;
-
-      _this.emit('progress', _objectSpread({}, rest, {
-        progress: progress,
-        isInside: isInside,
-        adjustedY: adjustedY
-      }));
     });
 
-    _defineProperty(view_progress_assertThisInitialized(_this), "onResize", function () {
-      var _this$sizes = _this.sizes,
-          top = _this$sizes.top,
-          height = _this$sizes.height;
-      _this.startY = top - sizes_cache["default"].window.height + (_this.options.thresholdTop || 0);
-      _this.endY = Math.min(sizes_cache["default"].body.scrollArea, _this.startY + height + sizes_cache["default"].window.height + (_this.options.thresholdBottom || 0));
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onInterceptionStart", function (trigger) {
+      _this.morph({
+        type: trigger.el.dataset.cursor,
+        trigger: trigger
+      });
     });
 
-    _this.sizes = sizes_cache["default"].get(el);
-    _this.isInside = false;
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onInterceptionEnd", function () {
+      return _this.reset();
+    });
 
-    _this.onResize();
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onViewportEnter", function () {
+      return _this.show();
+    });
 
-    _this.listen();
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onViewportLeave", function () {
+      return _this.hide();
+    });
+
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onRAF", function () {
+      var inertia = _this.options.inertia;
+      var last = _this.coords.last;
+      var withInertia = !!last && typeof inertia === 'number' && inertia > 0 && inertia < 1;
+
+      _this.move(withInertia ? inertia : false);
+    });
+
+    Cursor_defineProperty(Cursor_assertThisInitialized(_this), "onResize", function () {
+      return _this.setup();
+    });
+
+    _this.coords = {
+      current: {
+        x: 0,
+        y: 0
+      }
+    };
+    _this.sizes = sizes_cache["default"].get(_this.el);
+
+    if (_this.options.autoInit !== false) {
+      _this.setup();
+
+      _this.listen();
+    }
 
     return _this;
   }
   /**
-   * Updates element's progress and emits enter, exit and progress events according to passed scroll position
-   * @param {Object} args
-   * @param {Number} args.y The current scrollY
+   * Sets cursor base styles (can be extended/overwritten)
    */
 
 
-  view_progress_createClass(ViewProgress, [{
-    key: "listen",
-
-    /**
-     * Adds resize event listener to EventManager
-     */
-    value: function listen() {
-      event_manager["default"].on('resize', this.onResize);
+  Cursor_createClass(Cursor, [{
+    key: "setup",
+    value: function setup() {
+      this.el.style.position = 'fixed';
+      this.el.style.top = "-".concat(this.sizes.height / 2, "px");
+      this.el.style.left = "-".concat(this.sizes.width / 2, "px");
     }
     /**
-     * Removes resize event listener from EventManager
+     * Reveals cursor (can be extended)
      */
 
   }, {
-    key: "unlisten",
-    value: function unlisten() {
-      event_manager["default"].off('resize', this.onResize);
+    key: "show",
+    value: function show() {
+      this.el.classList.remove('hidden');
     }
     /**
-     * Removes all event listeners on destroy from EventManager
+     * Unveils cursor (can be extended)
+     */
+
+  }, {
+    key: "hide",
+    value: function hide() {
+      this.el.classList.add('hidden');
+    }
+    /**
+     * Animates cursor to pointer position (can be overwritten)
+     * @param
+     */
+
+  }, {
+    key: "move",
+    value: function move() {
+      var inertia = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      var _this$coords = this.coords,
+          last = _this$coords.last,
+          current = _this$coords.current;
+      var x = inertia ? lerp(last.x, current.x, inertia) : current.x;
+      var y = inertia ? lerp(last.y, current.y, inertia) : current.y;
+      this.coords.last = {
+        x: x,
+        y: y
+      };
+      this.el.style.transform = "translate3d(".concat(x, "px, ").concat(y, "px, 0)");
+    }
+    /**
+     * Applies a transformation according to type (should be implemented)
+     * @param {Object} target The interception payload
+     */
+
+  }, {
+    key: "morph",
+    value: function morph(_ref2) {
+      var type = _ref2.type,
+          trigger = _ref2.trigger;
+      console.log("morph (of type \"".concat(type || trigger.el.tagName.toLowerCase(), "\") triggered by"), trigger);
+    }
+    /**
+     * Restores the cursor default state (should be implemented)
+     */
+
+  }, {
+    key: "reset",
+    value: function reset() {}
+    /**
+     * Updates cursor position
+     * @param {Object} e The pointer's move event payload
+     */
+
+  }, {
+    key: "listen",
+
+    /**
+     * Initializes listeners (can be extended)
+     */
+    value: function listen() {
+      var _this2 = this;
+
+      if (!detect["hasTouch"]) {
+        var _this$options$trigger = this.options.triggers,
+            triggers = _this$options$trigger === void 0 ? Cursor.defaultTriggers : _this$options$trigger;
+        var interceptors = triggers.reduce(function (acc, selector) {
+          acc[selector] = {
+            onEnter: function onEnter(_ref3) {
+              var el = _ref3.target;
+              return _this2.onInterceptionStart({
+                selector: selector,
+                el: el
+              });
+            },
+            onLeave: _this2.onInterceptionEnd
+          };
+          return acc;
+        }, {});
+        event_manager["default"].on('resize', this.onResize);
+        pointer_Pointer.on('viewportEnter', this.onViewportEnter);
+        pointer_Pointer.on('viewportLeave', this.onViewportLeave);
+        pointer_Pointer.on('move', this.onPointerMove);
+        pointer_Pointer.addInterceptors(interceptors);
+      }
+    }
+    /**
+     * Kills listeners (can be extended)
      */
 
   }, {
     key: "onDestroy",
     value: function onDestroy() {
-      this.unlisten();
+      if (!detect["hasTouch"]) {
+        var _this$options$trigger2 = this.options.triggers,
+            triggers = _this$options$trigger2 === void 0 ? Cursor.defaultTriggers : _this$options$trigger2;
+        event_manager["default"].off('resize', this.onResize);
+        pointer_Pointer.off('viewportEnter', this.onViewportEnter);
+        pointer_Pointer.off('viewportLeave', this.onViewportLeave);
+        pointer_Pointer.off('move', this.onPointerMove);
+        pointer_Pointer.removeInterceptors(triggers);
+        this.disable();
+      }
     }
   }]);
 
-  return ViewProgress;
-}(evented_component_EventedComponent);
+  return Cursor;
+}(component);
 
+Cursor_defineProperty(Cursor_Cursor, "defaultTriggers", ['a', 'button', '[data-cursor]']);
+
+/* harmony default export */ var pointer_Cursor = (Cursor_Cursor);
+// CONCATENATED MODULE: ./packages/pointer/index.js
+/* concated harmony reexport Cursor */__webpack_require__.d(__webpack_exports__, "Cursor", function() { return pointer_Cursor; });
+
+
+/* harmony default export */ var pointer = __webpack_exports__["default"] = (pointer_Pointer);
 
 
 /***/ })

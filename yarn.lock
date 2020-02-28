@@ -1539,15 +1539,15 @@
   dependencies:
     "@okiba/arrays" "^1.0.14"
 
+"@okiba/event-emitter@^1.0.5", "@okiba/event-emitter@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.4.tgz#81ce98c7a88a1ffec13c75a376e3f37ddeb4997c"
+  integrity sha512-KY35tr+Pe3dm39hrF76dHSd2LQpHmTMrD8tjoI2aUiF3X/cNgSWa9fUj9RcZ1nT82DJvpohKEAXQlG7vVdWJCw==
+
 "@okiba/event-emitter@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.3.tgz#981377f02548f8cdefb32b40fd4d4b0c55cea0e7"
   integrity sha512-TyukzTUkNX4hSKF1jice+PPT4+XqMFfM4BT82Qh4dNk4SMWnhjNatZPe+SbDqNf7Vf1Re1a8eMjMwPoIW6Nbhg==
-
-"@okiba/event-emitter@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.4.tgz#81ce98c7a88a1ffec13c75a376e3f37ddeb4997c"
-  integrity sha512-KY35tr+Pe3dm39hrF76dHSd2LQpHmTMrD8tjoI2aUiF3X/cNgSWa9fUj9RcZ1nT82DJvpohKEAXQlG7vVdWJCw==
 
 "@okiba/evented-component@^1.1.3":
   version "1.1.3"

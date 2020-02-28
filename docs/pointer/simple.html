@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Okiba Components | Detect</title>
+  <title>Okiba Components | Pointer</title>
   <link rel="shortcut icon" type="image/x-icon" href="../assets/favicon.ico">
   <link rel="stylesheet" href="../assets/app.css">
   
@@ -17,7 +17,7 @@
   <label class="MenuHamburger" for="active-menu"></label>
   <aside class="MenuPanel">
     <div class="MenuPanel_header">
-      <h1>Detect</h1>
+      <h1>Pointer</h1>
       
     </div>
     
@@ -151,13 +151,31 @@
 
   </aside>
 
-  <main id="app" class="content" data-page-ctrl="detect">
+  <main id="app" class="content" data-page-ctrl="cursor-simple">
     
-  <h4>Touch:</h4>
-  <p id="touch"></p>
-  <hr>
-  <h4>Passive events:</h4>
-  <p id="passive-events"></p>  
+  <style>
+    .Cursor {
+      display: flex;
+      width: 32px;
+      height: 32px;
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      border: solid 2px currentColor;
+      border-radius: 50%;
+      color: #02BFF2;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .Cursor.hidden {
+      opacity: 0;
+    }
+  </style>
+
+  <h1 data-cursor="title">Pointer</h1>
+  <a href="#">Anchor</a>
+  <div class="Cursor hidden"></div>
 
   </main>
   <script>window.publicScriptsPath = '../scripts/';</script>
