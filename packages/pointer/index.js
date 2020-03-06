@@ -1,5 +1,5 @@
-import Pointer from './Pointer'
-import Cursor from './Cursor'
+import Pointer from './lib/Pointer'
+import Cursor from './lib/Cursor'
 
 export default Pointer
 export { Cursor }

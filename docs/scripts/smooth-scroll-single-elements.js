@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{7:function(n,p,e){"use strict";e.r(p);var o=e(16),s=e(18),t=e(25);new s.a({el:Object(o.b)("#app"),components:[{ghost:!0,type:t.a}]})}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{7:function(n,p,e){"use strict";e.r(p);var o=e(16),s=e(18),t=e(25);new s.a({el:Object(o.b)("#app"),components:[{ghost:!0,type:t.a}]})}}]);

@@ -1,8 +1,9 @@
 import { hasTouch } from '@okiba/detect'
 import { qs } from '@okiba/dom'
 import { lerp } from '@okiba/math'
+import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
-import Pointer, { Cursor } from '@okiba/pointer'
+import { Cursor } from '@okiba/pointer'
 
 class CustomCursor extends Cursor {
   constructor({ options, ...props }) {
@@ -38,16 +39,22 @@ class CustomCursor extends Cursor {
     this.coords.last = coords
   }
 
-  morph({ trigger }) {
-    this.trigger = trigger
-    this.trigger.el.style.cursor = 'none'
-    this.el.classList.add('morph')
+  hover(target, matchedSelector) {
+    switch (matchedSelector) {
+      case '[data-cursor]':
+      case 'a':
+      case 'button':
+      case '.MenuHamburger':
+        this.el.classList.add('morph')
+        break
+      default:
+        this.reset()
+        break
+    }
   }
 
   reset() {
     this.el.classList.remove('morph')
-    this.trigger.el.style.cursor = ''
-    this.trigger = null
   }
 
   onPointerDown = () => {
@@ -62,8 +69,8 @@ class CustomCursor extends Cursor {
     super.listen()
 
     if (!hasTouch) {
-      Pointer.on('down', this.onPointerDown)
-      Pointer.on('up', this.onPointerUp)
+      EventManager.on('pointerdown', this.onPointerDown)
+      EventManager.on('pointerup', this.onPointerUp)
     }
   }
 
@@ -71,8 +78,8 @@ class CustomCursor extends Cursor {
     super.onDestroy()
 
     if (!hasTouch) {
-      Pointer.off('down', this.onPointerDown)
-      Pointer.off('up', this.onPointerUp)
+      EventManager.off('pointerdown', this.onPointerDown)
+      EventManager.off('pointerup', this.onPointerUp)
     }
   }
 }

@@ -6,9 +6,12 @@
 import Component from '@okiba/component'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
+// import { matches } from '@okiba/dom'
 import { hasTouch } from '@okiba/detect'
 import { lerp } from '@okiba/math'
-import Pointer from './Pointer'
+import Pointer from '../Pointer'
+
+const matches = (target, selectors = []) => selectors.find(selector => target.matches(selector))
 
 class Cursor extends Component {
   /**
@@ -23,7 +26,7 @@ class Cursor extends Component {
   constructor(props) {
     super(props)
     this.coords = {
-      current: { x: 0, y: 0 }
+      current: {}
     }
 
     this.sizes = SizesCache.get(this.el)
@@ -71,12 +74,11 @@ class Cursor extends Component {
   }
 
   /**
-   * Applies a transformation according to type (should be implemented)
-   * @param {Object} target The interception payload
+   * Handles hover event
+   * @param {Object} target The event target
+   * @param {Object} matchedSelector The trigger selector
    */
-  morph({ type, trigger }) {
-    console.log(`morph (of type "${type || trigger.el.tagName.toLowerCase()}") triggered by`, trigger)
-  }
+  hover(target, matchedSelector) {}
 
   /**
    * Restores the cursor default state (should be implemented)
@@ -84,11 +86,18 @@ class Cursor extends Component {
   reset() {}
 
   /**
-   * Updates cursor position
-   * @param {Object} e The pointer's move event payload
+   * Handles pointer entering/leaving viewport callback
    */
-  onPointerMove = ({ coords }) => {
-    this.coords.current = coords
+  onPointerInView = inView => {
+    const action = inView ? 'show' : 'hide'
+    this[action]()
+  }
+
+  /**
+   * Updates cursor position
+   */
+  onPointerMove = () => {
+    this.coords.current = Pointer.coords
 
     if (!this.enabled) {
       this.move()
@@ -98,27 +107,19 @@ class Cursor extends Component {
   }
 
   /**
-   * Handles element interception start
-   * @param {Object} trigger The triggered interception
+   *  Handles pointer hover
+   * @param {Event} e The hover event
    */
-  onInterceptionStart = trigger => {
-    this.morph({ type: trigger.el.dataset.cursor, trigger })
+  onPointerOver = ({ target }) => {
+    const { triggers = Cursor.defaultTriggers, trackTouch } = this.options
+    let matchedSelector = matches(target, triggers)
+
+    if (!matchedSelector && hasTouch && trackTouch) {
+      matchedSelector = triggers.find(selector => target.closest(selector))
+    }
+
+    this.hover(target, matchedSelector)
   }
-
-  /**
-   * Handles element interception end
-   */
-  onInterceptionEnd = () => this.reset()
-
-  /**
-   * Handles viewport enter callback
-   */
-  onViewportEnter = () => this.show()
-
-  /**
-   * Handles viewport leave callback
-   */
-  onViewportLeave = () => this.hide()
 
   /**
    * Handles request animation frame
@@ -139,22 +140,13 @@ class Cursor extends Component {
    * Initializes listeners (can be extended)
    */
   listen() {
-    if (!hasTouch) {
-      const { triggers = Cursor.defaultTriggers } = this.options
-      const interceptors = triggers.reduce((acc, selector) => {
-        acc[selector] = {
-          onEnter: ({ target: el }) => this.onInterceptionStart({ selector, el }),
-          onLeave: this.onInterceptionEnd
-        }
-        return acc
-      }, {})
+    const { trackTouch } = this.options
 
+    if (!hasTouch || trackTouch) {
       EventManager.on('resize', this.onResize)
-
-      Pointer.on('viewportEnter', this.onViewportEnter)
-      Pointer.on('viewportLeave', this.onViewportLeave)
-      Pointer.on('move', this.onPointerMove)
-      Pointer.addInterceptors(interceptors)
+      EventManager.on('pointerinview', this.onPointerInView)
+      EventManager.on('pointermove', this.onPointerMove)
+      EventManager.on('pointerover', this.onPointerOver)
     }
   }
 
@@ -162,15 +154,13 @@ class Cursor extends Component {
    * Kills listeners (can be extended)
    */
   onDestroy() {
-    if (!hasTouch) {
-      const { triggers = Cursor.defaultTriggers } = this.options
+    const { trackTouch } = this.options
 
+    if (!hasTouch || trackTouch) {
       EventManager.off('resize', this.onResize)
-
-      Pointer.off('viewportEnter', this.onViewportEnter)
-      Pointer.off('viewportLeave', this.onViewportLeave)
-      Pointer.off('move', this.onPointerMove)
-      Pointer.removeInterceptors(triggers)
+      EventManager.off('pointerinview', this.onPointerInView)
+      EventManager.off('pointermove', this.onPointerMove)
+      EventManager.off('pointerover', this.onPointerOver)
 
       this.disable()
     }
