@@ -24,6 +24,7 @@ class Scene3D extends Component {
     ScrollManager.on('scroll', this.onScroll)
     EventManager.on('raf', this.onRaf)
     EventManager.on('resize', this.onResize)
+    EventManager.emit('resize')
   }
 
   init() {

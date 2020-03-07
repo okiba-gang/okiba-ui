@@ -85,6 +85,7 @@ export default class EventManager {
     if (!eventsHandlers.hasOwnProperty(type)) return
 
     if (!listeningEvents.includes(type)) {
+      listeningEvents.push(type)
       eventsHandlers[type].listen()
     }
 
@@ -98,11 +99,11 @@ export default class EventManager {
    */
   static off(type, callback) {
     if (!eventsHandlers.hasOwnProperty(type) || !listeningEvents.includes(type)) return
-
     eventEmitter.off(type, callback)
 
-    if (!eventEmitter.hs[type].length) {
+    if (eventEmitter.hs[type].length < 1) {
       eventsHandlers[type].unlisten()
+      listeningEvents = listeningEvents.filter(event => (event !== type))
     }
   }
 
