@@ -4,6 +4,7 @@ import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 import SmoothScroll from '@okiba/smooth-scroll'
 import ScrollManager from '@okiba/scroll-manager'
+import { Cursor } from '@okiba/pointer'
 import {
   Scene,
   PerspectiveCamera,
@@ -98,6 +99,13 @@ const app = new Component({
     {
       ghost: true,
       type: Scene3D
+    },
+    {
+      selector: '#cursor',
+      type: Cursor,
+      options: {
+        inertia: .2
+      }
     }
   ]
 })

@@ -8,3 +8,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+::selection {
+  color: #02BFF2;
+}

@@ -25,9 +25,10 @@ class Cursor extends Component {
    */
   constructor(props) {
     super(props)
-    this.coords = {
-      current: {}
-    }
+
+    if (!props.options) this.options = {}
+
+    this.coords = { current: {} }
 
     this.sizes = SizesCache.get(this.el)
 
@@ -78,7 +79,11 @@ class Cursor extends Component {
    * @param {Object} target The event target
    * @param {Object} matchedSelector The trigger selector
    */
-  hover(target, matchedSelector) {}
+  hover(target, matchedSelector) {
+    const action = !!matchedSelector ? 'add' : 'remove'
+    this.show()
+    this.el.classList[action]('hover')
+  }
 
   /**
    * Restores the cursor default state (should be implemented)
