@@ -89,8 +89,8 @@ class Cursor extends Component {
   /**
    * Handles pointer entering/leaving viewport callback
    */
-  onPointerInView = inView => {
-    const action = inView ? 'show' : 'hide'
+  onPointerInView = ({ inview }) => {
+    const action = inview ? 'show' : 'hide'
     this[action]()
   }
 
