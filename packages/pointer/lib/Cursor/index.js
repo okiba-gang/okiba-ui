@@ -99,6 +99,7 @@ class Cursor extends Component {
    * @param {Object} payload The pointermove event payload
    */
   onPointerMove = ({ coords }) => {
+    const { trackTouch } = this.options
     this.coords.current = coords
 
     if ((!hasTouch || trackTouch) && !this.enabled) {
