@@ -77,6 +77,7 @@ class Cursor extends Component {
    */
   hover(target, matchedSelector) {
     const action = !!matchedSelector ? 'add' : 'remove'
+
     this.show()
     this.el.classList[action]('hover')
   }
@@ -91,6 +92,7 @@ class Cursor extends Component {
    */
   onPointerInView = ({ inview }) => {
     const action = inview ? 'show' : 'hide'
+
     this[action]()
   }
 
@@ -100,11 +102,14 @@ class Cursor extends Component {
    */
   onPointerMove = ({ coords }) => {
     const { trackTouch } = this.options
+
     this.coords.current = coords
 
     if ((!hasTouch || trackTouch) && !this.enabled) {
       this.move()
+      this.show()
       this.enabled = true
+
       EventManager.on('raf', this.onRAF)
     }
   }
@@ -116,6 +121,7 @@ class Cursor extends Component {
   onPointerOver = ({ target }) => {
     const { triggers = Cursor.defaultTriggers } = this.options
     const matchedSelector = matches(target, triggers, true)
+
     this.hover(target, matchedSelector)
   }
 
@@ -126,6 +132,7 @@ class Cursor extends Component {
     const { inertia } = this.options
     const { last } = this.coords
     const withInertia = !!last && typeof inertia === 'number' && inertia > 0 && inertia < 1
+
     this.move(withInertia ? inertia : false)
   }
 
