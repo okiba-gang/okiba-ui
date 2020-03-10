@@ -20,3 +20,9 @@ export const raf = {
   alias: 'raf',
   handler: RAFHandler
 }
+
+export default [
+  'resize',
+  'scroll',
+  'raf'
+]

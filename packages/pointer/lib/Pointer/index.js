@@ -18,26 +18,58 @@ function update(props) {
   state = { ...state, ...props }
 }
 
+/**
+ * @module Pointer
+ * @description A class that wraps pointer information
+ */
+class Pointer {
+  /**
+   * Coords getter
+   * @return {Object} {x, y}
+   */
+  static get coords() {
+    return state.coords || {}
+  }
+
+  /**
+   * Last event target getter
+   * @returns {Event}
+   */
+  static get target() {
+    return state.event ? state.event.target : null
+  }
+
+  /**
+   * Returns pointer inview status
+   * @returns {Boolean}
+   */
+  static get inview() {
+    return state.inview
+  }
+
+  /**
+   * Last event getter
+   * @returns {Event}
+   */
+  static get lastEvent() {
+    return state.event
+  }
+
+  /**
+   * Checks if last event target matches with given selectors
+   * @param {String[]} selectors The selectors list
+   * @param {Boolean} testAncestors If true, extends match test upward in the ancestors
+   * @returns {String}
+   */
+  static matches(selectors = [], testAncestors) {
+    return matches(state.target, selectors, testAncestors)
+  }
+}
+
 // auto-init
 ensurePointerEvents()
 EventManager.on('pointermove', update)
 EventManager.on('pointerinview', update)
 
 // public export
-export default {
-  get coords() {
-    return state.coords || {}
-  },
-  get target() {
-    return state.event ? state.event.target : null
-  },
-  get inview() {
-    return state.inview
-  },
-  get lastEvent() {
-    return state.event
-  },
-  matches(selectors, testAncestors) {
-    return matches(state.target, selectors, testAncestors)
-  }
-}
+export default Pointer

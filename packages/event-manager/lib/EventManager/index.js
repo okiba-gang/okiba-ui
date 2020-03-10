@@ -28,10 +28,11 @@ const handlers = {}
  *    debounce: The callback debounce time
  *    payloadFilter: A function to manipulate event data before passing it to the event callback
  *  }
+ * @param {Boolean} quiet If true, suppresses logs
  */
-function subscribe({ handler: Handler = EventHandler, type, alias = type, ...config }) {
+function subscribe({ handler: Handler = EventHandler, type, alias = type, ...config }, quiet) {
   if (handlers.hasOwnProperty(alias)) {
-    console.warn(`[EventManager error]: a global event "${alias}" has been already subscribed. Skipping...`)
+    !quiet && console.warn(`[EventManager error]: a global event "${alias}" has been already subscribed. Skipping...`)
     return
   }
 
@@ -41,6 +42,21 @@ function subscribe({ handler: Handler = EventHandler, type, alias = type, ...con
     alias,
     dispatch: (alias, payload) => emitter.emit(alias, payload)
   })
+}
+
+/**
+ * Removes a global event
+ * @private
+ * @param {String} types The event (alias) to be removed from global events
+ */
+function unsubscribe(type) {
+  if (!handlers.hasOwnProperty(type)) return
+
+  if (handlers[type].listening) {
+    handlers[type].unlisten()
+  }
+
+  delete handlers[type]
 }
 
 /**
@@ -79,16 +95,15 @@ export default class EventManager {
 
   /**
    * Removes a global event
-   * @param {String} type The event (alias) to be removed from global events
+   * @param {String|String[]} types The event(s) to be removed
    */
   static unsubscribe(type) {
-    if (!handlers.hasOwnProperty(type)) return
-
-    if (handlers[type].listening) {
-      handlers[type].unlisten()
+    if (Array.isArray(type)) {
+      type.forEach(entry => unsubscribe(entry))
+      return
     }
 
-    delete handlers[type]
+    unsubscribe(type)
   }
 
   /**
@@ -130,5 +145,27 @@ export default class EventManager {
     if (!handlers.hasOwnProperty(type)) return
 
     emitter.emit(type, payload)
+  }
+
+  /**
+   * Clears all registered callbacks
+   * @param {Array} events The global events to clear
+   */
+  static clear(events = EventManager.subscribedEvents) {
+    if (!Array.isArray(events)) return
+
+    events.forEach(type => {
+      if (!emitter.hs[type]) return
+      emitter.hs[type].clear()
+    })
+  }
+
+  /**
+   * Destroys all listeners, callbacks and handlers
+   * @param {Array} events The global events to destroy
+   */
+  static destroy(events = EventManager.subscribedEvents) {
+    EventManager.clear(events)
+    EventManager.unsubscribe(events)
   }
 }

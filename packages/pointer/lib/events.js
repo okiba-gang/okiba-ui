@@ -7,11 +7,7 @@ export const pointermove = {
   target: window,
   payloadFilter: e => {
     const { clientX: x, clientY: y } = eventCoords(e)
-
-    return {
-      coords: { x, y },
-      event: e
-    }
+    return { coords: { x, y }, event: e }
   }
 }
 
@@ -33,12 +29,20 @@ export const pointerover = {
 
 export const pointerdown = {
   alias: 'pointerdown',
-  type: 'mousedown',
+  type: hasTouch ? 'touchstart' : 'mousedown',
   target: window
 }
 
 export const pointerup = {
   alias: 'pointerup',
-  type: 'mouseup',
+  type: hasTouch ? 'touchend' : 'mouseup',
   target: window
 }
+
+export default [
+  'pointermove',
+  'pointerinview',
+  'pointerover',
+  'pointerdown',
+  'pointerup'
+]

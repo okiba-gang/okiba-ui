@@ -9,7 +9,6 @@ import { ensurePointerEvents } from '../helpers'
 /**
  * @module Cursor
  * @description Custom cursor base class
- * @example
  */
 class Cursor extends Component {
   /**
