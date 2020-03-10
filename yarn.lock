@@ -1509,6 +1509,11 @@
   resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.14.tgz#285832653974c89d1235ca664de41c2271cb2128"
   integrity sha512-/qW7dfLWgjxnM8ifKTidFo2ktB94SrywEcjc0Aca8HwpMXRBConQGNAOs0ExTqwxPidvy43J9DBw0ijKycn/qQ==
 
+"@okiba/arrays@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.15.tgz#19c431140ec758b5e0666035fd92cd450c42dae5"
+  integrity sha512-DB0UP1THemw0Wfr1fZxUnk9REPixw5i456dKd9L17uSEormPg6nrx0XS0NC0uKBNJdv8EC9efPzbRRBfSaALJw==
+
 "@okiba/component@^1.0.14":
   version "1.0.14"
   resolved "https://registry.yarnpkg.com/@okiba/component/-/component-1.0.14.tgz#c63b8cf4262847923636de464da6c81580ed9223"
@@ -1538,6 +1543,13 @@
   integrity sha512-sgHhTJ5xOspFUHB9XsAK/IM7y7dg1+lt4aYROsBVEs8+9hFbVf7h4R2UGSz4PHDYUwJ1jaGE9L9f92qFBd0BMw==
   dependencies:
     "@okiba/arrays" "^1.0.14"
+
+"@okiba/dom@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.16.tgz#413faac72a97de8bf88a6209011febb900c4ea22"
+  integrity sha512-Zcorp0bYePDIzjvYknEjDTPybO2FJXr94opY6X/i84bNVpr+6jyJ6/A2miDcXyI63ucVHYs8F6IH4Rj8sUblVQ==
+  dependencies:
+    "@okiba/arrays" "^1.0.15"
 
 "@okiba/event-emitter@^1.0.5", "@okiba/event-emitter@^1.1.4":
   version "1.1.4"

@@ -1,33 +1,16 @@
 import EventManager from './lib/EventManager'
 import { EventHandler, RAFHandler } from './lib/handlers'
-import { dispatchEvent } from './lib/utils'
+import { debounce, createCustomEvent, dispatchCustomEvent } from './lib/helpers'
+import { resize, scroll, raf } from './lib/events'
 
-/*= =======================*/
-/* Built-in global events */
-/*= =======================*/
-EventManager.subscribe('resize', {
-  type: 'resize',
-  target: window,
-  debounce: 200,
-  payloadFilter: () => ({
-    width: window.innerWidth,
-    height: window.innerHeight
-  })
-})
+// built-in global events subscription
+EventManager.subscribe([ resize, scroll, raf ])
 
-EventManager.subscribe('scroll', {
-  type: 'scroll',
-  target: window
-})
-
-EventManager.subscribe('raf', {
-  handler: RAFHandler
-})
-
-EventManager.on('resize', () => dispatchEvent('scroll'))
-
-/*= ===============*/
-/* Public exports */
-/*= ===============*/
 export default EventManager
-export { EventHandler, RAFHandler }
+export {
+  EventHandler,
+  RAFHandler,
+  debounce,
+  createCustomEvent,
+  dispatchCustomEvent
+}

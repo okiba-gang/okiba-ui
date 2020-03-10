@@ -1,5 +1,11 @@
 import EventHandler from '../EventHandler'
 
+/**
+ * @module RAFHandler
+ * @extends EventHandler
+ * @package event-manager
+ * @description An handler class to manage global requestAnimationFrame (un)subscription
+ */
 export default class RAFHandler extends EventHandler {
   /**
    * Recursively requires animation frame
@@ -14,13 +20,20 @@ export default class RAFHandler extends EventHandler {
    * @override
    */
   listen() {
+    if (this.listening) return
+
     this.nextFrame()
+    this.listening = true
   }
 
   /**
    * @override
    */
   unlisten() {
+    if (this.config.forceListening) return
+
     window.cancelAnimationFrame(this.requestId)
+
+    this.listening = false
   }
 }

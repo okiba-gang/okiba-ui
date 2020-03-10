@@ -6,21 +6,42 @@ import { EventHandler } from '../handlers'
  * @type {EventEmitter}
  * @private
  */
-const eventEmitter = new EventEmitter()
+const emitter = new EventEmitter()
 
 /**
  * The collection of global events handlers
  * @type {Object}
  * @private
  */
-const eventsHandlers = {}
+const handlers = {}
 
 /**
- * The list of enabled global events
- * @type {Array}
+ * Handles global event subscription
  * @private
+ * @param {Object} config The event handling configuration
+ *  @schema
+ *  {
+ *    handler: EventHandler (default) or an extension of it (must implement subscribe/unsubscribe interface)
+ *    type: The (native) event type to be listened
+ *    alias: The global event type (native event type as default)
+ *    target: The (native) event target
+ *    debounce: The callback debounce time
+ *    payloadFilter: A function to manipulate event data before passing it to the event callback
+ *  }
  */
-let listeningEvents = []
+function subscribe({ handler: Handler = EventHandler, type, alias = type, ...config }) {
+  if (handlers.hasOwnProperty(alias)) {
+    console.warn(`[EventManager error]: a global event "${alias}" has been already subscribed. Skipping...`)
+    return
+  }
+
+  handlers[alias] = new Handler({
+    ...config,
+    type,
+    alias,
+    dispatch: (alias, payload) => emitter.emit(alias, payload)
+  })
+}
 
 /**
  * @module EventManager
@@ -32,33 +53,28 @@ export default class EventManager {
    * Global events list getter
    */
   static get subscribedEvents() {
-    return Object.keys(eventsHandlers)
+    return Object.keys(handlers)
   }
 
   /**
-   * Adds a global event
-   * @param {String} type The event (alias) to be added to global events
-   * @param {Object} config The event handling configuration
-   *  @schema
-   *  {
-   *    handler: EventHandler (default) or an extension of it (must implement subscribe/unsubscribe interface)
-   *    type: The (native) event type to be listened
-   *    target: The (native) event target
-   *    debounce: The callback debounce time
-   *    payloadFilter: A function to manipulate event data before passing it to the event callback
-   *  }
+   * Checks if global event has registered callbacks
+   * @param {String} type The event type
    */
-  static subscribe(type, { handler: Handler = EventHandler, ...config } = {}) {
-    if (eventsHandlers.hasOwnProperty(type)) {
-      console.warn(`[EventManager error]: a global event "${type}" has been already subscribed. Skipping...`)
+  static hasListeners(type) {
+    return !!emitter.hs[type] && !!emitter.hs[type].length
+  }
+
+  /**
+   * Adds a global event(s)
+   * @param {Object|Object[]} config Event(s) configuration(s)
+   */
+  static subscribe(config) {
+    if (Array.isArray(config)) {
+      config.forEach(entry => subscribe(entry))
       return
     }
 
-    eventsHandlers[type] = new Handler({
-      ...config,
-      alias: type,
-      dispatch: (type, payload) => eventEmitter.emit(type, payload)
-    })
+    subscribe(config)
   }
 
   /**
@@ -66,14 +82,13 @@ export default class EventManager {
    * @param {String} type The event (alias) to be removed from global events
    */
   static unsubscribe(type) {
-    if (!eventsHandlers.hasOwnProperty(type)) return
+    if (!handlers.hasOwnProperty(type)) return
 
-    if (listeningEvents.includes(type)) {
-      eventsHandlers[type].unlisten()
-      listeningEvents = listeningEvents.filter(event => (event !== type))
+    if (handlers[type].listening) {
+      handlers[type].unlisten()
     }
 
-    delete eventsHandlers[type]
+    delete handlers[type]
   }
 
   /**
@@ -82,14 +97,13 @@ export default class EventManager {
    * @param {Function} callback The event callback
    */
   static on(type, callback) {
-    if (!eventsHandlers.hasOwnProperty(type)) return
+    if (!handlers.hasOwnProperty(type)) return
 
-    if (!listeningEvents.includes(type)) {
-      listeningEvents.push(type)
-      eventsHandlers[type].listen()
+    if (!handlers[type].listening) {
+      handlers[type].listen()
     }
 
-    eventEmitter.on(type, callback)
+    emitter.on(type, callback)
   }
 
   /**
@@ -98,12 +112,12 @@ export default class EventManager {
    * @param {Function} callback The event callback
    */
   static off(type, callback) {
-    if (!eventsHandlers.hasOwnProperty(type) || !listeningEvents.includes(type)) return
-    eventEmitter.off(type, callback)
+    if (!handlers.hasOwnProperty(type) || !handlers[type].listening) return
 
-    if (eventEmitter.hs[type].length < 1) {
-      eventsHandlers[type].unlisten()
-      listeningEvents = listeningEvents.filter(event => (event !== type))
+    emitter.off(type, callback)
+
+    if (EventManager.hasListeners(type)) {
+      handlers[type].unlisten()
     }
   }
 
@@ -113,8 +127,8 @@ export default class EventManager {
    * @param {*} payload The event payload
    */
   static emit(type, payload) {
-    if (!eventsHandlers.hasOwnProperty(type)) return
+    if (!handlers.hasOwnProperty(type)) return
 
-    eventEmitter.emit(type, payload)
+    emitter.emit(type, payload)
   }
 }

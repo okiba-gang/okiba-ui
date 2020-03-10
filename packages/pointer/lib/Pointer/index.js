@@ -1,54 +1,43 @@
-import { hasTouch } from '@okiba/detect'
-import { eventCoords } from '@okiba/dom'
 import EventManager from '@okiba/event-manager'
-
-/*=======================*/
-/* Pointer global events */
-/*=======================*/
-EventManager.subscribe('pointermove', {
-  type: hasTouch ? 'touchmove' : 'mousemove',
-  target: window
-})
-
-EventManager.subscribe('pointerinview', {
-  type: hasTouch ? ['touchstart', 'touchend'] : ['mouseenter', 'mouseleave'],
-  target: document,
-  payloadFilter: ({ type }) => ['touchstart', 'mouseenter'].includes(type)
-})
-
-EventManager.subscribe('pointerover', {
-  type: hasTouch ? 'touchmove' : 'mouseover',
-  target: document.body
-})
-
-if (!hasTouch) {
-  EventManager.subscribe('pointerdown', {
-    type: 'mousedown',
-    target: window
-  })
-
-  EventManager.subscribe('pointerup', {
-    type: 'mouseup',
-    target: window
-  })
-}
+import { matches } from '@okiba/dom'
+import { ensurePointerEvents } from '../helpers'
 
 /**
- * Global pointer coords
+ * Pointer state
+ * @type {Object}
  * @private
  */
-let _coords = {}
+let state = {}
 
-EventManager.on('pointermove', e => {
-  const { clientX: x, clientY: y } = eventCoords(e)
-  _coords = { x, y }
-})
+/**
+ * Pointer state updater
+ * @param {Object} state The new state properties
+ * @private
+ */
+function update(props) {
+  state = { ...state, ...props }
+}
 
-/*================*/
-/* Public exports */
-/*================*/
+// auto-init
+ensurePointerEvents()
+EventManager.on('pointermove', update)
+EventManager.on('pointerinview', update)
+
+// public export
 export default {
   get coords() {
-    return _coords
+    return state.coords || {}
+  },
+  get target() {
+    return state.event ? state.event.target : null
+  },
+  get inview() {
+    return state.inview
+  },
+  get lastEvent() {
+    return state.event
+  },
+  matches(selectors, testAncestors) {
+    return matches(state.target, selectors, testAncestors)
   }
 }

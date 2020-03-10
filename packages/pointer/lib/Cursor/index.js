@@ -1,18 +1,16 @@
+import Component from '@okiba/component'
+import EventManager from '@okiba/event-manager'
+import SizesCache from '@okiba/sizes-cache'
+import { hasTouch } from '@okiba/detect'
+import { matches } from '@okiba/dom'
+import { lerp } from '@okiba/math'
+import { ensurePointerEvents } from '../helpers'
+
 /**
  * @module Cursor
  * @description Custom cursor base class
  * @example
  */
-import Component from '@okiba/component'
-import EventManager from '@okiba/event-manager'
-import SizesCache from '@okiba/sizes-cache'
-// import { matches } from '@okiba/dom'
-import { hasTouch } from '@okiba/detect'
-import { lerp } from '@okiba/math'
-import Pointer from '../Pointer'
-
-const matches = (target, selectors = []) => selectors.find(selector => target.matches(selector))
-
 class Cursor extends Component {
   /**
    * Default triggers selectors
@@ -76,7 +74,6 @@ class Cursor extends Component {
 
   /**
    * Handles hover event
-   * @param {Object} target The event target
    * @param {Object} matchedSelector The trigger selector
    */
   hover(target, matchedSelector) {
@@ -100,11 +97,12 @@ class Cursor extends Component {
 
   /**
    * Updates cursor position
+   * @param {Object} payload The pointermove event payload
    */
-  onPointerMove = () => {
-    this.coords.current = Pointer.coords
+  onPointerMove = ({ coords }) => {
+    this.coords.current = coords
 
-    if (!this.enabled) {
+    if ((!hasTouch || trackTouch) && !this.enabled) {
       this.move()
       this.enabled = true
       EventManager.on('raf', this.onRAF)
@@ -112,17 +110,12 @@ class Cursor extends Component {
   }
 
   /**
-   *  Handles pointer hover
-   * @param {Event} e The hover event
+   * Handles pointer hover
+   * @param {Event} e The mouseover/touchmove event
    */
   onPointerOver = ({ target }) => {
-    const { triggers = Cursor.defaultTriggers, trackTouch } = this.options
-    let matchedSelector = matches(target, triggers)
-
-    if (!matchedSelector && hasTouch && trackTouch) {
-      matchedSelector = triggers.find(selector => target.closest(selector))
-    }
-
+    const { triggers = Cursor.defaultTriggers } = this.options
+    const matchedSelector = matches(target, triggers, true)
     this.hover(target, matchedSelector)
   }
 
@@ -148,6 +141,7 @@ class Cursor extends Component {
     const { trackTouch } = this.options
 
     if (!hasTouch || trackTouch) {
+      ensurePointerEvents()
       EventManager.on('resize', this.onResize)
       EventManager.on('pointerinview', this.onPointerInView)
       EventManager.on('pointermove', this.onPointerMove)
@@ -162,12 +156,13 @@ class Cursor extends Component {
     const { trackTouch } = this.options
 
     if (!hasTouch || trackTouch) {
+      EventManager.off('raf', this.onRAF)
       EventManager.off('resize', this.onResize)
       EventManager.off('pointerinview', this.onPointerInView)
       EventManager.off('pointermove', this.onPointerMove)
       EventManager.off('pointerover', this.onPointerOver)
 
-      this.disable()
+      this.enabled = false
     }
   }
 }

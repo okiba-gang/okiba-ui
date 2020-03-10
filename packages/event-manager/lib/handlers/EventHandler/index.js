@@ -1,6 +1,6 @@
 import { hasPassiveEvents } from '@okiba/detect'
 import { on, off } from '@okiba/dom'
-import { debounce } from '../../utils'
+import { debounce } from '../../helpers'
 
 /**
  * @module EventHandler
@@ -14,15 +14,19 @@ export default class EventHandler {
    *  @schema
    *  {
    *    type: The native event type
-   *    alias: The global event type (native type as default)
+   *    alias: The global event type (native event type as default)
    *    target: The native event target
    *    debounce: The event callback debounce time
    *    payloadFilter: A function to manipulate event data before passing it to the event callback
    *  }
    */
-  constructor(config) {
-    this.config = config
+  constructor({ type, alias = type, ...config }) {
+    this.config = { type, alias, ...config }
     this.onEvent = config.debounce ? debounce(this.eventCallback, config.debounce) : this.eventCallback
+
+    if (this.config.forceListening) {
+      this.listen()
+    }
   }
 
   /**
@@ -30,8 +34,9 @@ export default class EventHandler {
    * @param {*} nativePayload The original payload returned by native event
    */
   eventCallback = nativePayload => {
-    const { type, alias = type, payloadFilter, dispatch } = this.config
+    const { alias, payloadFilter, dispatch } = this.config
     const payload = typeof payloadFilter === 'function' ? payloadFilter(nativePayload) : nativePayload
+
     dispatch(alias, payload)
   }
 
@@ -39,6 +44,8 @@ export default class EventHandler {
    * The interface method (required) that switches on the global event listener
    */
   listen() {
+    if (this.listening) return
+
     const { type, target, passive = true, capture = false } = this.config
     const options = hasPassiveEvents ? { passive, capture } : capture
 
@@ -47,12 +54,16 @@ export default class EventHandler {
     } else {
       on(target, type, this.onEvent, options)
     }
+
+    this.listening = true
   }
 
   /**
    * The interface method (required) that switches off the global event listener
    */
   unlisten() {
+    if (this.config.forceListening) return
+
     const { type, target, passive = true, capture = false } = this.config
     const options = hasPassiveEvents ? { passive, capture } : capture
 
@@ -61,5 +72,7 @@ export default class EventHandler {
     } else {
       off(target, type, this.onEvent, options)
     }
+
+    this.listening = false
   }
 }
