@@ -8,6 +8,7 @@ class ResizeComponent extends Component {
     super({ el })
     this.sizes = SizesCache.get(this.el)
     EventManager.on('resize', this.onResize)
+    this.onResize()
   }
 
   onResize = () => {
