@@ -1,12 +1,12 @@
-import EventHandler from '../EventHandler'
+import AbstractHandler from '../AbstractHandler'
 
 /**
  * @module RAFHandler
- * @extends EventHandler
+ * @extends AbstractHandler
  * @package event-manager
  * @description An handler class to manage global requestAnimationFrame (un)subscription
  */
-export default class RAFHandler extends EventHandler {
+export default class RAFHandler extends AbstractHandler {
   /**
    * Recursively requires animation frame
    * @param {Number} timestamp The timestamp returned by requestAnimationFrame
@@ -20,20 +20,15 @@ export default class RAFHandler extends EventHandler {
    * @override
    */
   listen() {
-    if (this.listening) return
-
+    super.listen()
     this.nextFrame()
-    this.listening = true
   }
 
   /**
    * @override
    */
   unlisten() {
-    if (this.config.forceListening) return
-
+    super.unlisten()
     window.cancelAnimationFrame(this.requestId)
-
-    this.listening = false
   }
 }
