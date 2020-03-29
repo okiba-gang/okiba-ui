@@ -1,3 +1,16 @@
+/**
+ * @module Pointer / Pointer
+ * @package pointer
+ * @description A class that wraps pointer information
+ * @example
+ * import { Pointer } from '@okiba/pointer'
+ * import { MyCanvasApp } from '../path/to/my/components'
+ *
+ * window.requestAnimationFrame(() => {
+ *  MyCanvasApp.update(Pointer.coords, Pointer.target)
+ * })
+ */
+
 import EventManager from '@okiba/event-manager'
 import { matches } from '@okiba/dom'
 import { ensurePointerEvents } from '../helpers'
@@ -18,10 +31,6 @@ function update(props) {
   state = { ...state, ...props }
 }
 
-/**
- * @module Pointer
- * @description A class that wraps pointer information
- */
 class Pointer {
   /**
    * Coords getter

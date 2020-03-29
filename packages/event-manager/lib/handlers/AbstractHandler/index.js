@@ -1,10 +1,11 @@
-import { debounce } from '../../helpers'
-
 /**
- * @module AbstractHandler
+ * @module EventManager / AbstractHandler
  * @package event-manager
  * @description A base class that defines the global event handler interface
  */
+
+import { debounce } from '../../helpers'
+
 export default class AbstractHandler {
   /**
    * @constructor
@@ -30,7 +31,7 @@ export default class AbstractHandler {
 
   /**
    * A callback that dispatches the subscribed global event when the related native event occurs
-   * @param {*} nativePayload The original payload returned by native event
+   * @param {Event} nativePayload The original payload returned by native event
    */
   eventCallback = nativePayload => {
     const { alias, payloadFilter, dispatch } = this.config

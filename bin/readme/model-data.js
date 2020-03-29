@@ -1,5 +1,5 @@
 function model(data, baseData) {
-  return data.filter(e => !e.undocumented && e.kind !== 'package')
+  return data.filter(e => !e.undocumented && e.kind !== 'package' && e.access !== 'private')
     .reduce((acc, entry) => {
       const {url} = baseData
 
@@ -37,7 +37,6 @@ function model(data, baseData) {
       return acc
     }, {})
 }
-
 
 function modelPackage(packageData, baseData) {
   if (!packageData.name) {

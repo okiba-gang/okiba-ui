@@ -12,9 +12,51 @@ Utilities to check some browser features
 ---
 
 #### [event-manager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager)
-A class that extends EventEmitter (@okiba/event-emitter) to centralize resize and scroll events and RequestAnimationFrame handler
+A singleton to manage global (centralized) events
 
-###### [`dispatchScroll`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#dispatchscroll), [`onResize`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#onresize), [`onScroll`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#onscroll), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#unlisten)
+###### [`subscribedEvents`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#subscribedevents), [`hasListeners`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#haslistenerstype), [`subscribe`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#subscribeconfig), [`unsubscribe`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#unsubscribetypes), [`on`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#ontype-callback), [`off`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#offtype-callback), [`emit`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#emittype-payload), [`clear`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#clearevents), [`destroy`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#destroyevents)
+---
+
+#### [event-manager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager)
+A base class that defines the global event handler interface
+
+###### [`module:EventManager / AbstractHandler`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#module:eventmanager / abstracthandlerconfig), [`eventCallback`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#eventcallbacknativePayload), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#unlisten)
+---
+
+#### [event-manager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager)
+An handler class to manage global event (un)subscription
+
+###### [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#unlisten)
+---
+
+#### [event-manager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager)
+An handler class to manage global requestAnimationFrame (un)subscription
+
+###### [`nextFrame`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#nextframetimestamp), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#listen), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager#unlisten)
+---
+
+#### [event-manager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager)
+A custom events management system
+
+###### 
+---
+
+#### [pointer](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer)
+A class that wraps pointer information
+
+###### [`coords`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#coords), [`target`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#target), [`inview`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#inview), [`lastEvent`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#lastevent), [`matches`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#matchesselectors-testAncestors)
+---
+
+#### [pointer](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer)
+Custom cursor base class
+
+###### [`defaultTriggers`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#defaulttriggers), [`Cursor`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#cursorprops), [`setup`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#setup), [`show`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#show), [`hide`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#hide), [`move`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#moveinertia), [`hover`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#hovermatchedSelector), [`reset`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#reset), [`onPointerInView`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#onpointerinviewpayload), [`onPointerMove`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#onpointermovepayload), [`onPointerOver`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#onpointerovere), [`onRAF`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#onraf), [`onResize`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#onresize), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#listen), [`onDestroy`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer#ondestroy)
+---
+
+#### [pointer](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer)
+A package that helps to manage custom cursors and pointer based implementations
+
+###### 
 ---
 
 #### [scroll-container](https://github.com/okiba-gang/okiba-components/tree/master/packages/scroll-container)

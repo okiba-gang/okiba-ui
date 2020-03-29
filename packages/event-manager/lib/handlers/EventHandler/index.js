@@ -1,12 +1,14 @@
+/**
+ * @module EventManager / EventHandler
+ * @extends AbstractHandler
+ * @package event-manager
+ * @description An handler class to manage global event (un)subscription
+ */
+
 import { hasPassiveEvents } from '@okiba/detect'
 import { on, off } from '@okiba/dom'
 import AbstractHandler from '../AbstractHandler'
 
-/**
- * @module EventHandler
- * @package event-manager
- * @description An handler class to manage global event (un)subscription
- */
 export default class EventHandler extends AbstractHandler {
   /**
    * @override

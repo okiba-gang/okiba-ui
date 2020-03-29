@@ -4,6 +4,12 @@
   "description": "Centralized event management",
   "main": "dist/index.js",
   "module": "index.js",
+  "submodules": [
+    "lib/EventManager",
+    "lib/handlers/AbstractHandler",
+    "lib/handlers/EventHandler",
+    "lib/handlers/RAFHandler"
+  ],
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",

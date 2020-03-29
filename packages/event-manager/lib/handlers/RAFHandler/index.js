@@ -1,11 +1,12 @@
-import AbstractHandler from '../AbstractHandler'
-
 /**
- * @module RAFHandler
+ * @module EventManager / RAFHandler
  * @extends AbstractHandler
  * @package event-manager
  * @description An handler class to manage global requestAnimationFrame (un)subscription
  */
+
+import AbstractHandler from '../AbstractHandler'
+
 export default class RAFHandler extends AbstractHandler {
   /**
    * Recursively requires animation frame

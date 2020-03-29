@@ -1,7 +1,7 @@
 
 
-# Okiba / EventManager
-A custom events management system
+# Okiba / EventManager / EventHandler
+An handler class to manage global event (un)subscription
 
 
 
@@ -23,15 +23,24 @@ Or use it in the browser
 ```
 
 
-### Submodules:
 
-- [EventManager](./lib/EventManager/README.md)
 
-- [AbstractHandler](./lib/handlers/AbstractHandler/README.md)
 
-- [EventHandler](./lib/handlers/EventHandler/README.md)
 
-- [RAFHandler](./lib/handlers/RAFHandler/README.md)
+
+## listen()
+
+
+
+
+
+
+
+
+
+## unlisten()
+
+
 
 
 

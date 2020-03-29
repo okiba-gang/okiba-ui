@@ -4,6 +4,10 @@
   "description": "Handles pointer movements and interceptions",
   "main": "dist/index.js",
   "module": "index.js",
+  "submodules": [
+    "lib/Pointer",
+    "lib/Cursor"
+  ],
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",

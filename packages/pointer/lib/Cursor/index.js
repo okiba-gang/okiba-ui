@@ -1,3 +1,19 @@
+/**
+ * @module Pointer / Cursor
+ * @extends Component
+ * @package pointer
+ * @description Custom cursor base class
+ * @example
+ * import { Cursor } from '@okiba/pointer'
+ *
+ * const cursor = new Cursor({
+ *  el: document.getElementById('my-custom-cursor'),
+ *  options: {
+ *    inertia: 0.25
+ *  }
+ * })
+ */
+
 import Component from '@okiba/component'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
@@ -6,10 +22,6 @@ import { matches } from '@okiba/dom'
 import { lerp } from '@okiba/math'
 import { ensurePointerEvents } from '../helpers'
 
-/**
- * @module Cursor
- * @description Custom cursor base class
- */
 class Cursor extends Component {
   /**
    * Default triggers selectors
@@ -60,7 +72,7 @@ class Cursor extends Component {
 
   /**
    * Animates cursor to pointer position (can be overwritten)
-   * @param
+   * @param {Number} inertia The lerping factor
    */
   move(inertia = false) {
     const { last, current } = this.coords
@@ -89,6 +101,7 @@ class Cursor extends Component {
 
   /**
    * Handles pointer entering/leaving viewport callback
+   * @param {Object} payload The pointer inview event payload
    */
   onPointerInView = ({ inview }) => {
     const action = inview ? 'show' : 'hide'

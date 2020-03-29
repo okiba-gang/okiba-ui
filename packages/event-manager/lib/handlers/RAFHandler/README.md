@@ -1,7 +1,7 @@
 
 
-# Okiba / EventManager
-A custom events management system
+# Okiba / EventManager / RAFHandler
+An handler class to manage global requestAnimationFrame (un)subscription
 
 
 
@@ -23,15 +23,46 @@ Or use it in the browser
 ```
 
 
-### Submodules:
 
-- [EventManager](./lib/EventManager/README.md)
 
-- [AbstractHandler](./lib/handlers/AbstractHandler/README.md)
 
-- [EventHandler](./lib/handlers/EventHandler/README.md)
 
-- [RAFHandler](./lib/handlers/RAFHandler/README.md)
+
+## nextFrame(timestamp)
+
+
+Recursively requires animation frame
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `timestamp`: `Number`
+
+The timestamp returned by requestAnimationFrame
+
+
+
+
+
+## listen()
+
+
+
+
+
+
+
+
+
+## unlisten()
+
+
 
 
 
