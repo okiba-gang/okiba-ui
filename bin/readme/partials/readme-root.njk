@@ -24,6 +24,7 @@ __[{{s.name}}]({{s.url}})__
 ###### {% for sm in s.members -%}
 [`{{ sm.name }}`]({{ s.url }}){%- if not loop.last %}, {% endif -%}
 {%- endfor -%}
+
 {%- endif %}
 {% endfor %}
 {% endif %}
