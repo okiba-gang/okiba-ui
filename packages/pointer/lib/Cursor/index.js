@@ -24,11 +24,6 @@ import { ensurePointerEvents } from '../helpers'
 
 class Cursor extends Component {
   /**
-   * Default triggers selectors
-   */
-  static defaultTriggers = ['a', 'button', '[data-cursor]']
-
-  /**
    * @constructor
    * @param {Object} props
    */
@@ -185,6 +180,12 @@ class Cursor extends Component {
       this.enabled = false
     }
   }
+
+  /**
+   * Default triggers selectors
+   * @static
+   */
+  static defaultTriggers = ['a', 'button', '[data-cursor]']
 }
 
 export default Cursor

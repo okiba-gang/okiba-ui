@@ -41,38 +41,6 @@ Or use it in the browser
 
 
 
-## defaultTriggers()
-
-
-Default triggers selectors
-
-
-
-
-
-
-
-## constructor(props)
-
-
-
-
-
-
-
-
-
-#### Arguments
-
-
-##### + `props`: `Object`
-
-
-
-
-
-
-
 ## setup()
 
 
@@ -264,6 +232,17 @@ Initializes listeners (can be extended)
 
 
 Kills listeners (can be extended)
+
+
+
+
+
+
+
+## defaultTriggers()
+
+
+Default triggers selectors
 
 
 

@@ -14,11 +14,17 @@ ______
 {%- endfor -%}
 {%- endif %}
 {% if pkg.submodules -%}
-##### Submodules:
+#### Submodules:
 {% for s in pkg.submodules -%}
 __[{{s.name}}]({{s.url}})__
+
 {{s.description}}
 
+{% if s.members -%}
+###### {% for sm in s.members -%}
+[`{{ sm.name }}`]({{ s.url }}){%- if not loop.last %}, {% endif -%}
+{%- endfor -%}
+{%- endif %}
 {% endfor %}
 {% endif %}
 {% if not loop.last %}---{% endif %}

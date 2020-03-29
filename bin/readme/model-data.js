@@ -1,5 +1,11 @@
 function model(data, baseData) {
-  return data.filter(e => !e.undocumented && e.kind !== 'package' && e.access !== 'private')
+  return data
+    .filter(e => {
+      return !e.undocumented
+        && e.kind !== 'package'
+        && e.access !== 'private'
+        && !e.comment.match(/@constructor/)
+    })
     .reduce((acc, entry) => {
       const {url} = baseData
 

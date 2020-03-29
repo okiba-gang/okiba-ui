@@ -28,27 +28,6 @@ Or use it in the browser
 
 
 
-## constructor(config)
-
-
-
-
-
-
-
-
-
-#### Arguments
-
-
-##### + `config`: `Object`
-
-The handler configuration
-
-
-
-
-
 ## eventCallback(nativePayload)
 
 
