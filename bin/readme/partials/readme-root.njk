@@ -15,17 +15,15 @@ ______
 {%- endif %}
 {% if pkg.submodules -%}
 #### Submodules:
-{% for s in pkg.submodules -%}
-__[{{s.name}}]({{s.url}})__
-
+{% for s in pkg.submodules %}
+##### [{{s.name}}]({{s.url}})
 {{s.description}}
-
-{% if s.members -%}
+{% if s.members %}
 ###### {% for sm in s.members -%}
 [`{{ sm.name }}`]({{ s.url }}){%- if not loop.last %}, {% endif -%}
-{%- endfor %}
-
+{% endfor %}
 {% endif %}
+{%- if not loop.last %}&nbsp;{% endif -%}
 {% endfor %}
 {% endif %}
 {% if not loop.last %}---{% endif %}

@@ -24,23 +24,23 @@ Utilities to check some browser features
 A custom events management system
 ###### 
 #### Submodules:
-__[EventManager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager)__
 
+##### [EventManager](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager)
 A singleton to manage centralized event listeners
 
 ###### [`subscribedEvents`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`hasListeners`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`subscribe`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`unsubscribe`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`on`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`off`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`emit`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`clear`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager), [`destroy`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/EventManager)
-__[AbstractHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/AbstractHandler)__
-
+&nbsp;
+##### [AbstractHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
 A base class that defines a global event handler interface
 
 ###### [`eventCallback`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
-__[EventHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/EventHandler)__
-
+&nbsp;
+##### [EventHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/EventHandler)
 An handler class aimed to centralize a native browser event listener
 
 ###### [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/EventHandler), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/EventHandler)
-__[RAFHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/RAFHandler)__
-
+&nbsp;
+##### [RAFHandler](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/RAFHandler)
 An handler class aimed to centralize a requestAnimationFrame
 
 ###### [`nextFrame`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/RAFHandler), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/RAFHandler), [`unlisten`](https://github.com/okiba-gang/okiba-components/tree/master/packages/event-manager/lib/handlers/RAFHandler)
@@ -57,13 +57,13 @@ An handler class aimed to centralize a requestAnimationFrame
 A package that helps to manage custom cursors and pointer based implementations
 ###### 
 #### Submodules:
-__[Pointer](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer)__
 
+##### [Pointer](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer)
 A wrapper class that collects normalized (both mouse and touch) pointer information
 
 ###### [`coords`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer), [`target`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer), [`inview`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer), [`lastEvent`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer), [`matches`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Pointer)
-__[Cursor](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor)__
-
+&nbsp;
+##### [Cursor](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor)
 A base component aimed to handle a custom html cursor
 
 ###### [`setup`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`show`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`hide`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`move`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`hover`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`reset`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onPointerInView`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onPointerMove`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onPointerOver`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onRAF`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onResize`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`listen`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`onDestroy`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor), [`defaultTriggers`](https://github.com/okiba-gang/okiba-components/tree/master/packages/pointer/lib/Cursor)
