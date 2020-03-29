@@ -1,8 +1,8 @@
 /**
- * @module Pointer / Cursor
+ * @module Cursor
  * @extends Component
  * @package pointer
- * @description Custom cursor base class
+ * @description A base component aimed to handle a custom html cursor
  * @example
  * import { Cursor } from '@okiba/pointer'
  *

@@ -1,7 +1,7 @@
 
 
-# Okiba / EventManager / AbstractHandler
-A base class that defines the global event handler interface
+# Okiba / AbstractHandler
+A base class that defines a global event handler interface
 
 
 
@@ -10,16 +10,16 @@ A base class that defines the global event handler interface
 
 You can grab it as an `npm` package
 ```bash
-npm i --save @okiba/event-manager
+npm i --save @okiba/lib/handlers/AbstractHandler
 ```
 
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@1.0.5/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@1.0.5/dist/index.js"></script>
 ```
 
 

@@ -1,7 +1,7 @@
 /**
- * @module Pointer / Pointer
+ * @module Pointer
  * @package pointer
- * @description A class that wraps pointer information
+ * @description A wrapper class that collects normalized (both mouse and touch) pointer information
  * @example
  * import { Pointer } from '@okiba/pointer'
  * import { MyCanvasApp } from '../path/to/my/components'

@@ -1,7 +1,7 @@
 /**
- * @module EventManager / AbstractHandler
+ * @module AbstractHandler
  * @package event-manager
- * @description A base class that defines the global event handler interface
+ * @description A base class that defines a global event handler interface
  */
 
 import { debounce } from '../../helpers'

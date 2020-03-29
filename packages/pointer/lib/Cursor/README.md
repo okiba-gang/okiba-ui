@@ -1,7 +1,7 @@
 
 
-# Okiba / Pointer / Cursor
-Custom cursor base class
+# Okiba / Cursor
+A base component aimed to handle a custom html cursor
 
 
 
@@ -23,16 +23,16 @@ const cursor = new Cursor({
 
 You can grab it as an `npm` package
 ```bash
-npm i --save @okiba/pointer
+npm i --save @okiba/lib/Cursor
 ```
 
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/pointer@1.0.0/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Cursor@1.0.0/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/pointer@1.0.0/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Cursor@1.0.0/dist/index.js"></script>
 ```
 
 

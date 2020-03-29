@@ -43,8 +43,25 @@ function modelPackage(packageData, baseData) {
     throw new Error(`Missing name, data: ${JSON.stringify(packageData)}`)
   }
 
-  const {name, description, pkgName, members = []} = packageData
-  const pkg = {name: pkgName, description, url: `${baseData.url}${pkgName}`, members: []}
+  const { name, description, pkgName, members = [], submodules, parent } = packageData
+
+  const pkg = {
+    name: pkgName,
+    description,
+    members: [],
+    parent
+  }
+
+  if (!parent) {
+    pkg.url = `${baseData.url}${pkgName}`
+  }
+
+  if (submodules) {
+    pkg.submodules = submodules.map(s => ({
+      ...s,
+      url: `${baseData.url}${pkgName}/${s.pkgName}`
+    }))
+  }
 
   members.forEach(m => {
     let params = []

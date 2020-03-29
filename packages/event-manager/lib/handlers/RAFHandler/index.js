@@ -1,8 +1,8 @@
 /**
- * @module EventManager / RAFHandler
+ * @module RAFHandler
  * @extends AbstractHandler
  * @package event-manager
- * @description An handler class to manage global requestAnimationFrame (un)subscription
+ * @description An handler class aimed to centralize a requestAnimationFrame
  */
 
 import AbstractHandler from '../AbstractHandler'

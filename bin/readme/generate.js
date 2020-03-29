@@ -23,22 +23,23 @@ async function asyncForEach(array, callback) {
   }
 }
 
-async function generate(path, name, version, submodules) {
-  const data = model(await jsdoc.explain({ files: `./packages/${path}/index.js` }), baseData)
+async function generate({ name, parent, version, submodules }) {
+  const path = parent ? `${parent}/${name}` : name
+  const dataModel = model(await jsdoc.explain({ files: `./packages/${path}/index.js` }), baseData)
 
-  data.pkgName = name
-  data.version = version
+  const data = {
+    ...dataModel,
+    pkgName: name,
+    version,
+    ...parent ? { parent } : {},
+    ...submodules ? { submodules } : {}
+  }
 
   if (submodules) {
     data.submodules = []
     await asyncForEach(submodules, async (submodule) => {
-      const submoduleData = await generate(`${name}/${submodule}`, name, version)
-      data.submodules.push({
-        ...submoduleData,
-        name: submoduleData.name.replace(`${data.name} / `, ''),
-        package: name,
-        path: `./${submodule}`,
-      })
+      const submoduleData = await generate({ name: submodule, parent: name, version })
+      data.submodules.push(submoduleData)
     })
   }
 
@@ -61,7 +62,7 @@ async function generateAll() {
 
     const { version, submodules } = JSON.parse(readFileSync(`./packages/${name}/package.json`))
 
-    await generate(name, name, version, submodules)
+    await generate({ name, version, submodules })
   })
 
   const markdown = nunjucks.renderString(templateRoot, baseData)

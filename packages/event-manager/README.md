@@ -25,13 +25,13 @@ Or use it in the browser
 
 ### Submodules:
 
-- [EventManager](./lib/EventManager/README.md)
+- [EventManager]()
 
-- [AbstractHandler](./lib/handlers/AbstractHandler/README.md)
+- [AbstractHandler]()
 
-- [EventHandler](./lib/handlers/EventHandler/README.md)
+- [EventHandler]()
 
-- [RAFHandler](./lib/handlers/RAFHandler/README.md)
+- [RAFHandler]()
 
 
 

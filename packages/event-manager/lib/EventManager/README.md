@@ -1,7 +1,7 @@
 
 
 # Okiba / EventManager
-A singleton to manage global (centralized) events
+A singleton to manage centralized event listeners
 
 
 
@@ -10,16 +10,16 @@ A singleton to manage global (centralized) events
 
 You can grab it as an `npm` package
 ```bash
-npm i --save @okiba/event-manager
+npm i --save @okiba/lib/EventManager
 ```
 
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/EventManager@1.0.5/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/EventManager@1.0.5/dist/index.js"></script>
 ```
 
 

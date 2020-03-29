@@ -1,3 +1,9 @@
+/**
+ * @module EventManager
+ * @package event-manager
+ * @description A singleton to manage centralized event listeners
+ */
+
 import EventEmitter from '@okiba/event-emitter'
 import { EventHandler } from '../handlers'
 
@@ -59,11 +65,6 @@ function unsubscribe(type) {
   delete handlers[type]
 }
 
-/**
- * @module EventManager
- * @package event-manager
- * @description A singleton to manage global (centralized) events
- */
 export default class EventManager {
   /**
    * Global events list getter

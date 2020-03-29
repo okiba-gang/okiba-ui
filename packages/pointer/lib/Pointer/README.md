@@ -1,7 +1,7 @@
 
 
-# Okiba / Pointer / Pointer
-A class that wraps pointer information
+# Okiba / Pointer
+A wrapper class that collects normalized (both mouse and touch) pointer information
 
 
 
@@ -21,16 +21,16 @@ window.requestAnimationFrame(() => {
 
 You can grab it as an `npm` package
 ```bash
-npm i --save @okiba/pointer
+npm i --save @okiba/lib/Pointer
 ```
 
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/pointer@1.0.0/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Pointer@1.0.0/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/pointer@1.0.0/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Pointer@1.0.0/dist/index.js"></script>
 ```
 
 

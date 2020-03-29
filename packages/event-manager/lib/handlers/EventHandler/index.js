@@ -1,8 +1,8 @@
 /**
- * @module EventManager / EventHandler
+ * @module EventHandler
  * @extends AbstractHandler
  * @package event-manager
- * @description An handler class to manage global event (un)subscription
+ * @description An handler class aimed to centralize a native browser event listener
  */
 
 import { hasPassiveEvents } from '@okiba/detect'
