@@ -25,9 +25,17 @@ Or use it in the browser
 
 ### Submodules:
 
-- [Pointer]()
+#### [Pointer]()
+A wrapper class that collects normalized (both mouse and touch) pointer information
 
-- [Cursor]()
+###### [`coords`](), [`target`](), [`inview`](), [`lastEvent`](), [`matches`]()
+
+
+#### [Cursor]()
+A base component aimed to handle a custom html cursor
+
+###### [`setup`](), [`show`](), [`hide`](), [`move`](), [`hover`](), [`reset`](), [`onPointerInView`](), [`onPointerMove`](), [`onPointerOver`](), [`onRAF`](), [`onResize`](), [`listen`](), [`onDestroy`](), [`defaultTriggers`]()
+
 
 
 

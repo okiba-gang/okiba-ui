@@ -25,13 +25,29 @@ Or use it in the browser
 
 ### Submodules:
 
-- [EventManager]()
+#### [EventManager]()
+A singleton to manage centralized event listeners
 
-- [AbstractHandler]()
+###### [`subscribedEvents`](), [`hasListeners`](), [`subscribe`](), [`unsubscribe`](), [`on`](), [`off`](), [`emit`](), [`clear`](), [`destroy`]()
 
-- [EventHandler]()
 
-- [RAFHandler]()
+#### [AbstractHandler]()
+A base class that defines a global event handler interface
+
+###### [`eventCallback`](), [`listen`](), [`unlisten`]()
+
+
+#### [EventHandler]()
+An handler class aimed to centralize a native browser event listener
+
+###### [`listen`](), [`unlisten`]()
+
+
+#### [RAFHandler]()
+An handler class aimed to centralize a requestAnimationFrame
+
+###### [`nextFrame`](), [`listen`](), [`unlisten`]()
+
 
 
 

@@ -16,7 +16,7 @@ ______
 {% if pkg.submodules -%}
 #### Submodules:
 {% for s in pkg.submodules %}
-##### [{{s.name}}]({{s.url}})
+#### [{{s.name}}]({{s.url}})
 {{s.description}}
 {% if s.members %}
 ###### {% for sm in s.members -%}

@@ -38,7 +38,13 @@ Or use it in the browser
 {% if submodules %}
 ### Submodules:
 {% for s in submodules %}
-- [{{ s.name }}]({{ s.url }})
+#### [{{s.name}}]({{s.url}})
+{{s.description}}
+{% if s.members %}
+###### {% for sm in s.members -%}
+[`{{ sm.name }}`]({{ s.url }}){%- if not loop.last %}, {% endif -%}
+{% endfor %}
+{% endif %}
 {% endfor %}
 {% endif %}
 
