@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-container",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Container for scroll helpers",
   "main": "dist/index.js",
   "module": "index.js",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.0",
-    "@okiba/event-manager": "^1.0.5",
-    "@okiba/sizes-cache": "^1.0.5"
+    "@okiba/event-manager": "^2.0.0",
+    "@okiba/sizes-cache": "^1.0.6"
   }
 }

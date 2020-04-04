@@ -1,6 +1,6 @@
 {
   "name": "@okiba/pointer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Handles pointer movements and interceptions",
   "main": "dist/index.js",
   "module": "index.js",
@@ -16,8 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.0",
-    "@okiba/detect": "^1.0.5",
-    "@okiba/event-manager": "^1.0.5",
-    "@okiba/sizes-cache": "^1.0.5"
+    "@okiba/detect": "^1.0.6",
+    "@okiba/event-manager": "^2.0.0",
+    "@okiba/sizes-cache": "^1.0.6"
   }
 }

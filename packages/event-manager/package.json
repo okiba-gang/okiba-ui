@@ -1,6 +1,6 @@
 {
   "name": "@okiba/event-manager",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Centralized event management",
   "main": "dist/index.js",
   "module": "index.js",
@@ -18,6 +18,6 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.0",
-    "@okiba/detect": "^1.0.5"
+    "@okiba/detect": "^1.0.6"
   }
 }
