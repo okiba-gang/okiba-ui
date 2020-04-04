@@ -1,6 +1,6 @@
 {
   "name": "@okiba/sizes-cache",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Keeps sizes of dom elements up to date",
   "main": "dist/index.js",
   "module": "index.js",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.0",
-    "@okiba/event-manager": "^2.0.0"
+    "@okiba/event-manager": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"
