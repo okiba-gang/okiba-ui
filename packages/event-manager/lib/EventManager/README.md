@@ -16,10 +16,10 @@ npm i --save @okiba/lib/EventManager
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/EventManager@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/EventManager@2.0.0/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/EventManager@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/EventManager@2.0.0/dist/index.js"></script>
 ```
 
 
@@ -100,6 +100,33 @@ Removes a global event
 ##### + `types`: `String` or  `Array.<String>`
 
 The event(s) to be removed
+
+
+
+
+
+## update(type, config)
+
+
+Updates an existing global event
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `type`: `String`
+
+The event to be removed
+
+
+##### + `config`: `Object` or  `Array.<Object>`
+
+Event(s) configuration(s)
 
 
 

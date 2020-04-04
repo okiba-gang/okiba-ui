@@ -16,10 +16,10 @@ npm i --save @okiba/event-manager
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/event-manager@2.0.0/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/event-manager@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/event-manager@2.0.0/dist/index.js"></script>
 ```
 
 
@@ -28,7 +28,7 @@ Or use it in the browser
 #### [EventManager]()
 A singleton to manage centralized event listeners
 
-###### [`subscribedEvents`](), [`hasListeners`](), [`subscribe`](), [`unsubscribe`](), [`on`](), [`off`](), [`emit`](), [`clear`](), [`destroy`]()
+###### [`subscribedEvents`](), [`hasListeners`](), [`subscribe`](), [`unsubscribe`](), [`update`](), [`on`](), [`off`](), [`emit`](), [`clear`](), [`destroy`]()
 
 
 #### [AbstractHandler]()

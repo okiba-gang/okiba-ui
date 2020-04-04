@@ -14,5 +14,8 @@
     "@okiba/core": "^1.0.0",
     "@okiba/event-manager": "^2.0.0",
     "@okiba/sizes-cache": "^1.0.6"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -9,5 +9,8 @@
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
     "Andrea Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

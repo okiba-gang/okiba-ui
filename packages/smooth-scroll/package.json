@@ -16,5 +16,9 @@
     "@okiba/scroll-container": "^1.0.6",
     "@okiba/scroll-element": "^1.0.6",
     "@okiba/scroll-manager": "^1.0.6"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "0235a7e7807eaffa9e3935f45b6bd525e26688e0"
 }

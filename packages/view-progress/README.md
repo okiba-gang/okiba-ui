@@ -50,13 +50,59 @@ npm i --save @okiba/view-progress
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/view-progress@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/view-progress@1.0.6/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/view-progress@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/view-progress@1.0.6/dist/index.js"></script>
 ```
 
 
+
+
+
+
+
+## constructor(args, args.el, args.options, args.options.overflow, args.options.thresholdTop, args.options.thresholdBottom)
+
+
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `args`: `Object`
+
+Arguments to create a component
+
+
+##### + `args.el`: `Element`
+
+DOM Element to be bound
+
+
+##### + `args.options`: `Object`
+
+Custom options passed to the component
+
+
+##### + `args.options.overflow`: `Boolean`
+
+Keeps emitting progress even if elements is out of viewport
+
+
+##### + `args.options.thresholdTop`: `Number`
+
+A value added to element's top position to adjust its bounding area
+
+
+##### + `args.options.thresholdBottom`: `Number`
+
+A value added to element's bot position to adjust its bounding area
 
 
 

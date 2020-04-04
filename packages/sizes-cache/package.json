@@ -13,5 +13,8 @@
   "dependencies": {
     "@okiba/core": "^1.0.0",
     "@okiba/event-manager": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

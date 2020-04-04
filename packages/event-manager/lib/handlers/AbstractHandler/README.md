@@ -16,10 +16,10 @@ npm i --save @okiba/lib/handlers/AbstractHandler
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@1.0.5/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@2.0.0/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@1.0.5/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler@2.0.0/dist/index.js"></script>
 ```
 
 
