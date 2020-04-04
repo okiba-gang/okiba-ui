@@ -1,8 +1,8 @@
-import { qs } from '@okiba/dom'
-import Component from '@okiba/component'
+import { qs } from '@okiba/core/dom'
+import Component from '@okiba/core/component'
+import { hasTouch } from '@okiba/detect'
 import StickyContent from '@okiba/sticky-content'
 import ScrollManager from '@okiba/scroll-manager'
-import { hasTouch } from '@okiba/detect'
 
 class StickyComponent extends StickyContent {
   constructor(args) {

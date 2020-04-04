@@ -1,6 +1,6 @@
 import { hasTouch } from '@okiba/detect'
-import { qs } from '@okiba/dom'
-import { lerp } from '@okiba/math'
+import { qs } from '@okiba/core/dom'
+import { lerp } from '@okiba/core/math'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 import { Cursor } from '@okiba/pointer'

@@ -4,7 +4,7 @@
  * @description A singleton to manage centralized event listeners
  */
 
-import EventEmitter from '@okiba/event-emitter'
+import EventEmitter from '@okiba/core/event-emitter'
 import { EventHandler } from '../handlers'
 
 /**
@@ -48,6 +48,10 @@ function subscribe({ handler: Handler = EventHandler, type, alias = type, ...con
     alias,
     dispatch: (alias, payload) => emitter.emit(alias, payload)
   })
+
+  if (emitter.hasListeners(type)) {
+    handlers[alias].listen()
+  }
 }
 
 /**
@@ -65,7 +69,7 @@ function unsubscribe(type) {
   delete handlers[type]
 }
 
-export default class EventManager {
+class EventManager {
   /**
    * Global events list getter
    */
@@ -108,18 +112,26 @@ export default class EventManager {
   }
 
   /**
+   * Updates an existing global event
+   * @param {String} type The event to be removed
+   * @param {Object|Object[]} config Event(s) configuration(s)
+   */
+  static update(type, config) {
+    EventManager.unsubscribe(type)
+    EventManager.subscribe(config)
+  }
+
+  /**
    * Adds a global event listener
    * @param {String} type The event type
    * @param {Function} callback The event callback
    */
   static on(type, callback) {
-    if (!handlers.hasOwnProperty(type)) return
+    emitter.on(type, callback)
 
-    if (!handlers[type].listening) {
+    if (handlers.hasOwnProperty(type) && !handlers[type].listening) {
       handlers[type].listen()
     }
-
-    emitter.on(type, callback)
   }
 
   /**
@@ -128,11 +140,9 @@ export default class EventManager {
    * @param {Function} callback The event callback
    */
   static off(type, callback) {
-    if (!handlers.hasOwnProperty(type) || !handlers[type].listening) return
-
     emitter.off(type, callback)
 
-    if (EventManager.hasListeners(type)) {
+    if (handlers.hasOwnProperty(type) && handlers[type].listening) {
       handlers[type].unlisten()
     }
   }
@@ -170,3 +180,5 @@ export default class EventManager {
     EventManager.unsubscribe(events)
   }
 }
+
+export default EventManager

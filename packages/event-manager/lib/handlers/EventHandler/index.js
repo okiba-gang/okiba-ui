@@ -5,8 +5,8 @@
  * @description An handler class aimed to centralize a native browser event listener
  */
 
+import { on, off } from '@okiba/core/dom'
 import { hasPassiveEvents } from '@okiba/detect'
-import { on, off } from '@okiba/dom'
 import AbstractHandler from '../AbstractHandler'
 
 export default class EventHandler extends AbstractHandler {
@@ -17,7 +17,9 @@ export default class EventHandler extends AbstractHandler {
     super.listen()
 
     const { type, target, passive = true, capture = false } = this.config
-    const options = hasPassiveEvents ? { passive, capture } : capture
+    const options = hasPassiveEvents
+      ? { passive, capture }
+      : capture
 
     if (Array.isArray(type)) {
       type.forEach(entry => on(target, entry, this.onEvent, options))
@@ -33,7 +35,9 @@ export default class EventHandler extends AbstractHandler {
     super.unlisten()
 
     const { type, target, passive = true, capture = false } = this.config
-    const options = hasPassiveEvents ? { passive, capture } : capture
+    const options = hasPassiveEvents
+      ? { passive, capture }
+      : capture
 
     if (Array.isArray(type)) {
       type.forEach(entry => off(target, entry, this.onEvent, options))

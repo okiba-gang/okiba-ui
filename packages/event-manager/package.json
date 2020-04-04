@@ -17,9 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/detect": "^1.0.5",
-    "@okiba/dom": "^1.0.20",
-    "@okiba/event-emitter": "^1.1.9",
-    "@okiba/functions": "^1.0.1"
+    "@okiba/core": "^1.0.0",
+    "@okiba/detect": "^1.0.5"
   }
 }

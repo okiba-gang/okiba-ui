@@ -4,7 +4,7 @@
  * @description A base class that defines a global event handler interface
  */
 
-import { debounce } from '@okiba/functions'
+import { debounce } from '@okiba/core/functions'
 
 export default class AbstractHandler {
   /**
@@ -22,7 +22,9 @@ export default class AbstractHandler {
    */
   constructor({ type, alias = type, ...config }) {
     this.config = { type, alias, ...config }
-    this.onEvent = config.debounce ? debounce(this.eventCallback, config.debounce) : this.eventCallback
+    this.onEvent = config.debounce
+      ? debounce(this.eventCallback, config.debounce)
+      : this.eventCallback
 
     if (this.config.forceListening) {
       this.listen()
@@ -35,7 +37,9 @@ export default class AbstractHandler {
    */
   eventCallback = nativePayload => {
     const { alias, payloadFilter, dispatch } = this.config
-    const payload = typeof payloadFilter === 'function' ? payloadFilter(nativePayload) : nativePayload
+    const payload = typeof payloadFilter === 'function'
+      ? payloadFilter(nativePayload)
+      : nativePayload
 
     dispatch(alias, payload)
   }

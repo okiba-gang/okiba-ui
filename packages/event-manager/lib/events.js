@@ -3,12 +3,7 @@ import { RAFHandler } from './handlers'
 export const resize = {
   type: 'resize',
   target: window,
-  debounce: 200,
-  payloadFilter: e => ({
-    width: window.innerWidth,
-    height: window.innerHeight,
-    event: e
-  })
+  debounce: 200
 }
 
 export const scroll = {

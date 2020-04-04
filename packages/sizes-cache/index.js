@@ -8,8 +8,8 @@
  * const sizes = SizesCache.get(qs('#app'))
  * console.log(sizes)
  */
+import { offset } from '@okiba/core/dom'
 import EventManager from '@okiba/event-manager'
-import { offset } from '@okiba/dom'
 
 export default new class SizesCache {
   constructor() {
@@ -20,7 +20,7 @@ export default new class SizesCache {
 
   /**
    * Element's sizes getter
-   * @param {Element} el 
+   * @param {Element} el
    */
   get(el) {
     if (!this.map.has(el)) {
@@ -33,7 +33,7 @@ export default new class SizesCache {
 
   /**
    * Computes element's sizes
-   * @param {Element} el 
+   * @param {Element} el
    */
   compute(el) {
     const sizes = this.map.get(el)

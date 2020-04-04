@@ -11,7 +11,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/component": "^1.0.15",
-    "@okiba/event-manager": "^1.0.5"
+    "@okiba/core": "^1.0.0",
+    "@okiba/event-manager": "^1.0.5",
+    "@okiba/sizes-cache": "^1.0.5"
   }
 }

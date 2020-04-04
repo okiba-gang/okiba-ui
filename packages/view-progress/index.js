@@ -32,10 +32,10 @@
  *   ]
  * })
  */
-import EventedComponent from '@okiba/evented-component'
+import EventedComponent from '@okiba/core/evented-component'
+import { map } from '@okiba/core/math'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
-import { map } from '@okiba/math'
 
 /**
  * Accepts an __hash__ whose properties can be:

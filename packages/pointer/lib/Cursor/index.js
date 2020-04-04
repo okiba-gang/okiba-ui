@@ -14,12 +14,12 @@
  * })
  */
 
-import Component from '@okiba/component'
+import Component from '@okiba/core/component'
+import { matches } from '@okiba/core/dom'
+import { lerp } from '@okiba/core/math'
+import { hasTouch } from '@okiba/detect'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
-import { hasTouch } from '@okiba/detect'
-import { matches } from '@okiba/dom'
-import { lerp } from '@okiba/math'
 import { ensurePointerEvents } from '../helpers'
 
 class Cursor extends Component {

@@ -1,5 +1,5 @@
+import { eventCoords } from '@okiba/core/dom'
 import { hasTouch } from '@okiba/detect'
-import { eventCoords } from '@okiba/dom'
 
 export const pointermove = {
   alias: 'pointermove',

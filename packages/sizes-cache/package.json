@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/dom": "^1.0.16",
+    "@okiba/core": "^1.0.0",
     "@okiba/event-manager": "^1.0.5"
   }
 }

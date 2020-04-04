@@ -4,16 +4,14 @@
     "workspaces": [
         "packages/*"
     ],
+    "dependencies": {
+      "@okiba/core": "^1.0.0"
+    },
     "devDependencies": {
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.9.0",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/preset-env": "^7.9.0",
-        "@okiba/component": "^2.0.1",
-        "@okiba/dom": "^1.0.20",
-        "@okiba/event-emitter": "^1.1.9",
-        "@okiba/evented-component": "^2.0.1",
-        "@okiba/math": "^1.0.19",
         "babel-loader": "^8.1.0",
         "core-js": "3",
         "jsdoc-api": "^5.0.4",

@@ -11,10 +11,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/event-emitter": "^1.1.4",
+    "@okiba/core": "^1.0.0",
     "@okiba/event-manager": "^1.0.5",
-    "@okiba/math": "^1.0.14",
-    "@okiba/scroll-manager": "^1.0.5",
     "@okiba/sizes-cache": "^1.0.5"
   }
 }
