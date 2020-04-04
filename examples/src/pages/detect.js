@@ -1,4 +1,4 @@
-import { qs } from '@okiba/dom'
+import { qs } from '@okiba/core/dom'
 import { hasTouch, hasPassiveEvents } from '@okiba/detect'
 
 qs('#touch').innerText = hasTouch ? 'true' : 'false'

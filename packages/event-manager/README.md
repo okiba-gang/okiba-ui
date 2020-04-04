@@ -1,30 +1,14 @@
 
 
-# Okiba / event-manager
-A class that extends EventEmitter (@okiba/event-emitter) to centralize resize and scroll events and RequestAnimationFrame handler
+# Okiba / EventManager
+A custom events management system
 
-
-
-
-```javascript
-// ./main.js
-
-import EventManager from '@okiba/event-manager
-
-EventManager.on('scroll', function(){ console.log(window.scrollY) })
-EventManager.on('resize', ({ width, height }) => {
-   this.el.innerHTML = `width: ${width}px<br>height: ${height}px`
-})
-EventManager.on('raf', (timestamp) => {
-   this.el.innerText = `timestamp: ${timestamp}`
-})
-```
 
 
 
 ### Installation
 
-You can grab it as an `npm` package 
+You can grab it as an `npm` package
 ```bash
 npm i --save @okiba/event-manager
 ```
@@ -39,56 +23,31 @@ Or use it in the browser
 ```
 
 
+### Submodules:
+
+#### [EventManager]()
+A singleton to manage centralized event listeners
+
+###### [`subscribedEvents`](), [`hasListeners`](), [`subscribe`](), [`unsubscribe`](), [`on`](), [`off`](), [`emit`](), [`clear`](), [`destroy`]()
 
 
-## dispatchScroll()
+#### [AbstractHandler]()
+A base class that defines a global event handler interface
+
+###### [`eventCallback`](), [`listen`](), [`unlisten`]()
 
 
-Polyfilled custom event ie9+
+#### [EventHandler]()
+An handler class aimed to centralize a native browser event listener
+
+###### [`listen`](), [`unlisten`]()
 
 
+#### [RAFHandler]()
+An handler class aimed to centralize a requestAnimationFrame
 
+###### [`nextFrame`](), [`listen`](), [`unlisten`]()
 
-
-
-
-## onResize()
-
-
-Callback of window resize event. Automatically emit a 'resize' event passing the new window width and height and a native scroll event
-
-
-
-
-
-
-
-## onScroll()
-
-
-Callback of window scroll event. Automatically emit a 'scroll' event passing the native event
-
-
-
-
-
-
-
-## listen()
-
-
-Adds event listeners on window resize, window scroll and requestAnimationFrame
-
-
-
-
-
-
-
-## unlisten()
-
-
-Removes event listeners on window resize, window scroll and requestAnimationFrame
 
 
 

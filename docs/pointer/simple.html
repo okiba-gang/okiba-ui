@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Okiba Components | Pointer</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="stylesheet" href="../assets/app.css">
+  
+</head>
+<body>
+  
+  <input type="checkbox" id="active-menu">
+  <label class="MenuHamburger" for="active-menu"></label>
+  <aside class="MenuPanel">
+    <div class="MenuPanel_header">
+      <h1>Pointer</h1>
+      
+    </div>
+    
+  <ul>
+    
+      <li>
+        
+          <a class="MenuItem" href="../index.html">home</a>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../event-manager.html">event manager</a>
+        
+      </li>
+    
+      <li>
+        
+          <details>
+            <summary class="MenuItem">pointer</summary>
+            
+  <ul>
+    
+      <li>
+        
+          <a class="MenuItem" href="../pointer/complex.html">complex</a>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../pointer/simple.html">simple</a>
+        
+      </li>
+    
+  </ul>
+
+          </details>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../sizes-cache.html">sizes cache</a>
+        
+      </li>
+    
+      <li>
+        
+          <details>
+            <summary class="MenuItem">smooth scroll</summary>
+            
+  <ul>
+    
+      <li>
+        
+          <a class="MenuItem" href="../smooth-scroll/disabled.html">disabled</a>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../smooth-scroll/full-page.html">full page</a>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../smooth-scroll/single-elements.html">single elements</a>
+        
+      </li>
+    
+  </ul>
+
+          </details>
+        
+      </li>
+    
+      <li>
+        
+          <details>
+            <summary class="MenuItem">sticky content</summary>
+            
+  <ul>
+    
+      <li>
+        
+          <a class="MenuItem" href="../sticky-content/default.html">default</a>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../sticky-content/lerp.html">lerp</a>
+        
+      </li>
+    
+  </ul>
+
+          </details>
+        
+      </li>
+    
+      <li>
+        
+          <details>
+            <summary class="MenuItem">utils</summary>
+            
+  <ul>
+    
+      <li>
+        
+          <a class="MenuItem" href="../utils/detect.html">detect</a>
+        
+      </li>
+    
+  </ul>
+
+          </details>
+        
+      </li>
+    
+      <li>
+        
+          <a class="MenuItem" href="../view-progress.html">view progress</a>
+        
+      </li>
+    
+  </ul>
+
+  </aside>
+
+  <main id="app" class="content" data-page-ctrl="cursor-simple">
+    
+  <style>
+    .Cursor {
+      display: flex;
+      width: 32px;
+      height: 32px;
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      border: solid 2px currentColor;
+      border-radius: 50%;
+      color: #02BFF2;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .Cursor.hidden {
+      opacity: 0;
+    }
+  </style>
+
+  <h1 data-cursor="title">Pointer</h1>
+  <a href="#">Anchor</a>
+  <div class="Cursor hidden"></div>
+
+  </main>
+  <script>window.publicScriptsPath = '../scripts/';</script>
+  <script src="../scripts/app.js"></script>
+  
+</body>
+</html>

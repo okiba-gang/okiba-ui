@@ -21,7 +21,7 @@
 
 ### Installation
 
-You can grab it as an `npm` package 
+You can grab it as an `npm` package
 ```bash
 npm i --save @okiba/{{pkgName}}
 ```
@@ -34,6 +34,20 @@ Or use it in the browser
 <!-- Full -->
 <script src="https://unpkg.com/@okiba/{{pkgName}}@{{version}}/dist/index.js"></script>
 ```
+
+{% if submodules %}
+### Submodules:
+{% for s in submodules %}
+#### [{{s.name}}]({{s.url}})
+{{s.description}}
+{% if s.members %}
+###### {% for sm in s.members -%}
+[`{{ sm.name }}`]({{ s.url }}){%- if not loop.last %}, {% endif -%}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
 
 {% if todo %}
 #### Todo:

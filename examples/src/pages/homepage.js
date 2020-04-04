@@ -1,9 +1,10 @@
-import { qs } from '@okiba/dom'
-import Component from '@okiba/component'
+import { qs } from '@okiba/core/dom'
+import Component from '@okiba/core/component'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 import SmoothScroll from '@okiba/smooth-scroll'
 import ScrollManager from '@okiba/scroll-manager'
+import { Cursor } from '@okiba/pointer'
 import {
   Scene,
   PerspectiveCamera,
@@ -24,6 +25,7 @@ class Scene3D extends Component {
     ScrollManager.on('scroll', this.onScroll)
     EventManager.on('raf', this.onRaf)
     EventManager.on('resize', this.onResize)
+    EventManager.emit('resize')
   }
 
   init() {
@@ -97,6 +99,13 @@ const app = new Component({
     {
       ghost: true,
       type: Scene3D
+    },
+    {
+      selector: '#cursor',
+      type: Cursor,
+      options: {
+        inertia: .2
+      }
     }
   ]
 })

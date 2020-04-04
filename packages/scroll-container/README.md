@@ -17,7 +17,7 @@ const scrollContainer new ScrollContainer({el: qs('#app'), options: {enabled: tr
 
 ### Installation
 
-You can grab it as an `npm` package 
+You can grab it as an `npm` package
 ```bash
 npm i --save @okiba/scroll-container
 ```
@@ -30,6 +30,9 @@ Or use it in the browser
 <!-- Full -->
 <script src="https://unpkg.com/@okiba/scroll-container@1.0.5/dist/index.js"></script>
 ```
+
+
+
 
 
 

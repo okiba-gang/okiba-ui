@@ -17,11 +17,11 @@
  *   ]
  * })
  */
-import Component from '@okiba/component'
+import Component from '@okiba/core/component'
+import { hasTouch } from '@okiba/detect'
 import ScrollManager from '@okiba/scroll-manager'
 import ScrollContainer from '@okiba/scroll-container'
 import ScrollElement from '@okiba/scroll-element'
-import { hasTouch } from '@okiba/detect'
 
 /**
  * Accepts an __hash__ whose properties can be:

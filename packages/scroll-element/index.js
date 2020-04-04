@@ -7,10 +7,10 @@
  *
  * const scrollElement new ScrollElement({el: qs('#app'), options: {enabled: true}})
  */
-import Component from '@okiba/component'
+import Component from '@okiba/core/component'
+import { cap } from '@okiba/core/math'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
-import { cap } from '@okiba/math'
 
 export default class ScrollElement extends Component {
   constructor({ el, options = {}, ...args }) {

@@ -4,6 +4,12 @@
   "description": "Centralized event management",
   "main": "dist/index.js",
   "module": "index.js",
+  "submodules": [
+    "lib/EventManager",
+    "lib/handlers/AbstractHandler",
+    "lib/handlers/EventHandler",
+    "lib/handlers/RAFHandler"
+  ],
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -11,8 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/detect": "^1.0.5",
-    "@okiba/dom": "^1.0.15",
-    "@okiba/event-emitter": "^1.1.4"
+    "@okiba/core": "^1.0.0",
+    "@okiba/detect": "^1.0.5"
   }
 }

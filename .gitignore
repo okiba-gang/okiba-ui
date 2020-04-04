@@ -64,8 +64,8 @@ typings/
 # file system
 .DS_Store
 
-# examples
-examples/
+# examples tmp
+examples/tmp
 
 tmp.vscode/
 .vscode/

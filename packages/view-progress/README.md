@@ -42,7 +42,7 @@ const app = new Component({
 
 ### Installation
 
-You can grab it as an `npm` package 
+You can grab it as an `npm` package
 ```bash
 npm i --save @okiba/view-progress
 ```
@@ -55,6 +55,9 @@ Or use it in the browser
 <!-- Full -->
 <script src="https://unpkg.com/@okiba/view-progress@1.0.5/dist/index.js"></script>
 ```
+
+
+
 
 
 

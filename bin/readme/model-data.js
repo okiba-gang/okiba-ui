@@ -1,5 +1,11 @@
 function model(data, baseData) {
-  return data.filter(e => !e.undocumented && e.kind !== 'package')
+  return data
+    .filter(e => {
+      return !e.undocumented
+        && e.kind !== 'package'
+        && e.access !== 'private'
+        && !e.comment.match(/@constructor/)
+    })
     .reduce((acc, entry) => {
       const {url} = baseData
 
@@ -38,14 +44,30 @@ function model(data, baseData) {
     }, {})
 }
 
-
 function modelPackage(packageData, baseData) {
   if (!packageData.name) {
     throw new Error(`Missing name, data: ${JSON.stringify(packageData)}`)
   }
 
-  const {name, description, pkgName, members = []} = packageData
-  const pkg = {name: pkgName, description, url: `${baseData.url}${pkgName}`, members: []}
+  const { name, description, pkgName, members = [], submodules, parent } = packageData
+
+  const pkg = {
+    name: pkgName,
+    description,
+    members: [],
+    parent
+  }
+
+  if (!parent) {
+    pkg.url = `${baseData.url}${pkgName}`
+  }
+
+  if (submodules) {
+    pkg.submodules = submodules.map(s => ({
+      ...s,
+      url: `${baseData.url}${pkgName}/${s.pkgName}`
+    }))
+  }
 
   members.forEach(m => {
     let params = []

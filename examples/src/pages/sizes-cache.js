@@ -1,5 +1,5 @@
-import { qs } from '@okiba/dom'
-import Component from '@okiba/component'
+import { qs } from '@okiba/core/dom'
+import Component from '@okiba/core/component'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 
@@ -8,6 +8,7 @@ class ResizeComponent extends Component {
     super({ el })
     this.sizes = SizesCache.get(this.el)
     EventManager.on('resize', this.onResize)
+    this.onResize()
   }
 
   onResize = () => {

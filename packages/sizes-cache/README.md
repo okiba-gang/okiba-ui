@@ -18,7 +18,7 @@ console.log(sizes)
 
 ### Installation
 
-You can grab it as an `npm` package 
+You can grab it as an `npm` package
 ```bash
 npm i --save @okiba/sizes-cache
 ```
@@ -31,6 +31,9 @@ Or use it in the browser
 <!-- Full -->
 <script src="https://unpkg.com/@okiba/sizes-cache@1.0.5/dist/index.js"></script>
 ```
+
+
+
 
 
 
