@@ -10,6 +10,43 @@
   <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
   <link rel="stylesheet" href="./assets/app.css">
   
+  <style>
+    [data-cursor]  {
+      display: inline-block;
+    }
+
+    #cursor {
+      width: 48px;
+      height: 48px;
+      z-index: 9999;
+      pointer-events: none;
+      mix-blend-mode: difference;
+    }
+
+    #cursor:before {
+      display: block;
+      width: 100%;
+      height: 100%;
+      content: '';
+      transform: scale(2);
+      border-radius: 50%;
+      border: solid 1px currentColor;
+      color: white;
+      opacity: .2;
+      transition: all .4s;
+    }
+
+    #cursor.hidden:before {
+      opacity: 0;
+    }
+
+    #cursor.hover:before {
+      transform: none;
+      background-color: currentColor;
+      opacity: 1;
+    }
+  </style>
+
 </head>
 <body>
   
@@ -154,410 +191,415 @@
   <main id="app" class="content" data-page-ctrl="homepage">
     
   <div class="js-scroll-element" style="color: white; padding-top: 50px;">
-    <h1>Welcome to Okiba Components!</h1>
-    <p>Use topbar menu to navigate examples!</p>
+    <div>
+      <h1 data-cursor>Welcome to Okiba Components!</h1>
+    </div>
+    <div>
+      <p data-cursor>Use topbar menu to navigate examples!</p>
+    </div>
     
       <div>
-        <h2>Element #1</h2>
+        <h2 data-cursor>Element #1</h2>
       </div>
     
       <div>
-        <h2>Element #2</h2>
+        <h2 data-cursor>Element #2</h2>
       </div>
     
       <div>
-        <h2>Element #3</h2>
+        <h2 data-cursor>Element #3</h2>
       </div>
     
       <div>
-        <h2>Element #4</h2>
+        <h2 data-cursor>Element #4</h2>
       </div>
     
       <div>
-        <h2>Element #5</h2>
+        <h2 data-cursor>Element #5</h2>
       </div>
     
       <div>
-        <h2>Element #6</h2>
+        <h2 data-cursor>Element #6</h2>
       </div>
     
       <div>
-        <h2>Element #7</h2>
+        <h2 data-cursor>Element #7</h2>
       </div>
     
       <div>
-        <h2>Element #8</h2>
+        <h2 data-cursor>Element #8</h2>
       </div>
     
       <div>
-        <h2>Element #9</h2>
+        <h2 data-cursor>Element #9</h2>
       </div>
     
       <div>
-        <h2>Element #10</h2>
+        <h2 data-cursor>Element #10</h2>
       </div>
     
       <div>
-        <h2>Element #11</h2>
+        <h2 data-cursor>Element #11</h2>
       </div>
     
       <div>
-        <h2>Element #12</h2>
+        <h2 data-cursor>Element #12</h2>
       </div>
     
       <div>
-        <h2>Element #13</h2>
+        <h2 data-cursor>Element #13</h2>
       </div>
     
       <div>
-        <h2>Element #14</h2>
+        <h2 data-cursor>Element #14</h2>
       </div>
     
       <div>
-        <h2>Element #15</h2>
+        <h2 data-cursor>Element #15</h2>
       </div>
     
       <div>
-        <h2>Element #16</h2>
+        <h2 data-cursor>Element #16</h2>
       </div>
     
       <div>
-        <h2>Element #17</h2>
+        <h2 data-cursor>Element #17</h2>
       </div>
     
       <div>
-        <h2>Element #18</h2>
+        <h2 data-cursor>Element #18</h2>
       </div>
     
       <div>
-        <h2>Element #19</h2>
+        <h2 data-cursor>Element #19</h2>
       </div>
     
       <div>
-        <h2>Element #20</h2>
+        <h2 data-cursor>Element #20</h2>
       </div>
     
       <div>
-        <h2>Element #21</h2>
+        <h2 data-cursor>Element #21</h2>
       </div>
     
       <div>
-        <h2>Element #22</h2>
+        <h2 data-cursor>Element #22</h2>
       </div>
     
       <div>
-        <h2>Element #23</h2>
+        <h2 data-cursor>Element #23</h2>
       </div>
     
       <div>
-        <h2>Element #24</h2>
+        <h2 data-cursor>Element #24</h2>
       </div>
     
       <div>
-        <h2>Element #25</h2>
+        <h2 data-cursor>Element #25</h2>
       </div>
     
       <div>
-        <h2>Element #26</h2>
+        <h2 data-cursor>Element #26</h2>
       </div>
     
       <div>
-        <h2>Element #27</h2>
+        <h2 data-cursor>Element #27</h2>
       </div>
     
       <div>
-        <h2>Element #28</h2>
+        <h2 data-cursor>Element #28</h2>
       </div>
     
       <div>
-        <h2>Element #29</h2>
+        <h2 data-cursor>Element #29</h2>
       </div>
     
       <div>
-        <h2>Element #30</h2>
+        <h2 data-cursor>Element #30</h2>
       </div>
     
       <div>
-        <h2>Element #31</h2>
+        <h2 data-cursor>Element #31</h2>
       </div>
     
       <div>
-        <h2>Element #32</h2>
+        <h2 data-cursor>Element #32</h2>
       </div>
     
       <div>
-        <h2>Element #33</h2>
+        <h2 data-cursor>Element #33</h2>
       </div>
     
       <div>
-        <h2>Element #34</h2>
+        <h2 data-cursor>Element #34</h2>
       </div>
     
       <div>
-        <h2>Element #35</h2>
+        <h2 data-cursor>Element #35</h2>
       </div>
     
       <div>
-        <h2>Element #36</h2>
+        <h2 data-cursor>Element #36</h2>
       </div>
     
       <div>
-        <h2>Element #37</h2>
+        <h2 data-cursor>Element #37</h2>
       </div>
     
       <div>
-        <h2>Element #38</h2>
+        <h2 data-cursor>Element #38</h2>
       </div>
     
       <div>
-        <h2>Element #39</h2>
+        <h2 data-cursor>Element #39</h2>
       </div>
     
       <div>
-        <h2>Element #40</h2>
+        <h2 data-cursor>Element #40</h2>
       </div>
     
       <div>
-        <h2>Element #41</h2>
+        <h2 data-cursor>Element #41</h2>
       </div>
     
       <div>
-        <h2>Element #42</h2>
+        <h2 data-cursor>Element #42</h2>
       </div>
     
       <div>
-        <h2>Element #43</h2>
+        <h2 data-cursor>Element #43</h2>
       </div>
     
       <div>
-        <h2>Element #44</h2>
+        <h2 data-cursor>Element #44</h2>
       </div>
     
       <div>
-        <h2>Element #45</h2>
+        <h2 data-cursor>Element #45</h2>
       </div>
     
       <div>
-        <h2>Element #46</h2>
+        <h2 data-cursor>Element #46</h2>
       </div>
     
       <div>
-        <h2>Element #47</h2>
+        <h2 data-cursor>Element #47</h2>
       </div>
     
       <div>
-        <h2>Element #48</h2>
+        <h2 data-cursor>Element #48</h2>
       </div>
     
       <div>
-        <h2>Element #49</h2>
+        <h2 data-cursor>Element #49</h2>
       </div>
     
       <div>
-        <h2>Element #50</h2>
+        <h2 data-cursor>Element #50</h2>
       </div>
     
       <div>
-        <h2>Element #51</h2>
+        <h2 data-cursor>Element #51</h2>
       </div>
     
       <div>
-        <h2>Element #52</h2>
+        <h2 data-cursor>Element #52</h2>
       </div>
     
       <div>
-        <h2>Element #53</h2>
+        <h2 data-cursor>Element #53</h2>
       </div>
     
       <div>
-        <h2>Element #54</h2>
+        <h2 data-cursor>Element #54</h2>
       </div>
     
       <div>
-        <h2>Element #55</h2>
+        <h2 data-cursor>Element #55</h2>
       </div>
     
       <div>
-        <h2>Element #56</h2>
+        <h2 data-cursor>Element #56</h2>
       </div>
     
       <div>
-        <h2>Element #57</h2>
+        <h2 data-cursor>Element #57</h2>
       </div>
     
       <div>
-        <h2>Element #58</h2>
+        <h2 data-cursor>Element #58</h2>
       </div>
     
       <div>
-        <h2>Element #59</h2>
+        <h2 data-cursor>Element #59</h2>
       </div>
     
       <div>
-        <h2>Element #60</h2>
+        <h2 data-cursor>Element #60</h2>
       </div>
     
       <div>
-        <h2>Element #61</h2>
+        <h2 data-cursor>Element #61</h2>
       </div>
     
       <div>
-        <h2>Element #62</h2>
+        <h2 data-cursor>Element #62</h2>
       </div>
     
       <div>
-        <h2>Element #63</h2>
+        <h2 data-cursor>Element #63</h2>
       </div>
     
       <div>
-        <h2>Element #64</h2>
+        <h2 data-cursor>Element #64</h2>
       </div>
     
       <div>
-        <h2>Element #65</h2>
+        <h2 data-cursor>Element #65</h2>
       </div>
     
       <div>
-        <h2>Element #66</h2>
+        <h2 data-cursor>Element #66</h2>
       </div>
     
       <div>
-        <h2>Element #67</h2>
+        <h2 data-cursor>Element #67</h2>
       </div>
     
       <div>
-        <h2>Element #68</h2>
+        <h2 data-cursor>Element #68</h2>
       </div>
     
       <div>
-        <h2>Element #69</h2>
+        <h2 data-cursor>Element #69</h2>
       </div>
     
       <div>
-        <h2>Element #70</h2>
+        <h2 data-cursor>Element #70</h2>
       </div>
     
       <div>
-        <h2>Element #71</h2>
+        <h2 data-cursor>Element #71</h2>
       </div>
     
       <div>
-        <h2>Element #72</h2>
+        <h2 data-cursor>Element #72</h2>
       </div>
     
       <div>
-        <h2>Element #73</h2>
+        <h2 data-cursor>Element #73</h2>
       </div>
     
       <div>
-        <h2>Element #74</h2>
+        <h2 data-cursor>Element #74</h2>
       </div>
     
       <div>
-        <h2>Element #75</h2>
+        <h2 data-cursor>Element #75</h2>
       </div>
     
       <div>
-        <h2>Element #76</h2>
+        <h2 data-cursor>Element #76</h2>
       </div>
     
       <div>
-        <h2>Element #77</h2>
+        <h2 data-cursor>Element #77</h2>
       </div>
     
       <div>
-        <h2>Element #78</h2>
+        <h2 data-cursor>Element #78</h2>
       </div>
     
       <div>
-        <h2>Element #79</h2>
+        <h2 data-cursor>Element #79</h2>
       </div>
     
       <div>
-        <h2>Element #80</h2>
+        <h2 data-cursor>Element #80</h2>
       </div>
     
       <div>
-        <h2>Element #81</h2>
+        <h2 data-cursor>Element #81</h2>
       </div>
     
       <div>
-        <h2>Element #82</h2>
+        <h2 data-cursor>Element #82</h2>
       </div>
     
       <div>
-        <h2>Element #83</h2>
+        <h2 data-cursor>Element #83</h2>
       </div>
     
       <div>
-        <h2>Element #84</h2>
+        <h2 data-cursor>Element #84</h2>
       </div>
     
       <div>
-        <h2>Element #85</h2>
+        <h2 data-cursor>Element #85</h2>
       </div>
     
       <div>
-        <h2>Element #86</h2>
+        <h2 data-cursor>Element #86</h2>
       </div>
     
       <div>
-        <h2>Element #87</h2>
+        <h2 data-cursor>Element #87</h2>
       </div>
     
       <div>
-        <h2>Element #88</h2>
+        <h2 data-cursor>Element #88</h2>
       </div>
     
       <div>
-        <h2>Element #89</h2>
+        <h2 data-cursor>Element #89</h2>
       </div>
     
       <div>
-        <h2>Element #90</h2>
+        <h2 data-cursor>Element #90</h2>
       </div>
     
       <div>
-        <h2>Element #91</h2>
+        <h2 data-cursor>Element #91</h2>
       </div>
     
       <div>
-        <h2>Element #92</h2>
+        <h2 data-cursor>Element #92</h2>
       </div>
     
       <div>
-        <h2>Element #93</h2>
+        <h2 data-cursor>Element #93</h2>
       </div>
     
       <div>
-        <h2>Element #94</h2>
+        <h2 data-cursor>Element #94</h2>
       </div>
     
       <div>
-        <h2>Element #95</h2>
+        <h2 data-cursor>Element #95</h2>
       </div>
     
       <div>
-        <h2>Element #96</h2>
+        <h2 data-cursor>Element #96</h2>
       </div>
     
       <div>
-        <h2>Element #97</h2>
+        <h2 data-cursor>Element #97</h2>
       </div>
     
       <div>
-        <h2>Element #98</h2>
+        <h2 data-cursor>Element #98</h2>
       </div>
     
       <div>
-        <h2>Element #99</h2>
+        <h2 data-cursor>Element #99</h2>
       </div>
     
       <div>
-        <h2>Element #100</h2>
+        <h2 data-cursor>Element #100</h2>
       </div>
     
   </div>
+  <div id="cursor" class="hidden"></div>
 
   </main>
   <script>window.publicScriptsPath = './scripts/';</script>
