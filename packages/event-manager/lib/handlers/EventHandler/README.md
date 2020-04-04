@@ -16,10 +16,10 @@ npm i --save @okiba/lib/handlers/EventHandler
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/handlers/EventHandler@2.0.0/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/EventHandler/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/handlers/EventHandler@2.0.0/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/handlers/EventHandler/dist/index.js"></script>
 ```
 
 

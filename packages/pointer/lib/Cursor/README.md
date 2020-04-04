@@ -29,10 +29,10 @@ npm i --save @okiba/lib/Cursor
 Or use it in the browser
 ```html
 <!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/Cursor@1.0.1/dist/index.min.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Cursor/dist/index.min.js"></script>
 
 <!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/Cursor@1.0.1/dist/index.js"></script>
+<script src="https://unpkg.com/@okiba/lib/Cursor/dist/index.js"></script>
 ```
 
 
