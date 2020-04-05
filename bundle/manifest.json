@@ -1,0 +1,15 @@
+{
+  "packages": [
+    "@okiba/cursor",
+    "@okiba/detect",
+    "@okiba/event-manager",
+    "@okiba/pointer",
+    "@okiba/scroll-container",
+    "@okiba/scroll-element",
+    "@okiba/scroll-manager",
+    "@okiba/sizes-cache",
+    "@okiba/smooth-scroll",
+    "@okiba/sticky-content",
+    "@okiba/view-progress"
+  ]
+}

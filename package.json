@@ -2,7 +2,7 @@
     "name": "root",
     "private": true,
     "workspaces": [
-        "packages",
+        "bundle",
         "packages/*"
     ],
     "devDependencies": {
@@ -29,7 +29,9 @@
         "build": "yarn run build:examples",
         "dev": "yarn run bootstrap && cd examples && yarn start",
         "readme": "node ./bin/readme/generate.js",
-        "version": "yarn run build && yarn run readme",
+        "manifest": "node ./bin/manifest.js",
+        "update": "node ./bin/update.js",
+        "version": "yarn run build && yarn run readme && yarn run update && yarn run manifest",
         "publish": "lerna publish"
     },
     "contributors": [

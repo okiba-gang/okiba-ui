@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const spawnSync = require('child_process').spawnSync
 const packages = fs.readdirSync('./packages', { withFileTypes: true })
