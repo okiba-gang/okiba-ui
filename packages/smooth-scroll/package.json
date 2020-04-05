@@ -2,8 +2,7 @@
   "name": "@okiba/smooth-scroll",
   "version": "1.0.7",
   "description": "Scrolls a panel following lerped scroll",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -16,6 +15,10 @@
     "@okiba/scroll-container": "^1.0.7",
     "@okiba/scroll-element": "^1.0.7",
     "@okiba/scroll-manager": "^1.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
   },
   "publishConfig": {
     "access": "public"

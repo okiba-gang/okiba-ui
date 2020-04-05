@@ -18,10 +18,10 @@ const ignore = [
 ]
 
 const baseData = {
-  name: 'Okiba Components',
+  name: 'Okiba UI',
   description: '',
   packages: [],
-  url: 'https://github.com/okiba-gang/okiba-components/tree/master/packages/'
+  url: 'https://github.com/okiba-gang/okiba-ui/tree/master/packages/'
 }
 
 async function asyncForEach(array, callback) {

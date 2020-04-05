@@ -2,8 +2,7 @@
   "name": "@okiba/event-manager",
   "version": "2.0.1",
   "description": "Centralized event management",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "main": "index.js",
   "submodules": [
     "lib/EventManager",
     "lib/handlers/AbstractHandler",
@@ -19,6 +18,10 @@
   "dependencies": {
     "@okiba/core": "^1.0.2",
     "@okiba/detect": "^1.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
   },
   "publishConfig": {
     "access": "public"

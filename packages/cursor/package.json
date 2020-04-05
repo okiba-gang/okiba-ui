@@ -16,6 +16,10 @@
     "@okiba/pointer": "^1.0.2",
     "@okiba/sizes-cache": "^1.0.7"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
+  },
   "publishConfig": {
     "access": "public"
   },

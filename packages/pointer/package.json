@@ -15,6 +15,10 @@
     "@okiba/event-manager": "^2.0.1",
     "@okiba/sizes-cache": "^1.0.7"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
+  },
   "publishConfig": {
     "access": "public"
   },

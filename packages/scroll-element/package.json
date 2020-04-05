@@ -2,8 +2,7 @@
   "name": "@okiba/scroll-element",
   "version": "1.0.7",
   "description": "Translates a panel according to scroll",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -14,6 +13,10 @@
     "@okiba/core": "^1.0.2",
     "@okiba/event-manager": "^2.0.1",
     "@okiba/sizes-cache": "^1.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
   },
   "publishConfig": {
     "access": "public"

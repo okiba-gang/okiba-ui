@@ -2,14 +2,17 @@
   "name": "@okiba/detect",
   "version": "1.0.7",
   "description": "Feature detection",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
     "Andrea Fiadone <andrea.fiadone@caffeina.com> (https://github.com/fiadone)"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
+  },
   "publishConfig": {
     "access": "public"
   }

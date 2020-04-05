@@ -2,8 +2,7 @@
   "name": "@okiba/sizes-cache",
   "version": "1.0.7",
   "description": "Keeps sizes of dom elements up to date",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -13,6 +12,10 @@
   "dependencies": {
     "@okiba/core": "^1.0.2",
     "@okiba/event-manager": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:okiba-gang/okiba-ui.git"
   },
   "publishConfig": {
     "access": "public"

@@ -1,12 +1,31 @@
 # {{ name }}
 
+A complete collection of Okiba tools and components that help you to manage UI elements and behaviors
 ______
 
 ## Installation
 
-You can grab all okiba UI packages as an unique `npm` package
+You can grab all Okiba UI packages as an unique `npm` package
 ```bash
 npm i --save @okiba/ui
+```
+
+## Usage
+
+#### Untranspiled code 🛑
+Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.
+For example, using Babel with Webpack, you should prevent imports from okiba to be excluded from transpilation, like follows:
+```javascript
+{
+  test: /\.js$/,
+  exclude: /node_modules\/(?!(@okiba)\/).*/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['@babel/preset-env']
+    }
+  }
+}
 ```
 
 ## Full Components List:
