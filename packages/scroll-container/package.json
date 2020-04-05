@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-container",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Container for scroll helpers",
   "main": "index.js",
   "contributors": [
@@ -12,8 +12,8 @@
   "dependencies": {
     "@okiba/component": "^2.0.6",
     "@okiba/dom": "^1.0.25",
-    "@okiba/event-manager": "^2.0.3",
-    "@okiba/sizes-cache": "^1.0.9"
+    "@okiba/event-manager": "^2.0.4",
+    "@okiba/sizes-cache": "^1.0.10"
   },
   "repository": {
     "type": "git",
