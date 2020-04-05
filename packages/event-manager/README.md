@@ -51,7 +51,7 @@ A singleton to manage centralized event listeners
 #### [AbstractHandler]()
 A base class that defines a global event handler interface
 
-###### [`eventCallback`](), [`listen`](), [`unlisten`]()
+###### [`module:AbstractHandler`](), [`eventCallback`](), [`listen`](), [`unlisten`]()
 
 
 #### [EventHandler]()

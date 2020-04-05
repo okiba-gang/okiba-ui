@@ -10,11 +10,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/component": "^2.0.4",
+    "@okiba/component": "^2.0.5",
     "@okiba/detect": "^1.0.9",
-    "@okiba/dom": "^1.0.23",
+    "@okiba/dom": "^1.0.24",
     "@okiba/event-manager": "^2.0.3",
-    "@okiba/math": "^1.0.22",
+    "@okiba/math": "^1.0.23",
     "@okiba/pointer": "^1.0.4",
     "@okiba/sizes-cache": "^1.0.9"
   },

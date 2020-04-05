@@ -45,6 +45,27 @@ For example, using Babel with Webpack, you should prevent imports from okiba to 
 
 
 
+## constructor(config)
+
+
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `config`: `Object`
+
+The handler configuration
+
+
+
+
+
 ## eventCallback(nativePayload)
 
 

@@ -4,7 +4,6 @@ function model(data, baseData) {
       return !e.undocumented
         && e.kind !== 'package'
         && e.access !== 'private'
-        && !e.comment.match(/@constructor/)
     })
     .reduce((acc, entry) => {
       const {url} = baseData
@@ -85,7 +84,7 @@ function modelPackage(packageData, baseData) {
     }
 
     pkg.members.push({
-      name: m.name === name
+      name: (m.name === name || m.name === `module:${name}`)
         ? 'constructor'
         : m.name,
       description: m.description,
