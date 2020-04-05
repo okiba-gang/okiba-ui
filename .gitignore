@@ -64,6 +64,9 @@ typings/
 # file system
 .DS_Store
 
+# packages dist
+packages/**/dist
+
 # examples tmp
 examples/tmp
 

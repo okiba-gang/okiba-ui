@@ -4,7 +4,7 @@
  * @description A singleton to manage centralized event listeners
  */
 
-import EventEmitter from '@okiba/core/event-emitter'
+import EventEmitter from '@okiba/event-emitter'
 import { EventHandler } from '../handlers'
 
 /**

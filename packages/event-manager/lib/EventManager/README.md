@@ -8,24 +8,20 @@ A singleton to manage centralized event listeners
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/lib/EventManager
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import EventManager from '@okiba/ui/lib/EventManager'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/lib/EventManager/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import EventManager from '@okiba/lib/EventManager'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

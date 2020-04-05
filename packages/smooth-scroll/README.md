@@ -27,24 +27,20 @@ const app = new Component({
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/smooth-scroll
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import SmoothScroll from '@okiba/ui/smooth-scroll'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/smooth-scroll/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import SmoothScroll from '@okiba/smooth-scroll'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

@@ -35,24 +35,20 @@ const app = new Component({
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/sticky-content
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import StickyContent from '@okiba/ui/sticky-content'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/sticky-content/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import StickyContent from '@okiba/sticky-content'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

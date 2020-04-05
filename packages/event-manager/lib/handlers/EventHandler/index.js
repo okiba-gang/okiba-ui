@@ -5,7 +5,7 @@
  * @description An handler class aimed to centralize a native browser event listener
  */
 
-import { on, off } from '@okiba/core/dom'
+import { on, off } from '@okiba/dom'
 import { hasPassiveEvents } from '@okiba/detect'
 import AbstractHandler from '../AbstractHandler'
 

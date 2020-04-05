@@ -1657,11 +1657,6 @@
   resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.22.tgz#0ab2ce6ddd87b247955204cdcf81953c6ff5fcdc"
   integrity sha512-mwMjmiD2iGQzgLrzDskysWn020YYpK14TlUu7FVr/3nzwMYXw2DdtN/QcUsPisF4FdlQZQQJxQq0I6xfSN1G+w==
 
-"@okiba/class-utils@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/class-utils/-/class-utils-1.0.22.tgz#896dee686b87b38c9afa00a02ae1286c98f4455e"
-  integrity sha512-jzgvqeWuRW/uhUdnAG+UfJqH7oi4TQKVtz577iB1TxIkqvjyeq6CmukbPHiad37I1rXiflZIysFGpJqMWOTAmg==
-
 "@okiba/component@^2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@okiba/component/-/component-2.0.4.tgz#768fa6cce8ed92ba68a86d2b151be0ea58407747"
@@ -1670,46 +1665,12 @@
     "@okiba/arrays" "^1.0.22"
     "@okiba/dom" "^1.0.23"
 
-"@okiba/core@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@okiba/core/-/core-1.0.2.tgz#e7a8ca9f06b8727e3bb7a0309271b2a5a6ab5805"
-  integrity sha512-kC9qKJaBOzXy/zgSXfvcs7t14RGn5fatpbMYus/2lKiXoVd+UgHMseJ53ec91ke/KDpORWlrDI0ofXJfF9yTpQ==
-  dependencies:
-    "@okiba/arrays" "^1.0.22"
-    "@okiba/class-utils" "^1.0.22"
-    "@okiba/component" "^2.0.4"
-    "@okiba/dom" "^1.0.23"
-    "@okiba/drag-emitter" "^0.2.13"
-    "@okiba/easings" "^1.0.22"
-    "@okiba/event-emitter" "^1.1.13"
-    "@okiba/evented-component" "^2.0.6"
-    "@okiba/functions" "^1.0.5"
-    "@okiba/math" "^1.0.22"
-    "@okiba/pool-system" "^1.0.22"
-    "@okiba/resource-loader" "^0.1.22"
-    "@okiba/search" "^1.0.22"
-    "@okiba/time-progress" "^1.0.22"
-    "@okiba/worker-utils" "^0.1.22"
-
 "@okiba/dom@^1.0.23":
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.23.tgz#d7a26b7a099bfea90a2e6ef93e04a76e158da9e8"
   integrity sha512-lLHOddsrovFPNXGovmyUwDykCQpLSv8cxmtm45k37ckYk4Xg2j+FnD53iWOqzeQJpQO9SkEbXmtw3zBmzDlNaQ==
   dependencies:
     "@okiba/arrays" "^1.0.22"
-
-"@okiba/drag-emitter@^0.2.13":
-  version "0.2.13"
-  resolved "https://registry.yarnpkg.com/@okiba/drag-emitter/-/drag-emitter-0.2.13.tgz#279c61acb3d9a6a3da91446d96674a09b4774726"
-  integrity sha512-n5zT/4W1AxzcTIrO95U806ztDsek56dxYLyQuhg1jXtcJ/nO0WrbXCuZE7glI3wKBWwyqOeEyoZPj+yERHRXwA==
-  dependencies:
-    "@okiba/dom" "^1.0.23"
-    "@okiba/event-emitter" "^1.1.13"
-
-"@okiba/easings@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/easings/-/easings-1.0.22.tgz#ac78288244b97b765e04f08a76cc814de2a19cd2"
-  integrity sha512-XPuZAz539eMyA1Pat7zPcztnkOOLINxTvg9gZZLWJHDhRT98cg0rT+HK6LXS76Gf+JLJ/SUiLm66WzD1vKBHVQ==
 
 "@okiba/event-emitter@^1.1.13":
   version "1.1.13"
@@ -1733,35 +1694,6 @@
   version "1.0.22"
   resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.22.tgz#e72a1f91f4d61cf76da0cfdf3c90d600bcd70b96"
   integrity sha512-UwBYFHONIiKgXAJ5pQ6o1CdvhhNHWyooft+SAovQbq++Pwb3uUOZYOCm7pL1scZtm79xgSfDzPGMjSNGHVSMzA==
-
-"@okiba/pool-system@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/pool-system/-/pool-system-1.0.22.tgz#77cd65baead8df010dfd24f9dd293da5941c8d95"
-  integrity sha512-w3o2HaUinxGf/lB/FCYJlM2QXwMgRsygpRB3JEGHy9lYI2dKJw+4L4c7EAHgqbEHvqlBJLBjMEBFXWfWFTAAWw==
-
-"@okiba/resource-loader@^0.1.22":
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/@okiba/resource-loader/-/resource-loader-0.1.22.tgz#e6c3de7a9aae067a54ab53c53a7b3449bf83ca36"
-  integrity sha512-x1YWpcdwawxhso0RZgf/fZtCrx+XC6YJkMRGJwHNWKA7bzWqHG5f+voI9ASzjRGgJTkziH8NQRNx1cwJ30KC4A==
-  dependencies:
-    "@okiba/worker-utils" "^0.1.22"
-
-"@okiba/search@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/search/-/search-1.0.22.tgz#84cd423dc7665af59f9bab2354f9b4043c1fce9e"
-  integrity sha512-1kdNAVouTU670sa+KQRbK1oAF9vaRpYzG71iYf0fHa3cdLO47RJ8xj1qWh77p6QZ5rGrDZ0Tk4VD1qmITksxEQ==
-
-"@okiba/time-progress@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/time-progress/-/time-progress-1.0.22.tgz#2d4644293f8c78593aae0325da34d0b0b895e092"
-  integrity sha512-JdYpDKLN2Eql65Zb3y+jtmrRHiZuPajtME+PyDUoftYUtdMkw0h35lxJ1XpwoBkfdHSqhO2D43vePCmbqFwzRQ==
-  dependencies:
-    "@okiba/math" "^1.0.22"
-
-"@okiba/worker-utils@^0.1.22":
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/@okiba/worker-utils/-/worker-utils-0.1.22.tgz#66a18168b6d6ff42dc318523ca5bd19c356f5440"
-  integrity sha512-wP76s8bVbqMleNqr2aXpPLGm4x5eQDnqyJaU932/36zMbpE2DjK8Vd9hAiGUEW6k5uqh7rfQe+zNIAf8a+5SWg==
 
 "@types/events@*":
   version "3.0.0"

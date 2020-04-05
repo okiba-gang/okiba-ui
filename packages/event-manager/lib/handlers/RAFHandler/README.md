@@ -8,24 +8,20 @@ An handler class aimed to centralize a requestAnimationFrame
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/lib/handlers/RAFHandler
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import RAFHandler from '@okiba/ui/lib/handlers/RAFHandler'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/lib/handlers/RAFHandler/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import RAFHandler from '@okiba/lib/handlers/RAFHandler'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

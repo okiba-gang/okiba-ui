@@ -20,24 +20,20 @@ ScrollManager.on('scroll', ({y, delta, acceleration, progress}) => console.log(y
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/scroll-manager
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import ScrollManager from '@okiba/ui/scroll-manager'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/scroll-manager/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import ScrollManager from '@okiba/scroll-manager'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

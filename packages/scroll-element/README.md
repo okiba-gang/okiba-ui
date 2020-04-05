@@ -17,24 +17,20 @@ const scrollElement new ScrollElement({el: qs('#app'), options: {enabled: true}}
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/scroll-element
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import ScrollElement from '@okiba/ui/scroll-element'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/scroll-element/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import ScrollElement from '@okiba/scroll-element'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

@@ -10,8 +10,8 @@
  * // Listen scroll events
  * ScrollManager.on('scroll', ({y, delta, acceleration, progress}) => console.log(y, delta, acceleration, progress))
  */
-import EventEmitter from '@okiba/core/event-emitter'
-import { lerp, cap } from '@okiba/core/math'
+import EventEmitter from '@okiba/event-emitter'
+import { lerp, cap } from '@okiba/math'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 

@@ -17,24 +17,20 @@ const scrollContainer new ScrollContainer({el: qs('#app'), options: {enabled: tr
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/scroll-container
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import ScrollContainer from '@okiba/ui/scroll-container'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/scroll-container/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import ScrollContainer from '@okiba/scroll-container'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

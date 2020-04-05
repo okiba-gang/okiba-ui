@@ -42,24 +42,20 @@ const app = new Component({
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/view-progress
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import ViewProgress from '@okiba/ui/view-progress'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/view-progress/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import ViewProgress from '@okiba/view-progress'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

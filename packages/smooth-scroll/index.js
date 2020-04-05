@@ -17,7 +17,7 @@
  *   ]
  * })
  */
-import Component from '@okiba/core/component'
+import Component from '@okiba/component'
 import { hasTouch } from '@okiba/detect'
 import ScrollManager from '@okiba/scroll-manager'
 import ScrollContainer from '@okiba/scroll-container'

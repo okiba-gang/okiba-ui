@@ -10,8 +10,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/core": "^1.0.2",
+    "@okiba/component": "^2.0.4",
+    "@okiba/dom": "^1.0.23",
     "@okiba/event-manager": "^2.0.2",
+    "@okiba/evented-component": "^2.0.6",
+    "@okiba/math": "^1.0.22",
     "@okiba/sizes-cache": "^1.0.8"
   },
   "repository": {

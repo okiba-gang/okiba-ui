@@ -7,8 +7,8 @@
  *
  * const scrollElement new ScrollElement({el: qs('#app'), options: {enabled: true}})
  */
-import Component from '@okiba/core/component'
-import { cap } from '@okiba/core/math'
+import Component from '@okiba/component'
+import { cap } from '@okiba/math'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 

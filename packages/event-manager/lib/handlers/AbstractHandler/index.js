@@ -4,7 +4,7 @@
  * @description A base class that defines a global event handler interface
  */
 
-import { debounce } from '@okiba/core/functions'
+import { debounce } from '@okiba/functions'
 
 export default class AbstractHandler {
   /**

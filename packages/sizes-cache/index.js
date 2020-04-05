@@ -8,7 +8,7 @@
  * const sizes = SizesCache.get(qs('#app'))
  * console.log(sizes)
  */
-import { offset } from '@okiba/core/dom'
+import { offset } from '@okiba/dom'
 import EventManager from '@okiba/event-manager'
 
 export default new class SizesCache {

@@ -10,8 +10,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/core": "^1.0.2",
+    "@okiba/component": "^2.0.4",
     "@okiba/detect": "^1.0.8",
+    "@okiba/dom": "^1.0.23",
     "@okiba/scroll-container": "^1.0.8",
     "@okiba/scroll-element": "^1.0.8",
     "@okiba/scroll-manager": "^1.0.8"

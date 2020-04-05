@@ -18,24 +18,20 @@ console.log(sizes)
 
 ### Installation
 
-You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/sizes-cache
 ```
-or you can grab it from UI
-```bash
-npm i --save @okiba/ui
-```
-```javascript
-import SizesCache from '@okiba/ui/sizes-cache'
-```
 
-Or use it in the browser
+Or import it directly in the browser
 ```html
 <script type="module" src="https://unpkg.com/@okiba/sizes-cache/index.js"></script>
 ```
 
 ## Usage
+
+```javascript
+import SizesCache from '@okiba/sizes-cache'
+```
 
 #### Untranspiled code 🛑
 Okiba UI packages are not transpiled, so __don't forget to transpile them with your favourite bundler__.

@@ -5,9 +5,9 @@ ______
 
 ## Installation
 
-You can grab all Okiba UI packages as an unique `npm` package
+You can grab all Okiba UI packages by using npx installer:
 ```bash
-npm i --save @okiba/ui
+npx @okiba/ui
 ```
 
 ## Usage

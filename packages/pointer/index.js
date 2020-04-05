@@ -10,7 +10,7 @@
  * })
  */
 
-import { matches } from '@okiba/core/dom'
+import { matches } from '@okiba/dom'
 import EventManager from '@okiba/event-manager'
 import { ensurePointerEvents } from './helpers'
 

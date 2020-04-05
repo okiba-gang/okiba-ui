@@ -7,7 +7,7 @@
  *
  * const scrollContainer new ScrollContainer({el: qs('#app'), options: {enabled: true}})
  */
-import Component from '@okiba/core/component'
+import Component from '@okiba/component'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 
