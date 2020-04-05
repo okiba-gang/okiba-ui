@@ -780,7 +780,7 @@
     "@okiba/arrays" "^1.0.22"
     "@okiba/dom" "^1.0.23"
 
-"@okiba/core@^1.0.1":
+"@okiba/core@^1.0.1", "@okiba/core@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@okiba/core/-/core-1.0.2.tgz#e7a8ca9f06b8727e3bb7a0309271b2a5a6ab5805"
   integrity sha512-kC9qKJaBOzXy/zgSXfvcs7t14RGn5fatpbMYus/2lKiXoVd+UgHMseJ53ec91ke/KDpORWlrDI0ofXJfF9yTpQ==
@@ -800,6 +800,22 @@
     "@okiba/search" "^1.0.22"
     "@okiba/time-progress" "^1.0.22"
     "@okiba/worker-utils" "^0.1.22"
+
+"@okiba/cursor@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@okiba/cursor/-/cursor-1.0.1.tgz#1bee30a480bf3bec88529a193e23085209e8c950"
+  integrity sha512-PDFUZQ+wh/eqdyGgrg+k9zDTJROMxCeSxzy7g9J3lQaoUlR0T7gEPNz+NK2FSrJWMHpUl+I8MaoTb017ZU9Gyw==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/detect" "^1.0.8"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/pointer" "^1.0.3"
+    "@okiba/sizes-cache" "^1.0.8"
+
+"@okiba/detect@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/detect/-/detect-1.0.8.tgz#eb9251b4de32923ed22a9ad0cb91c23410284623"
+  integrity sha512-GlJQr2G8A6HYpTtlCZlw006npgHMvg9XjL7IzlgMz7SENTa6LtdnKHb1a7f7m9fnOLeB3CZ6tb4bq6D91xFtLg==
 
 "@okiba/dom@^1.0.23":
   version "1.0.23"
@@ -826,6 +842,14 @@
   resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.13.tgz#328240526e67a0616ac787afcc8ceb6e0a3a1499"
   integrity sha512-VFXsER7Vicotwecttj7FwSXv9HnOsrG/1F5YUwqvVWBPxcrzp9fPF9dAlIzuuOQ5JDxjlckd7FH9ewr4/GJ6TA==
 
+"@okiba/event-manager@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@okiba/event-manager/-/event-manager-2.0.2.tgz#cfe9e8e2ea17fa4caffd0f2a4b870bed9d3f021f"
+  integrity sha512-FsnKgsg8D+/IS1n4p0uGayHuN1UH07LyUA4ETmpQisqzChailW5txbmerN/Fcd39r/H6GJEJOE4ugJZoSGqAFw==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/detect" "^1.0.8"
+
 "@okiba/evented-component@^2.0.6":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@okiba/evented-component/-/evented-component-2.0.6.tgz#a0d83336484fd0184cc28594a69577de436534f5"
@@ -844,6 +868,16 @@
   resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.22.tgz#e72a1f91f4d61cf76da0cfdf3c90d600bcd70b96"
   integrity sha512-UwBYFHONIiKgXAJ5pQ6o1CdvhhNHWyooft+SAovQbq++Pwb3uUOZYOCm7pL1scZtm79xgSfDzPGMjSNGHVSMzA==
 
+"@okiba/pointer@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@okiba/pointer/-/pointer-1.0.3.tgz#43a67bcc1153c1ff9430c08a629fd6421522ff32"
+  integrity sha512-LVJC4xlbdUj/FA4yuvM0VxiX7kpe8rfc9uUwahLf948RGZCqIHYi+WDzNFyGTxup/oFCankBGPLyhfgT6PXLlw==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/detect" "^1.0.8"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
+
 "@okiba/pool-system@^1.0.22":
   version "1.0.22"
   resolved "https://registry.yarnpkg.com/@okiba/pool-system/-/pool-system-1.0.22.tgz#77cd65baead8df010dfd24f9dd293da5941c8d95"
@@ -856,10 +890,65 @@
   dependencies:
     "@okiba/worker-utils" "^0.1.22"
 
+"@okiba/scroll-container@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/scroll-container/-/scroll-container-1.0.8.tgz#666fa3e28b59411ceaa063c39ef0b5bcac6c56f1"
+  integrity sha512-H9t3YSmOaEN8bNJKgEBIu8qIXPO/rELWn1b7jDja6wJUvS+IceQesq9t1K51DT+1Iwt1BjsvgcJJ2oNYqZr0gA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
+
+"@okiba/scroll-element@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/scroll-element/-/scroll-element-1.0.8.tgz#fd4be7e164e1d3f5f1026e8266fce98309731394"
+  integrity sha512-pcfto/yT6OhGf+Jz9w5ZHJwNVHq2/eAw5bY9Sa8++hIHis6RwORKpkcatg65MQtCOqGB/AEEAKlh26+s4YAFnA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
+
+"@okiba/scroll-manager@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/scroll-manager/-/scroll-manager-1.0.8.tgz#c56ec5275cd2ef3ebbd7112fabc80ad302b0430b"
+  integrity sha512-uQWN75v7tJ32IZXI9zYzSLDxV+Azz+MG+Pyu9HU2VvWxbUcHzuU+341KwYUrZTW54DWxcIX3r78ki0uibDUrVA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
+
 "@okiba/search@^1.0.22":
   version "1.0.22"
   resolved "https://registry.yarnpkg.com/@okiba/search/-/search-1.0.22.tgz#84cd423dc7665af59f9bab2354f9b4043c1fce9e"
   integrity sha512-1kdNAVouTU670sa+KQRbK1oAF9vaRpYzG71iYf0fHa3cdLO47RJ8xj1qWh77p6QZ5rGrDZ0Tk4VD1qmITksxEQ==
+
+"@okiba/sizes-cache@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/sizes-cache/-/sizes-cache-1.0.8.tgz#b106056a6b79dcb3cbc2e5f7af9eb11e7b9bb8ff"
+  integrity sha512-IlR+z20pi8mX90flWhThAtL3tYUSVArjkg805kP1b22xUKOIYsv7lZc+7brQBw31B4vGr5+CBaZSyLs/6Jw1CA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+
+"@okiba/smooth-scroll@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/smooth-scroll/-/smooth-scroll-1.0.8.tgz#b2ac119b5dd13f35323f2521f591ef23a1a31bb7"
+  integrity sha512-hNW7WaRg8GkRpurN3NyzPopHOsV9sQlma6fJWxZ3amjEVEhYtAaAbVtIECu2qnekejSSgGYj8TmxFGiv9+k2XQ==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/detect" "^1.0.8"
+    "@okiba/scroll-container" "^1.0.8"
+    "@okiba/scroll-element" "^1.0.8"
+    "@okiba/scroll-manager" "^1.0.8"
+
+"@okiba/sticky-content@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/sticky-content/-/sticky-content-1.0.8.tgz#514fe2c2d7b29f97d3f84bf3031335ab671a4cc2"
+  integrity sha512-NxhU7UxEjcj0pyy8Tei0F9gYu4JseEeUwZmrXfIRS9nIx6lHQjLO2cNe1kvmr0/F3U8CtyHYzv/j3W1IVHxyPA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
 
 "@okiba/time-progress@^1.0.22":
   version "1.0.22"
@@ -867,6 +956,32 @@
   integrity sha512-JdYpDKLN2Eql65Zb3y+jtmrRHiZuPajtME+PyDUoftYUtdMkw0h35lxJ1XpwoBkfdHSqhO2D43vePCmbqFwzRQ==
   dependencies:
     "@okiba/math" "^1.0.22"
+
+"@okiba/ui@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@okiba/ui/-/ui-1.0.0.tgz#f67c378e1726aa0be9b98fe3e40edb563da02a72"
+  integrity sha512-Aliiv7jh+dXEJwOFvr69JUoTKaKwFV6SzIFC6YA5DlxoRjKT2IW5/nhJ9fJEwScxf10jgJ8uDb7dAeSkIGQ2pQ==
+  dependencies:
+    "@okiba/cursor" "^1.0.1"
+    "@okiba/detect" "^1.0.8"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/pointer" "^1.0.3"
+    "@okiba/scroll-container" "^1.0.8"
+    "@okiba/scroll-element" "^1.0.8"
+    "@okiba/scroll-manager" "^1.0.8"
+    "@okiba/sizes-cache" "^1.0.8"
+    "@okiba/smooth-scroll" "^1.0.8"
+    "@okiba/sticky-content" "^1.0.8"
+    "@okiba/view-progress" "^1.0.8"
+
+"@okiba/view-progress@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/view-progress/-/view-progress-1.0.8.tgz#c4e77886d73f6596265cc22bcb479bb8c9d33d77"
+  integrity sha512-IRh5+Pb2qXWJUWAijTIPFoUUUr20fKdbeFkCVB2Ylj9IA2eTCea9KwtCdSl9wX/zm1yZ70S6BQErKZQ/cGOKFA==
+  dependencies:
+    "@okiba/core" "^1.0.2"
+    "@okiba/event-manager" "^2.0.2"
+    "@okiba/sizes-cache" "^1.0.8"
 
 "@okiba/worker-utils@^0.1.22":
   version "0.1.22"

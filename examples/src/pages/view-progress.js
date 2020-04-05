@@ -1,6 +1,6 @@
 import { qs, qsa, on } from '@okiba/core/dom'
 import Component from '@okiba/core/component'
-import ViewProgress from '@okiba/view-progress'
+import ViewProgress from '@okiba/ui/view-progress'
 
 class ViewProgressComponent extends ViewProgress {
   constructor(args) {

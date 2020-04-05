@@ -1,10 +1,10 @@
 import { qs } from '@okiba/core/dom'
 import Component from '@okiba/core/component'
-import SizesCache from '@okiba/sizes-cache'
-import EventManager from '@okiba/event-manager'
-import SmoothScroll from '@okiba/smooth-scroll'
-import ScrollManager from '@okiba/scroll-manager'
-import Cursor from '@okiba/cursor'
+import SizesCache from '@okiba/ui/sizes-cache'
+import EventManager from '@okiba/ui/event-manager'
+import SmoothScroll from '@okiba/ui/smooth-scroll'
+import ScrollManager from '@okiba/ui/scroll-manager'
+import Cursor from '@okiba/ui/cursor'
 import {
   Scene,
   PerspectiveCamera,
