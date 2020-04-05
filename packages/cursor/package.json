@@ -1,6 +1,6 @@
 {
   "name": "@okiba/cursor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A handler for custom html cursor",
   "main": "index.js",
   "contributors": [
@@ -11,12 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/component": "^2.0.4",
-    "@okiba/detect": "^1.0.8",
+    "@okiba/detect": "^1.0.9",
     "@okiba/dom": "^1.0.23",
-    "@okiba/event-manager": "^2.0.2",
+    "@okiba/event-manager": "^2.0.3",
     "@okiba/math": "^1.0.22",
-    "@okiba/pointer": "^1.0.3",
-    "@okiba/sizes-cache": "^1.0.8"
+    "@okiba/pointer": "^1.0.4",
+    "@okiba/sizes-cache": "^1.0.9"
   },
   "repository": {
     "type": "git",
