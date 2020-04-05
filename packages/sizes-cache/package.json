@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/dom": "^1.0.24",
+    "@okiba/dom": "^1.0.25",
     "@okiba/event-manager": "^2.0.3"
   },
   "repository": {

@@ -17,9 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/detect": "^1.0.9",
-    "@okiba/dom": "^1.0.24",
-    "@okiba/event-emitter": "^1.1.14",
-    "@okiba/functions": "^1.0.6"
+    "@okiba/dom": "^1.0.25",
+    "@okiba/event-emitter": "^1.1.15",
+    "@okiba/functions": "^1.0.7"
   },
   "repository": {
     "type": "git",
