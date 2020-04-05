@@ -58,25 +58,25 @@ A custom events management system
 ###### 
 #### Submodules:
 
-#### [EventManager](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager)
+##### • [EventManager](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager)
 A singleton to manage centralized event listeners
 
 ###### [`subscribedEvents`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`hasListeners`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`subscribe`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`unsubscribe`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`update`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`on`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`off`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`emit`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`clear`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager), [`destroy`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/EventManager)
 
 
-#### [AbstractHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
+##### • [AbstractHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
 A base class that defines a global event handler interface
 
 ###### [`eventCallback`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
 
 
-#### [EventHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
+##### • [EventHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
 An handler class aimed to centralize a native browser event listener
 
 ###### [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
 
 
-#### [RAFHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler)
+##### • [RAFHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler)
 An handler class aimed to centralize a requestAnimationFrame
 
 ###### [`nextFrame`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler), [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler)

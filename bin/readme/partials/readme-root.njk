@@ -42,7 +42,7 @@ For example, using Babel with Webpack, you should prevent imports from okiba to 
 {% if pkg.submodules -%}
 #### Submodules:
 {% for s in pkg.submodules %}
-#### [{{s.name}}]({{s.url}})
+##### • [{{s.name}}]({{s.url}})
 {{s.description}}
 {% if s.members %}
 ###### {% for sm in s.members -%}
