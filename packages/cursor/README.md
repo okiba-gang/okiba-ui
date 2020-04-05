@@ -7,7 +7,7 @@ A base component aimed to handle a custom html cursor
 
 
 ```javascript
-import { Cursor } from '@okiba/pointer'
+import Cursor from '@okiba/cursor'
 
 const cursor = new Cursor({
  el: document.getElementById('my-custom-cursor'),
@@ -21,18 +21,21 @@ const cursor = new Cursor({
 
 ### Installation
 
-You can grab it as an `npm` package
+You can grab it as a `npm` package
 ```bash
-npm i --save @okiba/lib/Cursor
+npm i --save @okiba/cursor
+```
+or you can grab it from UI
+```bash
+npm i --save @okiba/ui
+```
+```javascript
+import Cursor from '@okiba/ui/cursor'
 ```
 
 Or use it in the browser
 ```html
-<!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/Cursor/dist/index.min.js"></script>
-
-<!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/Cursor/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@okiba/cursor/index.js"></script>
 ```
 
 

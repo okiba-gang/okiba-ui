@@ -4,9 +4,6 @@
     "workspaces": [
         "packages/*"
     ],
-    "dependencies": {
-      "@okiba/core": "^1.0.0"
-    },
     "devDependencies": {
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.9.0",
@@ -28,7 +25,7 @@
         "init": "yarn run init:packages && yarn run init:examples",
         "build:packages": "yarn run init:packages && webpack --progress",
         "build:examples": "yarn run init:examples && cd examples && yarn run build",
-        "build": "yarn run build:packages && yarn run build:examples",
+        "build": "yarn run build:examples",
         "dev": "yarn run bootstrap && cd examples && yarn start",
         "readme": "node ./bin/readme/generate.js",
         "version": "yarn run build && yarn run readme",

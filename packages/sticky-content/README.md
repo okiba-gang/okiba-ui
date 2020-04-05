@@ -35,18 +35,21 @@ const app = new Component({
 
 ### Installation
 
-You can grab it as an `npm` package
+You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/sticky-content
+```
+or you can grab it from UI
+```bash
+npm i --save @okiba/ui
+```
+```javascript
+import StickyContent from '@okiba/ui/sticky-content'
 ```
 
 Or use it in the browser
 ```html
-<!-- Minified -->
-<script src="https://unpkg.com/@okiba/sticky-content/dist/index.min.js"></script>
-
-<!-- Full -->
-<script src="https://unpkg.com/@okiba/sticky-content/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@okiba/sticky-content/index.js"></script>
 ```
 
 

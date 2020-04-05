@@ -8,18 +8,21 @@ A custom events management system
 
 ### Installation
 
-You can grab it as an `npm` package
+You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/event-manager
+```
+or you can grab it from UI
+```bash
+npm i --save @okiba/ui
+```
+```javascript
+import EventManager from '@okiba/ui/event-manager'
 ```
 
 Or use it in the browser
 ```html
-<!-- Minified -->
-<script src="https://unpkg.com/@okiba/event-manager/dist/index.min.js"></script>
-
-<!-- Full -->
-<script src="https://unpkg.com/@okiba/event-manager/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@okiba/event-manager/index.js"></script>
 ```
 
 

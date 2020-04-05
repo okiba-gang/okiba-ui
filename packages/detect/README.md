@@ -8,18 +8,21 @@ Utilities to check some browser features
 
 ### Installation
 
-You can grab it as an `npm` package
+You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/detect
+```
+or you can grab it from UI
+```bash
+npm i --save @okiba/ui
+```
+```javascript
+import detect from '@okiba/ui/detect'
 ```
 
 Or use it in the browser
 ```html
-<!-- Minified -->
-<script src="https://unpkg.com/@okiba/detect/dist/index.min.js"></script>
-
-<!-- Full -->
-<script src="https://unpkg.com/@okiba/detect/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@okiba/detect/index.js"></script>
 ```
 
 

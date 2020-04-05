@@ -4,7 +4,7 @@ import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 import SmoothScroll from '@okiba/smooth-scroll'
 import ScrollManager from '@okiba/scroll-manager'
-import { Cursor } from '@okiba/pointer'
+import Cursor from '@okiba/cursor'
 import {
   Scene,
   PerspectiveCamera,

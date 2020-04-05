@@ -36,6 +36,7 @@
     "start": "yarn run clean:tmp && node server.js"
   },
   "dependencies": {
+    "@okiba/core": "^1.0.1",
     "three": "^0.115.0"
   }
 }

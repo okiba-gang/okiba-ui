@@ -17,7 +17,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/core": "^1.0.0",
+    "@okiba/core": "^1.0.2",
     "@okiba/detect": "^1.0.7"
   },
   "publishConfig": {

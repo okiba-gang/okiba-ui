@@ -2,12 +2,7 @@
   "name": "@okiba/pointer",
   "version": "1.0.2",
   "description": "Handles pointer movements and interceptions",
-  "main": "dist/index.js",
-  "module": "index.js",
-  "submodules": [
-    "lib/Pointer",
-    "lib/Cursor"
-  ],
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -15,7 +10,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@okiba/core": "^1.0.0",
+    "@okiba/core": "^1.0.2",
     "@okiba/detect": "^1.0.7",
     "@okiba/event-manager": "^2.0.1",
     "@okiba/sizes-cache": "^1.0.7"

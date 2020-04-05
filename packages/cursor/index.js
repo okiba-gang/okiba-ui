@@ -1,10 +1,9 @@
 /**
  * @module Cursor
  * @extends Component
- * @package pointer
  * @description A base component aimed to handle a custom html cursor
  * @example
- * import { Cursor } from '@okiba/pointer'
+ * import Cursor from '@okiba/cursor'
  *
  * const cursor = new Cursor({
  *  el: document.getElementById('my-custom-cursor'),
@@ -20,7 +19,7 @@ import { lerp } from '@okiba/core/math'
 import { hasTouch } from '@okiba/detect'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
-import { ensurePointerEvents } from '../helpers'
+import { ensurePointerEvents } from '@okiba/pointer/helpers'
 
 class Cursor extends Component {
   /**

@@ -1,9 +1,8 @@
 {
-  "name": "@okiba/view-progress",
-  "version": "1.0.7",
-  "description": "Informs an element about how much of it has been viewed",
-  "main": "dist/index.js",
-  "module": "index.js",
+  "name": "@okiba/cursor",
+  "version": "1.0.0",
+  "description": "A handler for custom html cursor",
+  "main": "index.js",
   "contributors": [
     "Alberto Parziale <alberto.parziale@caffeina.com> (https://github.com/lavolpecheprogramma)",
     "Vincent De Feo <vincent.defeo@caffeina.com> (https://github.com/vinzdef)",
@@ -12,10 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.2",
+    "@okiba/detect": "^1.0.7",
     "@okiba/event-manager": "^2.0.1",
+    "@okiba/pointer": "^1.0.2",
     "@okiba/sizes-cache": "^1.0.7"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "0235a7e7807eaffa9e3935f45b6bd525e26688e0"
 }

@@ -8,18 +8,21 @@ A base class that defines a global event handler interface
 
 ### Installation
 
-You can grab it as an `npm` package
+You can grab it as a `npm` package
 ```bash
 npm i --save @okiba/lib/handlers/AbstractHandler
+```
+or you can grab it from UI
+```bash
+npm i --save @okiba/ui
+```
+```javascript
+import AbstractHandler from '@okiba/ui/lib/handlers/AbstractHandler'
 ```
 
 Or use it in the browser
 ```html
-<!-- Minified -->
-<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler/dist/index.min.js"></script>
-
-<!-- Full -->
-<script src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler/dist/index.js"></script>
+<script type="module" src="https://unpkg.com/@okiba/lib/handlers/AbstractHandler/index.js"></script>
 ```
 
 

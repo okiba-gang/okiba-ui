@@ -1,7 +1,7 @@
-const {readdirSync, writeFileSync, readFileSync} = require('fs')
+const { readdirSync, writeFileSync, readFileSync } = require('fs')
 const jsdoc = require('jsdoc-api')
 const nunjucks = require('nunjucks')
-nunjucks.configure({autoescape: false})
+nunjucks.configure({ autoescape: false })
 
 const {model, modelPackage} = require('./model-data')
 
@@ -9,6 +9,13 @@ const template = readFileSync('./bin/readme/partials/readme-package.njk', 'utf8'
 const templateRoot = readFileSync('./bin/readme/partials/readme-root.njk', 'utf8')
 
 const packages = readdirSync('./packages')
+
+const ignore = [
+  'node_modules',
+  'package.json',
+  'README.md',
+  '.DS_Store'
+]
 
 const baseData = {
   name: 'Okiba Components',
@@ -24,6 +31,8 @@ async function asyncForEach(array, callback) {
 }
 
 async function generate({ name, parent, version, submodules }) {
+  if (ignore.includes(name)) return
+
   const path = parent ? `${parent}/${name}` : name
   const dataModel = model(await jsdoc.explain({ files: `./packages/${path}/index.js` }), baseData)
 
@@ -37,6 +46,7 @@ async function generate({ name, parent, version, submodules }) {
 
   if (submodules) {
     data.submodules = []
+
     await asyncForEach(submodules, async (submodule) => {
       const submoduleData = await generate({ name: submodule, parent: name, version })
       data.submodules.push(submoduleData)
@@ -58,7 +68,7 @@ async function generate({ name, parent, version, submodules }) {
 async function generateAll() {
   await asyncForEach(packages, async name => {
 
-    if (name === '.DS_Store') return
+    if (ignore.includes(name)) return
 
     const { version, submodules } = JSON.parse(readFileSync(`./packages/${name}/package.json`))
 
@@ -68,6 +78,7 @@ async function generateAll() {
   const markdown = nunjucks.renderString(templateRoot, baseData)
 
   writeFileSync('./README.md', markdown)
+  writeFileSync('./packages/README.md', markdown)
 }
 
 generateAll()

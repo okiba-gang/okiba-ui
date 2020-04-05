@@ -1,5 +1,5 @@
 import { qs } from '@okiba/core/dom'
-import { Cursor } from '@okiba/pointer'
+import Cursor from '@okiba/cursor'
 
 const cursor = new Cursor({
   el: qs('.Cursor'),
