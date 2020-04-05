@@ -1,6 +1,6 @@
 {
   "name": "@okiba/ui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A complete collection of Okiba UI features",
   "keywords": [
     "okiba",
@@ -18,17 +18,17 @@
     "url": "git@github.com:okiba-gang/okiba-ui.git"
   },
   "dependencies": {
-    "@okiba/cursor": "^1.0.0",
-    "@okiba/detect": "^1.0.7",
-    "@okiba/event-manager": "^2.0.1",
-    "@okiba/pointer": "^1.0.2",
-    "@okiba/scroll-container": "^1.0.7",
-    "@okiba/scroll-element": "^1.0.7",
-    "@okiba/scroll-manager": "^1.0.7",
-    "@okiba/sizes-cache": "^1.0.7",
-    "@okiba/smooth-scroll": "^1.0.7",
-    "@okiba/sticky-content": "^1.0.7",
-    "@okiba/view-progress": "^1.0.7"
+    "@okiba/cursor": "^1.0.1",
+    "@okiba/detect": "^1.0.8",
+    "@okiba/event-manager": "^2.0.2",
+    "@okiba/pointer": "^1.0.3",
+    "@okiba/scroll-container": "^1.0.8",
+    "@okiba/scroll-element": "^1.0.8",
+    "@okiba/scroll-manager": "^1.0.8",
+    "@okiba/sizes-cache": "^1.0.8",
+    "@okiba/smooth-scroll": "^1.0.8",
+    "@okiba/sticky-content": "^1.0.8",
+    "@okiba/view-progress": "^1.0.8"
   },
   "publishConfig": {
     "access": "public"

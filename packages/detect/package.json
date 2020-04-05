@@ -1,6 +1,6 @@
 {
   "name": "@okiba/detect",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Feature detection",
   "main": "index.js",
   "contributors": [

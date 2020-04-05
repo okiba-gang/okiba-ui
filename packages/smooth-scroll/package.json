@@ -1,6 +1,6 @@
 {
   "name": "@okiba/smooth-scroll",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Scrolls a panel following lerped scroll",
   "main": "index.js",
   "contributors": [
@@ -11,10 +11,10 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.2",
-    "@okiba/detect": "^1.0.7",
-    "@okiba/scroll-container": "^1.0.7",
-    "@okiba/scroll-element": "^1.0.7",
-    "@okiba/scroll-manager": "^1.0.7"
+    "@okiba/detect": "^1.0.8",
+    "@okiba/scroll-container": "^1.0.8",
+    "@okiba/scroll-element": "^1.0.8",
+    "@okiba/scroll-manager": "^1.0.8"
   },
   "repository": {
     "type": "git",

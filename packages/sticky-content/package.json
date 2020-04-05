@@ -1,6 +1,6 @@
 {
   "name": "@okiba/sticky-content",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Keeps a section in view while its parent is scrolling",
   "main": "index.js",
   "contributors": [
@@ -11,8 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/core": "^1.0.2",
-    "@okiba/event-manager": "^2.0.1",
-    "@okiba/sizes-cache": "^1.0.7"
+    "@okiba/event-manager": "^2.0.2",
+    "@okiba/sizes-cache": "^1.0.8"
   },
   "repository": {
     "type": "git",
