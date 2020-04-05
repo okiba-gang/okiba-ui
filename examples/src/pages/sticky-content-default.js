@@ -1,7 +1,7 @@
 import { qs } from '@okiba/core/dom'
 import Component from '@okiba/core/component'
-import StickyContent from '@okiba/ui/sticky-content'
-import EventManager from '@okiba/ui/event-manager'
+import StickyContent from '@okiba/sticky-content'
+import EventManager from '@okiba/event-manager'
 
 class StickyComponent extends StickyContent {
   constructor(args) {

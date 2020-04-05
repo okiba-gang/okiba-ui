@@ -78,6 +78,7 @@ async function generateAll() {
   const markdown = nunjucks.renderString(templateRoot, baseData)
 
   writeFileSync('./README.md', markdown)
+  writeFileSync('./bundle/README.md', markdown)
 }
 
 generateAll()

@@ -1,9 +1,9 @@
 import { qs } from '@okiba/core/dom'
 import { lerp } from '@okiba/core/math'
-import { hasTouch } from '@okiba/ui/detect'
-import EventManager from '@okiba/ui/event-manager'
-import SizesCache from '@okiba/ui/sizes-cache'
-import Cursor from '@okiba/ui/cursor'
+import { hasTouch } from '@okiba/detect'
+import EventManager from '@okiba/event-manager'
+import SizesCache from '@okiba/sizes-cache'
+import Cursor from '@okiba/cursor'
 
 class CustomCursor extends Cursor {
   constructor({ options, ...props }) {

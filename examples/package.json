@@ -37,7 +37,17 @@
   },
   "dependencies": {
     "@okiba/core": "^1.0.1",
-    "@okiba/ui": "^1.0.0",
+    "@okiba/cursor": "^1.0.2",
+    "@okiba/detect": "^1.0.9",
+    "@okiba/event-manager": "^2.0.3",
+    "@okiba/pointer": "^1.0.4",
+    "@okiba/scroll-container": "^1.0.9",
+    "@okiba/scroll-element": "^1.0.9",
+    "@okiba/scroll-manager": "^1.0.9",
+    "@okiba/sizes-cache": "^1.0.9",
+    "@okiba/smooth-scroll": "^1.0.9",
+    "@okiba/sticky-content": "^1.0.9",
+    "@okiba/view-progress": "^1.0.9",
     "three": "^0.115.0"
   }
 }

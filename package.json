@@ -31,7 +31,7 @@
         "readme": "node ./bin/readme/generate.js",
         "manifest": "node ./bin/manifest.js",
         "update": "node ./bin/update.js",
-        "version": "yarn run update && yarn run manifest && yarn run build && yarn run readme",
+        "version": "yarn run update && yarn run manifest && yarn run readme",
         "publish": "lerna publish"
     },
     "contributors": [
