@@ -64,3 +64,25 @@ For example, using Babel with Webpack, you should prevent imports from okiba to 
 
 
 
+
+## dispatch(payload)
+
+
+Event dispatcher
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `payload`: `any`
+
+The event detail
+
+
+
+

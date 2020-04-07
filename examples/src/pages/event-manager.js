@@ -1,5 +1,5 @@
-import { qs } from '@okiba/core/dom'
-import Component from '@okiba/core/component'
+import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
 
@@ -7,7 +7,7 @@ class ResizeComponent extends Component {
   constructor({ el }) {
     super({ el })
     EventManager.on('resize', this.onResize)
-    this.update()
+    EventManager.emit('resize')
   }
 
   update() {
@@ -22,7 +22,7 @@ class ScrollComponent extends Component {
   constructor({ el }) {
     super({ el })
     EventManager.on('scroll', this.onScroll)
-    this.update()
+    EventManager.emit('scroll')
   }
 
   update() {

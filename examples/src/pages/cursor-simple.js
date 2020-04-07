@@ -1,4 +1,4 @@
-import { qs } from '@okiba/core/dom'
+import { qs } from '@okiba/dom'
 import Cursor from '@okiba/cursor'
 
 const cursor = new Cursor({

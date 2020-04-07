@@ -5,7 +5,7 @@
  * @description An handler class aimed to centralize a native browser event listener
  */
 
-import { on, off } from '@okiba/dom'
+import { on, off, createCustomEvent } from '@okiba/dom'
 import { hasPassiveEvents } from '@okiba/detect'
 import AbstractHandler from '../AbstractHandler'
 
@@ -44,5 +44,16 @@ export default class EventHandler extends AbstractHandler {
     } else {
       off(target, type, this.onEvent, options)
     }
+  }
+
+  /**
+   * Event dispatcher
+   * @param {any} payload The event detail
+   */
+  dispatch(payload) {
+    const { type, target } = this.config
+    const options = payload ? { detail: payload } : null
+    const event = createCustomEvent(type, options)
+    target.dispatchEvent(event)
   }
 }

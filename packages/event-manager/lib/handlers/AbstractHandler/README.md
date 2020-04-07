@@ -109,3 +109,25 @@ The unlisten interface method (must be extended)
 
 
 
+
+## dispatch(payload)
+
+
+Event dispatcher
+
+
+
+
+
+
+
+#### Arguments
+
+
+##### + `payload`: `any`
+
+The event payload
+
+
+
+

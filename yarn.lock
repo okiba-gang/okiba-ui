@@ -1652,48 +1652,48 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@okiba/arrays@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.22.tgz#0ab2ce6ddd87b247955204cdcf81953c6ff5fcdc"
-  integrity sha512-mwMjmiD2iGQzgLrzDskysWn020YYpK14TlUu7FVr/3nzwMYXw2DdtN/QcUsPisF4FdlQZQQJxQq0I6xfSN1G+w==
+"@okiba/arrays@^1.0.24":
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-1.0.24.tgz#d24f4c74908c14962368638cf904072f55290c65"
+  integrity sha512-WTr6wSnuRCLwlDh7E5O6FtkwuM3bKipssjLrXQZAahHqVioQ+WGl6p8POtQkDJbHn18nO81RLHL2ovjl4oEVDg==
 
-"@okiba/component@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@okiba/component/-/component-2.0.4.tgz#768fa6cce8ed92ba68a86d2b151be0ea58407747"
-  integrity sha512-ynNI4Z8nu/ftOweXoeoBZ9vqH9hdltIccG6DtlQu23SFE/ghO/T0FtpNbcrD5VgmaIGxUFQpXgba8QYdPCx2Eg==
-  dependencies:
-    "@okiba/arrays" "^1.0.22"
-    "@okiba/dom" "^1.0.23"
-
-"@okiba/dom@^1.0.23":
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.23.tgz#d7a26b7a099bfea90a2e6ef93e04a76e158da9e8"
-  integrity sha512-lLHOddsrovFPNXGovmyUwDykCQpLSv8cxmtm45k37ckYk4Xg2j+FnD53iWOqzeQJpQO9SkEbXmtw3zBmzDlNaQ==
-  dependencies:
-    "@okiba/arrays" "^1.0.22"
-
-"@okiba/event-emitter@^1.1.13":
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.13.tgz#328240526e67a0616ac787afcc8ceb6e0a3a1499"
-  integrity sha512-VFXsER7Vicotwecttj7FwSXv9HnOsrG/1F5YUwqvVWBPxcrzp9fPF9dAlIzuuOQ5JDxjlckd7FH9ewr4/GJ6TA==
-
-"@okiba/evented-component@^2.0.6":
+"@okiba/component@^2.0.6":
   version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@okiba/evented-component/-/evented-component-2.0.6.tgz#a0d83336484fd0184cc28594a69577de436534f5"
-  integrity sha512-SxiwARXWny8dOQxBuDrsa6hGM2ChRkJ1k4GHwAbom5RVayIEovGRsSufkdNVDDcUhDOZLoyWdJzFVQhbZqviJQ==
+  resolved "https://registry.yarnpkg.com/@okiba/component/-/component-2.0.6.tgz#ab1a08f2bc8318fcb233ae96378c4d41c4a9b820"
+  integrity sha512-4VBPUEVvGvrrqbui5aGg+Hfaq0sPaSOiOfULrjUJqquHjHl1dfM4a55MgXdf5LWI5rQQdk8cF7qz2et2qTzAzg==
   dependencies:
-    "@okiba/component" "^2.0.4"
-    "@okiba/event-emitter" "^1.1.13"
+    "@okiba/arrays" "^1.0.24"
+    "@okiba/dom" "^1.0.25"
 
-"@okiba/functions@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@okiba/functions/-/functions-1.0.5.tgz#852593e1e6d3a0fab1efffbf14535a9352fd1360"
-  integrity sha512-nniw3W47m0IFWX/tai+QlkinGqrU7Em1a3xPuXBW+RG4Vy5udKht/eZc2VY8uGE8zsRm9LpXF7pkR+8X7UHVpw==
+"@okiba/dom@^1.0.25":
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-1.0.25.tgz#d7d2e9a269e5d425a9def599fb1bc32ee692d26e"
+  integrity sha512-ecWbBVRFzpYUxGIvRvgHECKYksug4BKhcJVCYVFUYWPA8EEa/4FQuTl7SYSsmiwjnuvSQhpA2GnDamfhjZRMHg==
+  dependencies:
+    "@okiba/arrays" "^1.0.24"
 
-"@okiba/math@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.22.tgz#e72a1f91f4d61cf76da0cfdf3c90d600bcd70b96"
-  integrity sha512-UwBYFHONIiKgXAJ5pQ6o1CdvhhNHWyooft+SAovQbq++Pwb3uUOZYOCm7pL1scZtm79xgSfDzPGMjSNGHVSMzA==
+"@okiba/event-emitter@^1.1.15":
+  version "1.1.15"
+  resolved "https://registry.yarnpkg.com/@okiba/event-emitter/-/event-emitter-1.1.15.tgz#f714ab78492c9e3185ff503f147de2ca236294fe"
+  integrity sha512-PhCQScCf3yMX1XH52HojJCjQ/+ZrvgvJabO8Mn8pK06E3cIHN3DgpboC9+wpSKOBxyPNrzo2/zeRWbc1uwTnDQ==
+
+"@okiba/evented-component@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@okiba/evented-component/-/evented-component-2.0.8.tgz#2af788bf4abc42e6ad15e9dc61f631927f1877e8"
+  integrity sha512-2vk/YckPKyJ4A9afSugsvV2Kq66S5+wplTXoQRBP4qixTuTzO+ydYTiPQHnGY/g+XH2edu2diL6HInQnUmVj/Q==
+  dependencies:
+    "@okiba/component" "^2.0.6"
+    "@okiba/event-emitter" "^1.1.15"
+
+"@okiba/functions@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@okiba/functions/-/functions-1.0.7.tgz#c854d6e623f60169f88420598c16500bc5fa105a"
+  integrity sha512-OAfl2Li5LL+S+d2p5A2km8ntMGFgZAyzkUrATKvZR3vhfdUKXPbqDANPF9fLB8EbsM9MdPpXckmkLWIvT2lL6A==
+
+"@okiba/math@^1.0.24":
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/@okiba/math/-/math-1.0.24.tgz#814a35c4c4ec0c9139b87eb66746a8436f1049b2"
+  integrity sha512-WepGAIuPUsGLkJctoBwDRBB1E2fiIPTJGh445zxLvhEvqTFf4nfkThFvt4y1zJoq+j8I9zO//ObI7/gtkAnivg==
 
 "@types/events@*":
   version "3.0.0"

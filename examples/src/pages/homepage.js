@@ -1,5 +1,5 @@
-import { qs } from '@okiba/core/dom'
-import Component from '@okiba/core/component'
+import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 import SmoothScroll from '@okiba/smooth-scroll'

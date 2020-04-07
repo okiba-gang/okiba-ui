@@ -67,13 +67,13 @@ A singleton to manage centralized event listeners
 ##### • [AbstractHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
 A base class that defines a global event handler interface
 
-###### [`module:AbstractHandler`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`eventCallback`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
+###### [`module:AbstractHandler`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`eventCallback`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler), [`dispatch`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/AbstractHandler)
 
 
 ##### • [EventHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
 An handler class aimed to centralize a native browser event listener
 
-###### [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
+###### [`listen`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler), [`unlisten`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler), [`dispatch`](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/EventHandler)
 
 
 ##### • [RAFHandler](https://github.com/okiba-gang/okiba-ui/tree/master/packages/event-manager/lib/handlers/RAFHandler)

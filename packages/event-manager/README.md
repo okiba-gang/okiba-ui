@@ -51,13 +51,13 @@ A singleton to manage centralized event listeners
 #### [AbstractHandler]()
 A base class that defines a global event handler interface
 
-###### [`module:AbstractHandler`](), [`eventCallback`](), [`listen`](), [`unlisten`]()
+###### [`module:AbstractHandler`](), [`eventCallback`](), [`listen`](), [`unlisten`](), [`dispatch`]()
 
 
 #### [EventHandler]()
 An handler class aimed to centralize a native browser event listener
 
-###### [`listen`](), [`unlisten`]()
+###### [`listen`](), [`unlisten`](), [`dispatch`]()
 
 
 #### [RAFHandler]()

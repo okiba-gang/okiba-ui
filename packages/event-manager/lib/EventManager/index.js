@@ -153,9 +153,11 @@ class EventManager {
    * @param {*} payload The event payload
    */
   static emit(type, payload) {
-    if (!handlers.hasOwnProperty(type)) return
+    const dispatch = handlers.hasOwnProperty(type)
+      ? handlers[type].dispatch
+      : emitter.emit
 
-    emitter.emit(type, payload)
+    dispatch(type, payload)
   }
 
   /**

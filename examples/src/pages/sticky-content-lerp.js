@@ -1,5 +1,5 @@
-import { qs } from '@okiba/core/dom'
-import Component from '@okiba/core/component'
+import { qs } from '@okiba/dom'
+import Component from '@okiba/component'
 import { hasTouch } from '@okiba/detect'
 import StickyContent from '@okiba/sticky-content'
 import ScrollManager from '@okiba/scroll-manager'

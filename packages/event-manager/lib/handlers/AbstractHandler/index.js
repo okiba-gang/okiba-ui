@@ -59,4 +59,12 @@ export default class AbstractHandler {
     if (!this.listening || this.config.forceListening) return
     this.listening = false
   }
+
+  /**
+   * Event dispatcher
+   * @param {any} payload The event payload
+   */
+  dispatch(payload) {
+    this.eventCallback(payload)
+  }
 }

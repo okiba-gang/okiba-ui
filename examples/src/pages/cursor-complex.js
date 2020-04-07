@@ -1,5 +1,5 @@
-import { qs } from '@okiba/core/dom'
-import { lerp } from '@okiba/core/math'
+import { qs } from '@okiba/dom'
+import { lerp } from '@okiba/math'
 import { hasTouch } from '@okiba/detect'
 import EventManager from '@okiba/event-manager'
 import SizesCache from '@okiba/sizes-cache'
