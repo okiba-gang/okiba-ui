@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-manager",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Manages and lerps scroll position",
   "main": "index.js",
   "contributors": [
@@ -11,9 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "@okiba/event-emitter": "^1.1.15",
-    "@okiba/event-manager": "^2.0.4",
+    "@okiba/event-manager": "^2.1.0",
     "@okiba/math": "^1.0.24",
-    "@okiba/sizes-cache": "^1.0.10"
+    "@okiba/sizes-cache": "^1.0.11"
   },
   "repository": {
     "type": "git",
