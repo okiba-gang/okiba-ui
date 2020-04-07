@@ -33,7 +33,7 @@
  * })
  */
 import EventedComponent from '@okiba/evented-component'
-import { map } from '@okiba/math'
+import { map, cap } from '@okiba/math'
 import SizesCache from '@okiba/sizes-cache'
 import EventManager from '@okiba/event-manager'
 
@@ -88,8 +88,18 @@ export default class ViewProgress extends EventedComponent {
    */
   onResize = () => {
     const { top, height } = this.sizes
+
     this.startY = top - SizesCache.window.height + (this.options.thresholdTop || 0)
-    this.endY = Math.min(SizesCache.body.scrollArea, this.startY + height + SizesCache.window.height + (this.options.thresholdBottom || 0))
+    this.startY = cap(0, (SizesCache.body.scrollArea - 1), this.startY)
+    this.endY = this.startY + height + SizesCache.window.height + (this.options.thresholdBottom || 0)
+    this.endY = cap(1, SizesCache.body.scrollArea, this.endY)
+
+    if (this.endY < this.startY) {
+      const startY = this.startY
+
+      this.startY = this.endY
+      this.endY = startY
+    }
   }
 
   /**
