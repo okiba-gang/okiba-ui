@@ -1,7 +1,7 @@
 import { qs } from '@okiba/dom'
 import Component from '@okiba/component'
-import EventManager from '@okiba/event-manager'
-import SizesCache from '@okiba/sizes-cache'
+import EventManager from '../../../packages/event-manager'
+import SizesCache from '../../../packages/sizes-cache'
 
 class ResizeComponent extends Component {
   constructor({ el }) {

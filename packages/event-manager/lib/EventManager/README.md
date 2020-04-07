@@ -122,10 +122,10 @@ The event(s) to be removed
 
 
 
-## update(type, config)
+## update(type, updates)
 
 
-Updates an existing global event
+Updates an existing global event configuration
 
 
 
@@ -141,14 +141,17 @@ Updates an existing global event
 The event to be removed
 
 
-##### + `config`: `Object` or  `Array.<Object>`
+##### + `updates`: `Object` or  `Array.<Object>`
 
-Event(s) configuration(s)
-
-
+Event configuration updates
 
 
 
+
+
+#### Returns
+
+`Boolean` Updating success
 ## on(type, callback)
 
 
@@ -222,7 +225,7 @@ Proxies event dispatching
 The event type
 
 
-##### + `payload`: `*`
+##### + `payload`: `any`
 
 The event payload
 

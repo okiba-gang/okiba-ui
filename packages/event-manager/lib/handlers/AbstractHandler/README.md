@@ -99,6 +99,9 @@ The listen interface method (must be extended)
 
 
 
+#### Returns
+
+`Boolean` Operation success
 ## unlisten()
 
 
@@ -110,6 +113,9 @@ The unlisten interface method (must be extended)
 
 
 
+#### Returns
+
+`Boolean` Operation success
 ## dispatch(payload)
 
 
