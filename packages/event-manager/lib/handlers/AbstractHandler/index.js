@@ -46,25 +46,37 @@ export default class AbstractHandler {
 
   /**
    * The listen interface method (must be extended)
+   *
+   * @returns {Boolean} Operation success
    */
   listen() {
-    if (this.listening) return
+    if (this.listening) {
+      return false
+    }
+
     this.listening = true
+
+    return true
   }
 
   /**
    * The unlisten interface method (must be extended)
+   *
+   * @returns {Boolean} Operation success
    */
   unlisten() {
-    if (!this.listening || this.config.forceListening) return
+    if (!this.listening || this.config.forceListening) {
+      return false
+    }
+
     this.listening = false
+
+    return true
   }
 
   /**
    * Event dispatcher
    * @param {any} payload The event payload
    */
-  dispatch(payload) {
-    this.eventCallback(payload)
-  }
+  dispatch = payload => this.eventCallback(payload)
 }

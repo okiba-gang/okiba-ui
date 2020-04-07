@@ -21,15 +21,25 @@ export default class RAFHandler extends AbstractHandler {
    * @override
    */
   listen() {
-    super.listen()
+    if (!super.listen()) {
+      return false
+    }
+
     this.nextFrame()
+
+    return true
   }
 
   /**
    * @override
    */
   unlisten() {
-    super.unlisten()
+    if (!super.unlisten()) {
+      return false
+    }
+
     window.cancelAnimationFrame(this.requestId)
+
+    return true
   }
 }

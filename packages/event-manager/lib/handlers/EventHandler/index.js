@@ -14,7 +14,9 @@ export default class EventHandler extends AbstractHandler {
    * @override
    */
   listen() {
-    super.listen()
+    if (!super.listen()) {
+      return false
+    }
 
     const { type, target, passive = true, capture = false } = this.config
     const options = hasPassiveEvents
@@ -26,13 +28,17 @@ export default class EventHandler extends AbstractHandler {
     } else {
       on(target, type, this.onEvent, options)
     }
+
+    return true
   }
 
   /**
    * @override
    */
   unlisten() {
-    super.unlisten()
+    if (!super.unlisten()) {
+      return false
+    }
 
     const { type, target, passive = true, capture = false } = this.config
     const options = hasPassiveEvents
@@ -44,13 +50,15 @@ export default class EventHandler extends AbstractHandler {
     } else {
       off(target, type, this.onEvent, options)
     }
+
+    return true
   }
 
   /**
    * Event dispatcher
    * @param {any} payload The event detail
    */
-  dispatch(payload) {
+  dispatch = payload => {
     const { type, target } = this.config
     const options = payload ? { detail: payload } : null
     const event = createCustomEvent(type, options)

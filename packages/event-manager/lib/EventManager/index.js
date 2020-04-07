@@ -102,23 +102,32 @@ class EventManager {
    * Removes a global event
    * @param {String|String[]} types The event(s) to be removed
    */
-  static unsubscribe(type) {
-    if (Array.isArray(type)) {
-      type.forEach(entry => unsubscribe(entry))
+  static unsubscribe(types) {
+    if (Array.isArray(types)) {
+      types.forEach(entry => unsubscribe(entry))
       return
     }
 
-    unsubscribe(type)
+    unsubscribe(types)
   }
 
   /**
-   * Updates an existing global event
+   * Updates an existing global event configuration
    * @param {String} type The event to be removed
-   * @param {Object|Object[]} config Event(s) configuration(s)
+   * @param {Object|Object[]} updates Event configuration updates
+   *
+   * @returns {Boolean} Updating success
    */
-  static update(type, config) {
+  static update(type, updates) {
+    if (!handlers.hasOwnProperty(type)) {
+      return false
+    }
+
+    const config = { ...handlers[type].config, ...updates }
     EventManager.unsubscribe(type)
     EventManager.subscribe(config)
+
+    return true
   }
 
   /**
@@ -142,7 +151,7 @@ class EventManager {
   static off(type, callback) {
     emitter.off(type, callback)
 
-    if (handlers.hasOwnProperty(type) && handlers[type].listening) {
+    if (handlers.hasOwnProperty(type) && handlers[type].listening && !emitter.hasListeners(type)) {
       handlers[type].unlisten()
     }
   }
@@ -150,7 +159,7 @@ class EventManager {
   /**
    * Proxies event dispatching
    * @param {String} type The event type
-   * @param {*} payload The event payload
+   * @param {any} payload The event payload
    */
   static emit(type, payload) {
     const dispatch = handlers.hasOwnProperty(type)
