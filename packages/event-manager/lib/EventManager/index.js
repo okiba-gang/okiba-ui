@@ -88,14 +88,15 @@ class EventManager {
   /**
    * Adds a global event(s)
    * @param {Object|Object[]} config Event(s) configuration(s)
+   * @param {Boolean} quiet If true, suppresses logs
    */
-  static subscribe(config) {
+  static subscribe(config, quiet) {
     if (Array.isArray(config)) {
-      config.forEach(entry => subscribe(entry))
+      config.forEach(entry => subscribe(entry, quiet))
       return
     }
 
-    subscribe(config)
+    subscribe(config, quiet)
   }
 
   /**

@@ -78,7 +78,7 @@ The event type
 
 
 
-## subscribe(config)
+## subscribe(config, quiet)
 
 
 Adds a global event(s)
@@ -95,6 +95,11 @@ Adds a global event(s)
 ##### + `config`: `Object` or  `Array.<Object>`
 
 Event(s) configuration(s)
+
+
+##### + `quiet`: `Boolean`
+
+If true, suppresses logs
 
 
 
