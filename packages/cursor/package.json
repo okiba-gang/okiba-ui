@@ -1,6 +1,6 @@
 {
   "name": "@okiba/cursor",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "A handler for custom html cursor",
   "main": "index.js",
   "contributors": [
