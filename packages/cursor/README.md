@@ -233,6 +233,28 @@ The mouseover/touchmove event
 
 
 
+## onPointerDown()
+
+
+Handles pointer down
+
+
+
+
+
+
+
+## onPointerUp()
+
+
+Handles pointer up
+
+
+
+
+
+
+
 ## onRAF()
 
 

@@ -26,19 +26,19 @@
       transition: transform .4s;
     }
 
-    .Cursor.morph .Cursor_circle span {
+    .Cursor_circle[data-cursor-hover] span {
       transform: scale(1.25);
     }
 
-    .Cursor.down .Cursor_circle span {
+    .Cursor_circle[data-cursor-hold] span {
       transform: scale(0.6666);
     }
 
-    .Cursor .Cursor_circle:first-child {
+    .Cursor_circle:first-child {
       opacity: .2;
     }
 
-    .Cursor .Cursor_circle:nth-child(2) {
+    .Cursor_circle:nth-child(2) {
       opacity: .4;
     }
 
@@ -46,22 +46,22 @@
       opacity: 1;
     }
 
-    .Cursor:not(.morph):not(.down) .Cursor_circle:nth-child(2) span {
+    .Cursor_circle:nth-child(2):not([data-cursor-hover]):not([data-cursor-hold]) span {
       transform: scale(0.6666);
     }
 
-    .Cursor:not(.morph):not(.down) .Cursor_circle:last-child span {
+    .Cursor_circle:last-child:not([data-cursor-hover]):not([data-cursor-hold]) span {
       transform: scale(0.3333);
     }
 
-    .Cursor.hidden .Cursor_circle {
+    .Cursor_circle:not([data-cursor-visible]) {
       opacity: 0 !important;
     }
   </style>
 
-  <h1 data-cursor="title">Pointer</h1>
+  <h1 data-cursor-cursor="title">Pointer</h1>
   <a href="#">Anchor</a>
-  <div class="Cursor hidden">
+  <div class="Cursor">
     <div class="Cursor_circle"><span></span></div>
     <div class="Cursor_circle"><span></span></div>
     <div class="Cursor_circle"><span></span></div>

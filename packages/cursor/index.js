@@ -32,7 +32,6 @@ class Cursor extends Component {
     if (!props.options) this.options = {}
 
     this.coords = { current: {} }
-
     this.sizes = SizesCache.get(this.el)
 
     if (this.options.autoInit !== false) {
@@ -45,23 +44,25 @@ class Cursor extends Component {
    * Sets cursor base styles (can be extended/overwritten)
    */
   setup() {
+    const { origin = [0.5, 0.5] } = this.options
+
     this.el.style.position = 'fixed'
-    this.el.style.top = `-${this.sizes.height / 2}px`
-    this.el.style.left = `-${this.sizes.width / 2}px`
+    this.el.style.top = `${this.sizes.height * -origin[0]}px`
+    this.el.style.left = `${this.sizes.width * -origin[1]}px`
   }
 
   /**
    * Reveals cursor (can be extended)
    */
   show() {
-    this.el.classList.remove('hidden')
+    this.el.setAttribute('data-cursor-visible', '')
   }
 
   /**
    * Unveils cursor (can be extended)
    */
   hide() {
-    this.el.classList.add('hidden')
+    this.el.removeAttribute('data-cursor-visible')
   }
 
   /**
@@ -82,16 +83,20 @@ class Cursor extends Component {
    * @param {Object} matchedSelector The trigger selector
    */
   hover(target, matchedSelector) {
-    const action = !!matchedSelector ? 'add' : 'remove'
+    const action = !!matchedSelector ? 'setAttribute' : 'removeAttribute'
 
     this.show()
-    this.el.classList[action]('hover')
+    this.el[action]('data-cursor-hover', '')
+    this.el[action]('data-cursor-match', matchedSelector)
   }
 
   /**
    * Restores the cursor default state (should be implemented)
    */
-  reset() {}
+  reset() {
+    this.el.removeAttribute('data-cursor-hover')
+    this.el.removeAttribute('data-cursor-match')
+  }
 
   /**
    * Handles pointer entering/leaving viewport callback
@@ -133,6 +138,20 @@ class Cursor extends Component {
   }
 
   /**
+   * Handles pointer down
+   */
+  onPointerDown = () => {
+    this.el.setAttribute('data-cursor-hold', '')
+  }
+
+  /**
+   * Handles pointer up
+   */
+  onPointerUp = () => {
+    this.el.removeAttribute('data-cursor-hold')
+  }
+
+  /**
    * Handles request animation frame
    */
   onRAF = () => {
@@ -160,6 +179,8 @@ class Cursor extends Component {
       EventManager.on('pointerinview', this.onPointerInView)
       EventManager.on('pointermove', this.onPointerMove)
       EventManager.on('pointerover', this.onPointerOver)
+      EventManager.on('pointerdown', this.onPointerDown)
+      EventManager.on('pointerup', this.onPointerUp)
     }
   }
 
@@ -175,6 +196,8 @@ class Cursor extends Component {
       EventManager.off('pointerinview', this.onPointerInView)
       EventManager.off('pointermove', this.onPointerMove)
       EventManager.off('pointerover', this.onPointerOver)
+      EventManager.off('pointerdown', this.onPointerDown)
+      EventManager.off('pointerup', this.onPointerUp)
 
       this.enabled = false
     }

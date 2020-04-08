@@ -15,16 +15,17 @@
       border: solid 2px currentColor;
       border-radius: 50%;
       color: #02BFF2;
+      opacity: 0;
       transition: opacity .4s;
       pointer-events: none;
     }
 
-    .Cursor.hidden {
-      opacity: 0;
+    .Cursor[data-cursor-visible] {
+      opacity: 1;
     }
   </style>
 
   <h1 data-cursor="title">Pointer</h1>
   <a href="#">Anchor</a>
-  <div class="Cursor hidden"></div>
+  <div class="Cursor"></div>
 {% endblock %}

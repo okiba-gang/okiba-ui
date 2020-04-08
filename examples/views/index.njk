@@ -26,15 +26,15 @@
       border-radius: 50%;
       border: solid 1px currentColor;
       color: white;
-      opacity: .2;
+      opacity: 0;
       transition: all .4s;
     }
 
-    #cursor.hidden:before {
-      opacity: 0;
+    #cursor[data-cursor-visible]:before {
+      opacity: 0.2;
     }
 
-    #cursor.hover:before {
+    #cursor[data-cursor-hover]:before {
       transform: none;
       background-color: currentColor;
       opacity: 1;
