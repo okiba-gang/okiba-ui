@@ -1,6 +1,6 @@
 {
   "name": "@okiba/view-progress",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Informs an element about how much of it has been viewed",
   "main": "index.js",
   "contributors": [
@@ -12,10 +12,10 @@
   "dependencies": {
     "@okiba/component": "^2.0.6",
     "@okiba/dom": "^1.0.25",
-    "@okiba/event-manager": "^2.1.0",
+    "@okiba/event-manager": "^2.1.1",
     "@okiba/evented-component": "^2.0.8",
     "@okiba/math": "^1.0.24",
-    "@okiba/sizes-cache": "^1.0.11"
+    "@okiba/sizes-cache": "^1.0.12"
   },
   "repository": {
     "type": "git",

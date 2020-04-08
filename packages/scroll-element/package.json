@@ -1,6 +1,6 @@
 {
   "name": "@okiba/scroll-element",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Translates a panel according to scroll",
   "main": "index.js",
   "contributors": [
@@ -12,9 +12,9 @@
   "dependencies": {
     "@okiba/component": "^2.0.6",
     "@okiba/dom": "^1.0.25",
-    "@okiba/event-manager": "^2.1.0",
+    "@okiba/event-manager": "^2.1.1",
     "@okiba/math": "^1.0.24",
-    "@okiba/sizes-cache": "^1.0.11"
+    "@okiba/sizes-cache": "^1.0.12"
   },
   "repository": {
     "type": "git",
